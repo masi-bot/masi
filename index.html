@@ -1,379 +1,389 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>هَرْسَلِك | portfolio حداثي</title>
-  <!-- Tailwind + vibrant extra -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Font Awesome for icons (free) -->
+  <title>MASI · digital foundry</title>
+  <!-- Tailwind + Font Awesome -->
    <meta name="google-site-verification" content="GDPc-IJ_-ZXgp0IWcVFL2TDH0DllTQYPlwk8bAtKXkY" />
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    /* custom smooth scroll & micro interactions */
-    html { scroll-behavior: smooth; }
-    .hover-glow:hover { box-shadow: 0 0 15px rgba(245, 158, 11, 0.5); transition: 0.2s; }
-    .card-shine { background: linear-gradient(145deg, #ffffff 0%, #f9fafb 100%); }
-    .dark .card-shine { background: linear-gradient(145deg, #1f2937 0%, #111827 100%); }
-    /* glassmorphism for header */
-    .glass-header {
-      background: rgba(255, 255, 255, 0.7);
+    /* custom animations & keyframes */
+    @keyframes floatSoft {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+      100% { transform: translateY(0px); }
+    }
+    .animate-float {
+      animation: floatSoft 6s ease-in-out infinite;
+    }
+    @keyframes morphGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .bg-ambient {
+      background: linear-gradient(-45deg, #dc2626, #2563eb, #16a34a, #ffffff);
+      background-size: 300% 300%;
+      animation: morphGradient 15s ease infinite;
+      opacity: 0.03;
+      pointer-events: none;
+    }
+    .parallax-tilt {
+      transition: transform 0.2s ease-out;
+      transform-style: preserve-3d;
+    }
+    .glass-card {
       backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
     }
-    .dark .glass-header {
-      background: rgba(17, 24, 39, 0.7);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+    .dark .glass-card {
+      background: rgba(0,0,0,0.3);
+      border-color: rgba(255,255,255,0.08);
     }
-    /* project card filter animation */
-    .project-card { transition: transform 0.2s, opacity 0.3s; }
-    /* custom dark mode override (tailwind dark class) */
-    .dark { color-scheme: dark; }
+    /* micro‑interaction button */
+    .btn-shine {
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-shine::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transform: rotate(25deg);
+      transition: left 0.5s;
+    }
+    .btn-shine:hover::after {
+      left: 100%;
+    }
+    /* particle effect (tiny) */
+    .particle-field {
+      position: relative;
+    }
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(220,38,38,0.3);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    /* modal overlay */
+    .modal-bg {
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(6px);
+    }
+    /* rtl friendly (some icons) */
+    .fa-arrow-right:before { content: "\f061"; } /* force right arrow */
   </style>
 </head>
-<body class="font-sans antialiased bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+<body class="bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-200 font-sans antialiased transition-colors duration-300 overflow-x-hidden">
 
-  <!-- ===== HEADER ثابت بشفافية ===== -->
-  <header class="glass-header fixed w-full z-50 top-0 px-6 py-3 flex justify-between items-center shadow-sm">
-    <!-- logo / هرسلك -->
-    <a href="#" class="text-2xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-l from-amber-600 to-amber-400 dark:from-amber-400 dark:to-amber-300">
-      هَرْسَلِك<span class="text-amber-500 dark:text-amber-400">.</span>
-    </a>
-    
-    <!-- desktop navigation + dark mode toggle -->
-    <div class="flex items-center gap-6">
-      <nav class="hidden md:flex gap-8 text-sm font-medium">
-        <a href="#home" class="hover:text-amber-600 dark:hover:text-amber-400 transition">الرئيسية</a>
-        <a href="#projects" class="hover:text-amber-600 dark:hover:text-amber-400 transition">المشاريع</a>
-        <a href="#skills" class="hover:text-amber-600 dark:hover:text-amber-400 transition">المهارات</a>
-        <a href="#contact" class="hover:text-amber-600 dark:hover:text-amber-400 transition">تواصل</a>
-      </nav>
-      <!-- Dark mode toggle (moon/sun) with localStorage memory -->
-      <button id="darkToggle" class="w-9 h-9 rounded-full bg-amber-100 dark:bg-gray-800 text-amber-700 dark:text-amber-300 flex items-center justify-center hover:scale-110 transition-all duration-300" aria-label="تبديل الوضع المظلم">
+  <!-- ambient moving gradient background (fixed) -->
+  <div class="fixed inset-0 w-full h-full bg-ambient z-[-2]"></div>
+  <!-- subtle noise overlay (optional) -->
+  <div class="fixed inset-0 opacity-5 mix-blend-overlay z-[-1]" style="background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJmIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjc0IiBudW1PY3RhdmVzPSIzIiAvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNmKSIgb3BhY2l0eT0iMC4xIiAvPjwvc3ZnPg==');"></div>
+
+  <!-- ===== HEADER with glass + dual logo ===== -->
+  <header class="fixed top-0 left-0 right-0 z-50 glass-card backdrop-blur-xl border-b border-white/20 dark:border-gray-800/60 px-6 py-3 flex justify-between items-center">
+    <div class="flex items-center gap-3">
+      <!-- MASI logo glyph -->
+      <div class="text-3xl font-black tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-crimson-600 to-blue-600 dark:from-crimson-400 dark:to-blue-400" style="background-image: linear-gradient(135deg, #dc2626, #2563eb, #16a34a);">
+        MASI<span class="text-2xl font-light text-gray-700 dark:text-gray-300">//</span>
+      </div>
+      <span class="text-xs uppercase tracking-widest border-l-2 border-crimson-500 pl-3 text-gray-600 dark:text-gray-400 hidden md:inline-block">digital foundry</span>
+    </div>
+    <nav class="hidden md:flex gap-8 text-sm font-medium">
+      <a href="#home" class="hover:text-crimson-600 dark:hover:text-crimson-400 transition">Home</a>
+      <a href="#about" class="hover:text-crimson-600 dark:hover:text-crimson-400 transition">Duality</a>
+      <a href="#projects" class="hover:text-crimson-600 dark:hover:text-crimson-400 transition">Foundry</a>
+      <a href="#testimonials" class="hover:text-crimson-600 dark:hover:text-crimson-400 transition">Voices</a>
+      <a href="#connect" class="hover:text-crimson-600 dark:hover:text-crimson-400 transition">Connect</a>
+    </nav>
+    <div class="flex gap-3 items-center">
+      <!-- dark mode toggle with icons -->
+      <button id="darkToggle" class="w-9 h-9 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-amber-300 flex items-center justify-center hover:scale-110 transition">
         <i class="fas fa-moon dark:fa-sun"></i>
       </button>
-      <!-- mobile menu button (simple) -->
-      <button id="mobileMenuBtn" class="block md:hidden text-2xl text-amber-600 dark:text-amber-400">
+      <!-- mobile menu btn -->
+      <button id="mobileMenuBtn" class="block md:hidden text-2xl text-crimson-600">
         <i class="fas fa-bars"></i>
       </button>
     </div>
-    <!-- mobile dropdown (hidden by default) -->
-    <div id="mobileNav" class="absolute top-full left-0 right-0 glass-header p-5 flex flex-col gap-4 text-center md:hidden border-t border-gray-200 dark:border-gray-700 hidden">
-      <a href="#home" class="hover:text-amber-600 dark:hover:text-amber-400 text-lg">الرئيسية</a>
-      <a href="#projects" class="hover:text-amber-600 dark:hover:text-amber-400 text-lg">المشاريع</a>
-      <a href="#skills" class="hover:text-amber-600 dark:hover:text-amber-400 text-lg">المهارات</a>
-      <a href="#contact" class="hover:text-amber-600 dark:hover:text-amber-400 text-lg">تواصل</a>
+    <!-- mobile dropdown -->
+    <div id="mobileNav" class="absolute top-full left-0 right-0 glass-card border-t border-white/20 dark:border-gray-800 p-5 flex flex-col gap-4 text-center md:hidden hidden">
+      <a href="#home" class="hover:text-crimson-600">Home</a><a href="#about" class="hover:text-crimson-600">Duality</a><a href="#projects" class="hover:text-crimson-600">Foundry</a><a href="#testimonials" class="hover:text-crimson-600">Voices</a><a href="#connect" class="hover:text-crimson-600">Connect</a>
     </div>
   </header>
-  <!-- spacer for fixed header -->
   <div class="h-16"></div>
 
-  <!-- ===== MAIN CONTENT ===== -->
-  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
-    <!-- hero / home section -->
-    <section id="home" class="min-h-[85vh] flex flex-col md:flex-row items-center justify-center gap-12 py-12">
-      <div class="flex-1 text-center md:text-right">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
-          <span class="bg-gradient-to-l from-amber-600 to-amber-400 bg-clip-text text-transparent">هَرْسَلِك</span> <br>حيث التصميم يلتقي <br>بالبرمجة
-        </h1>
-        <p class="mt-6 text-lg text-gray-600 dark:text-gray-300 max-w-xl mx-auto md:mx-0">مطور واجهات أمامية ومصمم تجارب مستخدم, أحول الأفكار إلى كود أنيق وسلس. هذا وصف كامل لموقع هرسلك — شخصي, تفاعلي, عصري.</p>
-        <div class="flex gap-4 mt-8 justify-center md:justify-start">
-          <a href="#projects" class="px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white rounded-xl shadow-md hover-glow transition font-semibold">أعمالي</a>
-          <a href="#contact" class="px-6 py-3 border-2 border-amber-400 text-amber-700 dark:text-amber-300 hover:bg-amber-50 dark:hover:bg-gray-800 rounded-xl transition font-semibold">تواصل معي</a>
+    <!-- HERO – split signature view (left logo + portraits, right testimonials) -->
+    <section id="home" class="min-h-[90vh] flex flex-col lg:flex-row items-center justify-between gap-12 py-12">
+      <!-- left hemisphere: logo and portraits -->
+      <div class="flex-1 relative">
+        <!-- main MASI logo as primary glyph -->
+        <div class="text-8xl md:text-9xl font-black leading-none tracking-[-0.05em] bg-clip-text text-transparent bg-gradient-to-r from-crimson-600 via-blue-600 to-green-600 animate-pulse drop-shadow-2xl" style="animation: pulse 4s infinite;">
+          MASI
         </div>
-        <!-- social icons -->
-        <div class="flex gap-5 mt-10 text-2xl text-gray-600 dark:text-gray-400 justify-center md:justify-start">
-          <a href="#" class="hover:text-amber-500 dark:hover:text-amber-400"><i class="fab fa-github"></i></a>
-          <a href="#" class="hover:text-amber-500 dark:hover:text-amber-400"><i class="fab fa-linkedin"></i></a>
-          <a href="#" class="hover:text-amber-500 dark:hover:text-amber-400"><i class="fab fa-x-twitter"></i></a>
-          <a href="#" class="hover:text-amber-500 dark:hover:text-amber-400"><i class="fab fa-behance"></i></a>
+        <!-- portraits with floating & interactive parallax -->
+        <div class="relative mt-8 flex flex-wrap gap-8 items-center justify-center lg:justify-start">
+          <!-- Mahmoud (crimson+blue frame) -->
+          <div class="parallax-tilt w-40 h-40 md:w-48 md:h-48 rounded-full bg-gradient-to-br from-crimson-600 to-blue-600 p-1 shadow-2xl hover:shadow-crimson-500/30 transition duration-300" id="mahmoudFrame">
+            <div class="w-full h-full rounded-full bg-white dark:bg-gray-800 flex items-center justify-center text-6xl overflow-hidden">
+              <span class="opacity-90 hover:scale-110 transition"><i class="fas fa-code text-crimson-600"></i></span>
+            </div>
+          </div>
+          <!-- Saif (green+white frame) -->
+          <div class="parallax-tilt w-40 h-40 md:w-48 md:h-48 rounded-full bg-gradient-to-br from-green-600 to-white p-1 shadow-2xl hover:shadow-green-500/30 transition" id="saifFrame">
+            <div class="w-full h-full rounded-full bg-white dark:bg-gray-800 flex items-center justify-center text-6xl overflow-hidden">
+              <span class="opacity-90 hover:scale-110 transition"><i class="fas fa-database text-green-600"></i></span>
+            </div>
+          </div>
         </div>
+        <p class="text-2xl mt-10 font-light max-w-md text-gray-700 dark:text-gray-300 border-r-4 border-crimson-500 pr-4 leading-relaxed">
+          <span class="font-bold text-crimson-600">Duality</span> of excellence, <span class="font-bold text-blue-600">unity</span> of vision.
+        </p>
       </div>
-      <div class="flex-1 flex justify-center">
-        <div class="relative w-64 h-64 md:w-80 md:h-80 bg-gradient-to-br from-amber-300 to-amber-500 rounded-full flex items-center justify-center shadow-2xl">
-          <span class="text-8xl text-white drop-shadow-lg">🧑‍💻</span>
-          <div class="absolute -bottom-3 -left-3 bg-white dark:bg-gray-800 rounded-full p-3 shadow-lg border-2 border-amber-300">
-            <i class="fas fa-code text-3xl text-amber-500"></i>
+
+      <!-- right hemisphere: testimonial cards animated -->
+      <div class="flex-1 w-full">
+        <div class="grid gap-6 perspective">
+          <!-- testimonial card 1 (floating) -->
+          <div class="glass-card rounded-2xl p-6 backdrop-blur-xl bg-white/30 dark:bg-black/30 border border-white/40 shadow-xl animate-float" style="animation-delay: 0.2s;">
+            <div class="flex gap-3 items-center mb-3"><i class="fas fa-quote-right text-crimson-500 text-3xl"></i><span class="text-sm font-medium text-gray-600 dark:text-gray-300">CTO, FinTech startup</span></div>
+            <p class="text-lg">“MASI didn't just build an app — they engineered a digital ecosystem. Mahmoud's front-end finesse and Saif's back-end architecture are pure synergy.”</p>
+          </div>
+          <!-- testimonial card 2 -->
+          <div class="glass-card rounded-2xl p-6 backdrop-blur-xl bg-white/30 dark:bg-black/30 border border-white/40 shadow-xl animate-float" style="animation-delay: 0.6s;">
+            <div class="flex gap-3 items-center mb-3"><i class="fas fa-quote-right text-blue-500 text-3xl"></i><span class="text-sm font-medium">Founder, Creative Studio</span></div>
+            <p class="text-lg">“The PWA they delivered is blazing fast. Mahmoud's UI is art, Saif's API is rock solid. True partners.”</p>
+          </div>
+          <!-- testimonial card 3 (video mention) -->
+          <div class="glass-card rounded-2xl p-6 backdrop-blur-xl bg-white/30 dark:bg-black/30 border border-white/40 shadow-xl animate-float" style="animation-delay: 1.0s;">
+            <div class="flex gap-4 items-center"><i class="fab fa-youtube text-red-600 text-2xl"></i><span class="text-sm">Featured on <strong>TechTik</strong> (watch case study)</span></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== PROJECTS section with filtering (javascript) ===== -->
-    <section id="projects" class="py-16">
-      <div class="text-center mb-12">
-        <h2 class="text-4xl font-bold inline-block border-b-4 border-amber-400 pb-2">المشاريع</h2>
-        <p class="text-gray-500 dark:text-gray-400 mt-4">فلترة حسب التصنيف (جافاسكريبت تفاعلي)</p>
+    <!-- ABOUT (Duality deconstructed) split screen -->
+    <section id="about" class="py-24">
+      <h2 class="text-5xl font-black text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-crimson-600 via-blue-600 to-green-600">duality · deconstructed</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Mahmoud left: Front-end Alchemist (crimson/blue) -->
+        <div class="group bg-gradient-to-br from-crimson-50 to-blue-50 dark:from-crimson-950/30 dark:to-blue-950/30 rounded-3xl p-8 shadow-2xl border-t-4 border-crimson-500 backdrop-blur-sm">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-20 h-20 rounded-full bg-gradient-to-br from-crimson-600 to-blue-600 p-1"><div class="w-full h-full rounded-full bg-white flex items-center justify-center text-3xl text-crimson-600"><i class="fas fa-paint-brush"></i></div></div>
+            <div><h3 class="text-3xl font-bold text-crimson-700 dark:text-crimson-400">Mahmoud</h3><p class="text-sm uppercase tracking-wider">front‑end virtuoso</p></div>
+          </div>
+          <p class="text-lg mb-6">React · Vue · Angular · UI/UX sensitivity · Framer · Tailwind · three.js. Alchemist of interfaces.</p>
+          <div class="flex flex-wrap gap-3 text-xs">
+            <span class="px-3 py-1 rounded-full bg-crimson-200 dark:bg-crimson-800 text-crimson-900 dark:text-white">component libraries</span>
+            <span class="px-3 py-1 rounded-full bg-blue-200 dark:bg-blue-800">motion design</span>
+            <span class="px-3 py-1 rounded-full bg-white/80 dark:bg-gray-800">PWA front</span>
+          </div>
+          <a href="#" class="inline-block mt-8 btn-shine bg-crimson-600 hover:bg-crimson-700 text-white px-8 py-3 rounded-full font-semibold shadow-lg transition">Business inquiry →</a>
+        </div>
+        <!-- Saif right: Back-end Architect (green/white) -->
+        <div class="group bg-gradient-to-br from-green-50 to-white dark:from-green-950/30 dark:to-gray-900 rounded-3xl p-8 shadow-2xl border-t-4 border-green-500 backdrop-blur-sm">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-20 h-20 rounded-full bg-gradient-to-br from-green-600 to-white p-1"><div class="w-full h-full rounded-full bg-white flex items-center justify-center text-3xl text-green-600"><i class="fas fa-server"></i></div></div>
+            <div><h3 class="text-3xl font-bold text-green-700 dark:text-green-400">Saif</h3><p class="text-sm uppercase tracking-wider">back‑end architect</p></div>
+          </div>
+          <p class="text-lg mb-6">Node.js · Python · PostgreSQL · MongoDB · API design · microservices · cloud (AWS).</p>
+          <div class="flex flex-wrap gap-3 text-xs">
+            <span class="px-3 py-1 rounded-full bg-green-200 dark:bg-green-800">graphql</span>
+            <span class="px-3 py-1 rounded-full bg-emerald-200 dark:bg-emerald-800">firebase</span>
+            <span class="px-3 py-1 rounded-full bg-white/80 dark:bg-gray-800">devops</span>
+          </div>
+          <a href="#" class="inline-block mt-8 btn-shine bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-full font-semibold shadow-lg transition">Inquire back-end →</a>
+        </div>
       </div>
+    </section>
 
-      <!-- filter buttons -->
-      <div class="flex flex-wrap gap-3 justify-center mb-10">
-        <button data-filter="all" class="filter-btn active px-5 py-2 rounded-full bg-amber-500 text-white shadow-md font-medium">الكل</button>
-        <button data-filter="web" class="filter-btn px-5 py-2 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-amber-400 hover:text-white transition font-medium">تطبيقات ويب</button>
-        <button data-filter="design" class="filter-btn px-5 py-2 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-amber-400 hover:text-white transition font-medium">تصميم</button>
-        <button data-filter="mobile" class="filter-btn px-5 py-2 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-amber-400 hover:text-white transition font-medium">تطبيقات موبايل</button>
+    <!-- PROJECTS: The Digital Foundry (filterable grid) -->
+    <section id="projects" class="py-20">
+      <h2 class="text-5xl font-black text-center mb-4 bg-clip-text text-transparent bg-gradient-to-r from-crimson-600 via-blue-600 to-green-600">the digital foundry</h2>
+      <!-- filter chips -->
+      <div class="flex flex-wrap justify-center gap-3 mb-12">
+        <button data-filter="all" class="filter-btn active px-6 py-2 rounded-full bg-crimson-600 text-white shadow-md">All</button>
+        <button data-filter="pwa" class="filter-btn px-6 py-2 rounded-full bg-gray-200 dark:bg-gray-800 hover:bg-crimson-400 transition">PWA</button>
+        <button data-filter="web" class="filter-btn px-6 py-2 rounded-full bg-gray-200 dark:bg-gray-800 hover:bg-crimson-400 transition">Web</button>
+        <button data-filter="case" class="filter-btn px-6 py-2 rounded-full bg-gray-200 dark:bg-gray-800 hover:bg-crimson-400 transition">Case study</button>
       </div>
-
-      <!-- projects grid (will be filtered by js) -->
+      <!-- grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projectsGrid">
-        <!-- each card has data-category -->
-        <div class="project-card card-shine rounded-2xl p-5 shadow-lg hover:shadow-xl dark:shadow-gray-800 border border-gray-100 dark:border-gray-700" data-category="web">
-          <div class="h-40 bg-gradient-to-r from-blue-400 to-cyan-300 rounded-xl mb-4 flex items-center justify-center text-white text-5xl"><i class="fas fa-globe"></i></div>
-          <h3 class="text-xl font-bold">متجر الكتروني</h3>
-          <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">تطبيق ويب متكامل مع سلة ودفع (React, Tailwind)</p>
-          <div class="flex justify-between items-center mt-4">
-            <span class="text-xs bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 px-3 py-1 rounded-full">web</span>
-            <a href="#" class="text-amber-600 hover:underline">عرض المشروع <i class="fas fa-arrow-left mr-1"></i></a>
-          </div>
+        <!-- project card 1 (pwa) -->
+        <div class="project-card group relative glass-card rounded-3xl p-5 backdrop-blur-sm bg-white/50 dark:bg-gray-900/50 border border-white/40 shadow-xl hover:scale-[1.02] transition" data-category="pwa">
+          <div class="h-44 rounded-2xl bg-gradient-to-r from-crimson-500 to-blue-500 flex items-center justify-center text-white text-6xl opacity-90"><i class="fas fa-rocket"></i></div>
+          <h3 class="text-2xl font-bold mt-4">Fintech PWA</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">Mahmoud: UI · Saif: API, auth</p>
+          <button class="open-modal-btn mt-4 w-full py-2 border border-crimson-500 rounded-xl text-crimson-700 dark:text-crimson-300 hover:bg-crimson-500 hover:text-white transition" data-project="fintech">🔍 view breakdown</button>
         </div>
-
-        <div class="project-card card-shine rounded-2xl p-5 shadow-lg hover:shadow-xl dark:shadow-gray-800 border border-gray-100 dark:border-gray-700" data-category="design">
-          <div class="h-40 bg-gradient-to-r from-purple-400 to-pink-300 rounded-xl mb-4 flex items-center justify-center text-white text-5xl"><i class="fas fa-paint-brush"></i></div>
-          <h3 class="text-xl font-bold">هوية هرسلك</h3>
-          <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">هوية بصرية كاملة، ألوان وشعار وتطبيقات (Figma)</p>
-          <div class="flex justify-between items-center mt-4">
-            <span class="text-xs bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 px-3 py-1 rounded-full">design</span>
-            <a href="#" class="text-amber-600 hover:underline">معاينة التصميم <i class="fas fa-arrow-left mr-1"></i></a>
-          </div>
+        <!-- project card 2 (web) -->
+        <div class="project-card group relative glass-card rounded-3xl p-5 backdrop-blur-sm bg-white/50 dark:bg-gray-900/50 border border-white/40 shadow-xl hover:scale-[1.02] transition" data-category="web">
+          <div class="h-44 rounded-2xl bg-gradient-to-r from-green-500 to-emerald-400 flex items-center justify-center text-white text-6xl"><i class="fas fa-cart-shopping"></i></div>
+          <h3 class="text-2xl font-bold mt-4">Artisan marketplace</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">Vue + Django · full‑stack synergy</p>
+          <button class="open-modal-btn mt-4 w-full py-2 border border-crimson-500 rounded-xl text-crimson-700 dark:text-crimson-300 hover:bg-crimson-500 hover:text-white transition" data-project="artisan">🔍 view breakdown</button>
         </div>
-
-        <div class="project-card card-shine rounded-2xl p-5 shadow-lg hover:shadow-xl dark:shadow-gray-800 border border-gray-100 dark:border-gray-700" data-category="mobile">
-          <div class="h-40 bg-gradient-to-r from-green-400 to-emerald-300 rounded-xl mb-4 flex items-center justify-center text-white text-5xl"><i class="fas fa-mobile-alt"></i></div>
-          <h3 class="text-xl font-bold">تطبيق لياقة</h3>
-          <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">تطبيق موبايل لتتبع التمارين (React Native)</p>
-          <div class="flex justify-between items-center mt-4">
-            <span class="text-xs bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 px-3 py-1 rounded-full">mobile</span>
-            <a href="#" class="text-amber-600 hover:underline">جرب التجريبي <i class="fas fa-arrow-left mr-1"></i></a>
-          </div>
-        </div>
-
-        <div class="project-card card-shine rounded-2xl p-5 shadow-lg hover:shadow-xl dark:shadow-gray-800 border border-gray-100 dark:border-gray-700" data-category="web">
-          <div class="h-40 bg-gradient-to-r from-amber-400 to-orange-300 rounded-xl mb-4 flex items-center justify-center text-white text-5xl"><i class="fas fa-dashboard"></i></div>
-          <h3 class="text-xl font-bold">لوحة تحكم تحليلات</h3>
-          <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">Dashboard متقدم مع إحصائيات و图表 (Chart.js)</p>
-          <div class="flex justify-between items-center mt-4">
-            <span class="text-xs bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 px-3 py-1 rounded-full">web</span>
-            <a href="#" class="text-amber-600 hover:underline">استكشف <i class="fas fa-arrow-left mr-1"></i></a>
-          </div>
-        </div>
-
-        <div class="project-card card-shine rounded-2xl p-5 shadow-lg hover:shadow-xl dark:shadow-gray-800 border border-gray-100 dark:border-gray-700" data-category="design">
-          <div class="h-40 bg-gradient-to-r from-red-300 to-rose-200 rounded-xl mb-4 flex items-center justify-center text-white text-5xl"><i class="fas fa-figma"></i></div>
-          <h3 class="text-xl font-bold">مكتبة UI</h3>
-          <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">مكونات قابلة لإعادة الاستخدام (تصميم نظام)</p>
-          <div class="flex justify-between items-center mt-4">
-            <span class="text-xs bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 px-3 py-1 rounded-full">design</span>
-            <a href="#" class="text-amber-600 hover:underline">نسق التصميم <i class="fas fa-arrow-left mr-1"></i></a>
-          </div>
-        </div>
-
-        <div class="project-card card-shine rounded-2xl p-5 shadow-lg hover:shadow-xl dark:shadow-gray-800 border border-gray-100 dark:border-gray-700" data-category="mobile">
-          <div class="h-40 bg-gradient-to-r from-indigo-400 to-blue-300 rounded-xl mb-4 flex items-center justify-center text-white text-5xl"><i class="fas fa-camera"></i></div>
-          <h3 class="text-xl font-bold">كاميرا ذكية</h3>
-          <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">تطبيق فلترة صور (Flutter) بسرعة</p>
-          <div class="flex justify-between items-center mt-4">
-            <span class="text-xs bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 px-3 py-1 rounded-full">mobile</span>
-            <a href="#" class="text-amber-600 hover:underline">تفاصيل أكثر <i class="fas fa-arrow-left mr-1"></i></a>
-          </div>
+        <!-- project card 3 (case) -->
+        <div class="project-card group relative glass-card rounded-3xl p-5 backdrop-blur-sm bg-white/50 dark:bg-gray-900/50 border border-white/40 shadow-xl hover:scale-[1.02] transition" data-category="case">
+          <div class="h-44 rounded-2xl bg-gradient-to-r from-blue-500 to-indigo-500 flex items-center justify-center text-white text-6xl"><i class="fas fa-chart-line"></i></div>
+          <h3 class="text-2xl font-bold mt-4">Logistics dashboard</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">React + Node · realtime</p>
+          <button class="open-modal-btn mt-4 w-full py-2 border border-crimson-500 rounded-xl text-crimson-700 dark:text-crimson-300 hover:bg-crimson-500 hover:text-white transition" data-project="logistics">🔍 view breakdown</button>
         </div>
       </div>
     </section>
 
-    <!-- ===== SKILLS section ===== -->
-    <section id="skills" class="py-16">
-      <div class="text-center mb-12">
-        <h2 class="text-4xl font-bold inline-block border-b-4 border-amber-400 pb-2">المهارات</h2>
+    <!-- MODAL (hidden by default) for project breakdown -->
+    <div id="projectModal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 hidden">
+      <div class="modal-bg absolute inset-0" id="modalOverlay"></div>
+      <div class="relative bg-white dark:bg-gray-900 rounded-3xl max-w-lg w-full p-8 shadow-2xl border-t-4 border-crimson-600">
+        <button id="closeModal" class="absolute top-4 left-4 text-3xl text-gray-500 hover:text-crimson-600">&times;</button>
+        <div id="modalContent">
+          <!-- dynamic content from js -->
+          <h3 class="text-3xl font-bold text-crimson-600" id="modalTitle">Fintech PWA</h3>
+          <div class="grid grid-cols-2 gap-4 mt-6">
+            <div class="bg-crimson-50 dark:bg-crimson-950 p-4 rounded-xl"><i class="fas fa-code text-crimson-600 text-2xl"></i><p class="font-bold mt-1">Mahmoud (front)</p><p class="text-sm" id="modalFront">UI, shimmer, offline</p></div>
+            <div class="bg-green-50 dark:bg-green-950 p-4 rounded-xl"><i class="fas fa-database text-green-600 text-2xl"></i><p class="font-bold mt-1">Saif (back)</p><p class="text-sm" id="modalBack">Node, PostgreSQL, JWT</p></div>
+          </div>
+          <p class="mt-4 text-sm text-gray-500">🔗 <a href="#" class="underline">watch case on YouTube</a> · <a href="#" class="underline">TikTok teaser</a></p>
+        </div>
       </div>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-        <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md text-center hover:-translate-y-2 transition border border-gray-100 dark:border-gray-700">
-          <i class="fab fa-html5 text-5xl text-orange-500"></i>
-          <p class="mt-3 font-bold">HTML5</p>
-        </div>
-        <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md text-center hover:-translate-y-2 transition border border-gray-100 dark:border-gray-700">
-          <i class="fab fa-css3-alt text-5xl text-blue-500"></i>
-          <p class="mt-3 font-bold">CSS3</p>
-        </div>
-        <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md text-center hover:-translate-y-2 transition border border-gray-100 dark:border-gray-700">
-          <i class="fab fa-js text-5xl text-yellow-400"></i>
-          <p class="mt-3 font-bold">JavaScript</p>
-        </div>
-        <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md text-center hover:-translate-y-2 transition border border-gray-100 dark:border-gray-700">
-          <i class="fab fa-tailwind text-5xl text-cyan-400"></i>
-          <p class="mt-3 font-bold">Tailwind</p>
-        </div>
-        <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md text-center hover:-translate-y-2 transition border border-gray-100 dark:border-gray-700">
-          <i class="fab fa-react text-5xl text-blue-400"></i>
-          <p class="mt-3 font-bold">React</p>
-        </div>
-        <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md text-center hover:-translate-y-2 transition border border-gray-100 dark:border-gray-700">
-          <i class="fab fa-figma text-5xl text-purple-400"></i>
-          <p class="mt-3 font-bold">Figma</p>
-        </div>
-        <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md text-center hover:-translate-y-2 transition border border-gray-100 dark:border-gray-700">
-          <i class="fas fa-database text-5xl text-green-600"></i>
-          <p class="mt-3 font-bold">Firebase</p>
-        </div>
-        <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md text-center hover:-translate-y-2 transition border border-gray-100 dark:border-gray-700">
-          <i class="fas fa-code-branch text-5xl text-gray-500"></i>
-          <p class="mt-3 font-bold">Git</p>
-        </div>
+    </div>
+
+    <!-- TESTIMONIALS carousel (simplified) -->
+    <section id="testimonials" class="py-24">
+      <h2 class="text-5xl font-black text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-crimson-600 via-blue-600 to-green-600">client voices</h2>
+      <div class="flex flex-wrap gap-8 justify-center">
+        <div class="glass-card max-w-sm p-6 rounded-3xl"><i class="fas fa-video text-crimson-500 text-3xl mb-3"></i><p class="text-lg">"MASI built our PWA in 6 weeks – unbelievable quality." – <span class="font-bold">Nina, CEO</span></p></div>
+        <div class="glass-card max-w-sm p-6 rounded-3xl"><i class="fab fa-tiktok text-black dark:text-white text-3xl mb-3"></i><p class="text-lg">"Follow them on TikTok for dev tips!"</p></div>
       </div>
     </section>
 
-    <!-- ===== CONTACT section with form ===== -->
-    <section id="contact" class="py-16">
-      <div class="text-center mb-8">
-        <h2 class="text-4xl font-bold inline-block border-b-4 border-amber-400 pb-2">تواصل معي</h2>
-        <p class="text-gray-500 dark:text-gray-400 mt-4">أترك رسالة وسأعود إليك في أقرب وقت</p>
-      </div>
-      <div class="max-w-2xl mx-auto bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border border-gray-100 dark:border-gray-700">
-        <form id="contactForm" class="space-y-6">
-          <div>
-            <label class="block text-sm font-medium mb-2">الاسم الكامل</label>
-            <input type="text" id="nameInput" placeholder="مثال: علي هرسلك" class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-900 focus:ring-2 focus:ring-amber-400 outline-none transition">
-          </div>
-          <div>
-            <label class="block text-sm font-medium mb-2">البريد الإلكتروني</label>
-            <input type="email" id="emailInput" placeholder="hello@herslik.com" class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-900 focus:ring-2 focus:ring-amber-400 outline-none transition">
-          </div>
-          <div>
-            <label class="block text-sm font-medium mb-2">الرسالة</label>
-            <textarea id="msgInput" rows="4" placeholder="كيف يمكنني مساعدتك؟" class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-900 focus:ring-2 focus:ring-amber-400 outline-none transition"></textarea>
-          </div>
-          <button type="submit" class="w-full py-3 bg-amber-500 hover:bg-amber-600 text-white rounded-xl font-bold text-lg shadow-md hover-glow transition">إرسال الرسالة <i class="fas fa-paper-plane mr-2"></i></button>
-          <p id="formFeedback" class="text-sm text-center text-green-600 dark:text-green-400 hidden">تم الإرسال (محاكاة تفاعلية) شكراً لك!</p>
-        </form>
+    <!-- CONNECT (form + FAQ) -->
+    <section id="connect" class="py-20">
+      <h2 class="text-5xl font-black text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-crimson-600 via-blue-600 to-green-600">connect / faq</h2>
+      <div class="grid md:grid-cols-2 gap-12">
+        <!-- form -->
+        <div class="glass-card rounded-3xl p-8">
+          <h3 class="text-2xl font-bold mb-6">send a message</h3>
+          <form id="contactForm" class="space-y-4">
+            <input type="text" placeholder="name" id="conName" class="w-full p-3 rounded-xl bg-white/70 dark:bg-black/70 border border-gray-300 dark:border-gray-700">
+            <input type="email" placeholder="email" id="conEmail" class="w-full p-3 rounded-xl bg-white/70 dark:bg-black/70 border">
+            <textarea placeholder="your idea" id="conMsg" rows="3" class="w-full p-3 rounded-xl bg-white/70 dark:bg-black/70 border"></textarea>
+            <button type="submit" class="btn-shine bg-crimson-600 hover:bg-crimson-700 text-white px-8 py-3 rounded-full font-semibold w-full">send <i class="fas fa-paper-plane mr-2"></i></button>
+            <p id="formFeedback" class="text-green-600 text-sm hidden">thanks! (demo)</p>
+          </form>
+        </div>
+        <!-- FAQ accordion -->
+        <div class="space-y-4">
+          <div class="glass-card rounded-2xl p-5"><button class="faq-question flex justify-between w-full font-bold text-lg">what's a PWA? <i class="fas fa-chevron-down"></i></button><p class="faq-answer hidden mt-3 text-gray-600 dark:text-gray-300">Progressive Web App – fast, reliable, installable.</p></div>
+          <div class="glass-card rounded-2xl p-5"><button class="faq-question flex justify-between w-full font-bold text-lg">how do you split work? <i class="fas fa-chevron-down"></i></button><p class="faq-answer hidden mt-3">Mahmoud does front‑end, Saif back‑end. Seamless.</p></div>
+          <div class="glass-card rounded-2xl p-5"><button class="faq-question flex justify-between w-full font-bold text-lg">budget for a custom site? <i class="fas fa-chevron-down"></i></button><p class="faq-answer hidden mt-3">let's talk – we tailor every project.</p></div>
+        </div>
       </div>
     </section>
   </main>
 
-  <!-- ===== FOOTER ===== -->
-  <footer class="glass-header mt-16 py-6 text-center text-gray-600 dark:text-gray-300 border-t border-gray-200 dark:border-gray-800">
-    <p>© 2025 <span class="font-bold text-amber-500">هَرْسَلِك</span> — جميع الحقوق محفوظة. صُنع بـ <i class="fas fa-heart text-red-500"></i> و Tailwind</p>
+  <!-- footer -->
+  <footer class="glass-card mt-20 py-8 text-center text-gray-700 dark:text-gray-300 border-t border-white/20">
+    <p class="text-lg"><span class="font-black text-transparent bg-clip-text bg-gradient-to-r from-crimson-600 to-blue-600">MASI digital foundry</span> · duality of excellence, unity of vision</p>
+    <div class="flex gap-6 justify-center mt-4 text-2xl">
+      <a href="#" class="hover:text-crimson-600"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="hover:text-crimson-600"><i class="fab fa-tiktok"></i></a>
+      <a href="#" class="hover:text-crimson-600"><i class="fab fa-youtube"></i></a>
+      <a href="#" class="hover:text-crimson-600"><i class="fab fa-github"></i></a>
+    </div>
   </footer>
 
-  <!-- ===== JavaScript interactions (toggle dark, filter, mobile, form) ===== -->
+  <!-- JavaScript (interactivity) -->
   <script>
     (function() {
-      // dark mode toggle with local storage
-      const darkToggle = document.getElementById('darkToggle');
-      const htmlEl = document.documentElement;
-      const moonIcon = '<i class="fas fa-moon"></i>';
-      const sunIcon = '<i class="fas fa-sun"></i>';
-
-      function setDarkMode(enable) {
-        if (enable) {
-          htmlEl.classList.add('dark');
-          darkToggle.innerHTML = sunIcon;
-          localStorage.setItem('theme', 'dark');
-        } else {
-          htmlEl.classList.remove('dark');
-          darkToggle.innerHTML = moonIcon;
-          localStorage.setItem('theme', 'light');
-        }
+      // dark mode
+      const toggle = document.getElementById('darkToggle');
+      const html = document.documentElement;
+      function setDark(enable) {
+        if(enable) { html.classList.add('dark'); toggle.innerHTML = '<i class="fas fa-sun"></i>'; }
+        else { html.classList.remove('dark'); toggle.innerHTML = '<i class="fas fa-moon"></i>'; }
       }
+      setDark(localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches));
+      toggle.addEventListener('click', () => setDark(!html.classList.contains('dark')));
 
-      // initial theme from localStorage
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme === 'dark') setDarkMode(true);
-      else if (savedTheme === 'light') setDarkMode(false);
-      else if (window.matchMedia('(prefers-color-scheme: dark)').matches) setDarkMode(true); // system dark
-
-      darkToggle.addEventListener('click', () => {
-        setDarkMode(!htmlEl.classList.contains('dark'));
-      });
-
-      // mobile menu toggle
+      // mobile menu
       const mobileBtn = document.getElementById('mobileMenuBtn');
       const mobileNav = document.getElementById('mobileNav');
-      mobileBtn.addEventListener('click', () => {
-        mobileNav.classList.toggle('hidden');
-      });
+      mobileBtn.addEventListener('click', () => mobileNav.classList.toggle('hidden'));
 
-      // close mobile nav after clicking a link (optional)
-      document.querySelectorAll('#mobileNav a').forEach(link => {
-        link.addEventListener('click', () => {
-          mobileNav.classList.add('hidden');
-        });
-      });
-
-      // PROJECT FILTER (javascript)
+      // project filter
       const filterBtns = document.querySelectorAll('.filter-btn');
       const projects = document.querySelectorAll('.project-card');
-      
-      function updateFilter(category) {
-        projects.forEach(card => {
-          if (category === 'all' || card.dataset.category === category) {
-            card.style.display = 'block';
-          } else {
-            card.style.display = 'none';
-          }
-        });
-        // update active button style
-        filterBtns.forEach(btn => {
-          btn.classList.remove('bg-amber-500', 'text-white');
-          btn.classList.add('bg-gray-200', 'dark:bg-gray-800', 'text-gray-800', 'dark:text-gray-200');
-          if (btn.dataset.filter === category) {
-            btn.classList.add('bg-amber-500', 'text-white');
-            btn.classList.remove('bg-gray-200', 'dark:bg-gray-800', 'text-gray-800', 'dark:text-gray-200');
-          }
-        });
+      function filterProjects(cat) {
+        projects.forEach(p => { p.style.display = (cat === 'all' || p.dataset.category === cat) ? 'block' : 'none'; });
+        filterBtns.forEach(btn => { btn.classList.remove('bg-crimson-600', 'text-white'); btn.classList.add('bg-gray-200', 'dark:bg-gray-800'); if(btn.dataset.filter === cat) { btn.classList.add('bg-crimson-600', 'text-white'); btn.classList.remove('bg-gray-200', 'dark:bg-gray-800'); } });
       }
+      filterBtns.forEach(btn => btn.addEventListener('click', (e) => filterProjects(e.target.dataset.filter)));
 
-      filterBtns.forEach(btn => {
+      // modal for project breakdown
+      const modal = document.getElementById('projectModal');
+      const overlay = document.getElementById('modalOverlay');
+      const closeModal = document.getElementById('closeModal');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalFront = document.getElementById('modalFront');
+      const modalBack = document.getElementById('modalBack');
+      const openModalBtns = document.querySelectorAll('.open-modal-btn');
+      openModalBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
-          const category = e.currentTarget.dataset.filter;
-          updateFilter(category);
+          const project = e.target.dataset.project;
+          if(project === 'fintech') { modalTitle.innerText = 'Fintech PWA'; modalFront.innerText = 'UI, animations, offline fallback'; modalBack.innerText = 'Node, PostgreSQL, JWT, Plaid'; }
+          else if(project === 'artisan') { modalTitle.innerText = 'Artisan marketplace'; modalFront.innerText = 'Vue, tailwind, map'; modalBack.innerText = 'Django, DRF, Stripe'; }
+          else { modalTitle.innerText = 'Logistics dashboard'; modalFront.innerText = 'React, realtime charts'; modalBack.innerText = 'WebSocket, MongoDB, microservices'; }
+          modal.classList.remove('hidden');
         });
       });
-      // initial active = all
-      updateFilter('all');
+      function hideModal() { modal.classList.add('hidden'); }
+      overlay.addEventListener('click', hideModal);
+      closeModal.addEventListener('click', hideModal);
 
-      // contact form simulation (javascript feedback)
-      const contactForm = document.getElementById('contactForm');
-      const feedback = document.getElementById('formFeedback');
-      contactForm.addEventListener('submit', (e) => {
+      // FAQ accordion
+      document.querySelectorAll('.faq-question').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const answer = btn.nextElementSibling;
+          answer.classList.toggle('hidden');
+          btn.querySelector('i').classList.toggle('fa-chevron-down');
+          btn.querySelector('i').classList.toggle('fa-chevron-up');
+        });
+      });
+
+      // contact form fake feedback
+      document.getElementById('contactForm').addEventListener('submit', (e) => {
         e.preventDefault();
-        const name = document.getElementById('nameInput').value.trim();
-        const email = document.getElementById('emailInput').value.trim();
-        const msg = document.getElementById('msgInput').value.trim();
-        if (!name || !email || !msg) {
-          alert('يرجى ملء جميع الحقول');
-          return;
-        }
-        if (!email.includes('@') || !email.includes('.')) {
-          alert('البريد الإلكتروني غير صحيح');
-          return;
-        }
-        // show feedback and reset
-        feedback.classList.remove('hidden');
-        contactForm.reset();
-        setTimeout(() => feedback.classList.add('hidden'), 4000);
+        document.getElementById('formFeedback').classList.remove('hidden');
+        setTimeout(() => document.getElementById('formFeedback').classList.add('hidden'), 3000);
       });
 
-      // optional: highlight header links on scroll (very basic)
-      window.addEventListener('scroll', () => {
-        // nothing fancy, just to include scroll interaction
+      // simple parallax tilt for portraits (mouse move)
+      const mahmoud = document.getElementById('mahmoudFrame');
+      const saif = document.getElementById('saifFrame');
+      document.addEventListener('mousemove', (e) => {
+        const x = e.clientX / window.innerWidth - 0.5;
+        const y = e.clientY / window.innerHeight - 0.5;
+        if(mahmoud) mahmoud.style.transform = `rotateY(${x*10}deg) rotateX(${y* -8}deg)`;
+        if(saif) saif.style.transform = `rotateY(${x*8}deg) rotateX(${y* -6}deg)`;
       });
-
     })();
   </script>
-
-  <!-- RTL adjustment for icons that may appear reversed -->
-  <style>
-    /* fine tuning for arrow left in rtl */
-    .fa-arrow-left:before { content: "\f060"; } /* standard left arrow, but in rtl context it points right visually - fine */
-    .mr-1 { margin-left: 0.25rem; margin-right: 0; } 
-    /* adjust margin for icons inside links */
-    a i.fa-arrow-left { transform: scaleX(-1); } /* because RTL, arrow should point to left? actually we used left arrow but in RTL it points right logically, so we flip it to be consistent: */
-    a i.fa-arrow-left { transform: none; } /* we remove flip, arrow will be left-pointing but in RTL it's fine as "back" */
-    /* better: use fa-arrow-right for RTL normally, but for simplicity we keep left arrow */
-    a i.fa-arrow-left:before { content: "\f060"; } /* consistent */
-    /* make mr-1 correct for RTL (margin right) */
-    .mr-1 { margin-right: 0.25rem; margin-left: 0; }
-  </style>
-  <!-- tiny fix for mobile nav RTL -->
+  <!-- style adjustments for rtl friendly (icons) -->
+  <style>.fa-arrow-right:before { content: "\f061"; }</style>
 </body>
 </html>
