@@ -1,427 +1,969 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>مَاسِي - المصنع الرقمي</title>
-  <!-- PWA primary manifest -->
-  <link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22%D9%85%D8%A7%D8%B3%D9%8A%20%D8%A7%D9%84%D9%85%D8%B5%D9%86%D8%B9%20%D8%A7%D9%84%D8%B1%D9%82%D9%85%D9%8A%22%2C%22short_name%22%3A%22%D9%85%D8%A7%D8%B3%D9%8A%22%2C%22start_url%22%3A%22%2F%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23ffffff%22%2C%22theme_color%22%3A%22%23dc2626%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data:image/svg+xml%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI%2BPHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIGZpbGw9IiNkYzI2MjYiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZm9udC1zaXplPSI2MCIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiPk08L3RleHQ%2BPC9zdmc%2B%22%2C%22sizes%22%3A%22192x192%22%2C%22type%22%3A%22image/svg+xml%22%7D%5D%7D">
-  <meta name="theme-color" content="#dc2626">
-  <!-- Font Awesome 6 (free) + Tailwind + custom keyframes -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    /* ========== أكثر من 3000 سطر من التحسينات والحركات ========== */
-    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
-    * { font-family: 'Cairo', sans-serif; margin: 0; padding: 0; box-sizing: border-box; }
-    body { overflow-x: hidden; background: #fcfaf8; }
-    .dark body { background: #0a0c0f; }
+   <!-- ====== أساسيّات الميتا ====== -->
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <title>سيف & محمود - فرونت إيند وفول ستاك وأمن سيبراني</title>
+   <meta name="description" content="الموقع الرسمي لسيف (مطور فرونت إيند) ومحمود (مطور فول ستاك ومتخصص أمن سيبراني). خدمات تطوير متكاملة وحلول تقنية آمنة." />
+   <meta name="keywords" content="سيف, محمود, سيف فرونت إيند, محمود فول ستاك, أمن سيبراني, مطور ويب, تطوير مواقع, برمجة, حماية مواقع, مصر, استشارات أمنية, React, Node.js, JavaScript, HTML, CSS, تصميم مواقع" />
+   <link rel="canonical" href="https://example.com/" />
+   <meta name="robots" content="index,follow" />
+   
+   <!-- بيانات مُنظّمة لتحسين محركات البحث -->
+   <script type="application/ld+json">
+   {
+     "@context": "https://schema.org",
+     "@type": "Person",
+     "name": "محمود محمد",
+     "url": "https://example.com/",
+     "jobTitle": "مطور فول ستاك وأخصائي أمن سيبراني",
+     "address": {
+       "@type": "PostalAddress",
+       "addressRegion": "Sharkia",
+       "addressCountry": "Egypt"
+     }
+   }
+   </script>
 
-    /* النيون الأحمر والأزرق والأخضر */
-    :root { --crimson: #dc2626; --cobalt: #2563eb; --green: #16a34a; --white: #ffffff; }
+   <!-- Tailwind CSS -->
+   <script src="https://cdn.tailwindcss.com"></script>
+   <!-- AOS Animation Library -->
+   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+   <!-- Font Awesome Icons -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <!-- Google Fonts (Cairo) -->
+   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+   <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        customGreen: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            300: '#86efac',
+                            400: '#4ade80',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                        },
+                        customBlue: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        },
+                        dark: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Cairo', 'sans-serif']
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --header-height: 80px;
+            --gradient-primary: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+            --gradient-accent: linear-gradient(135deg, #22c55e 0%, #3b82f6 100%);
+            --gradient-hero: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 253, 244, 0.9) 100%);
+            --text-primary: #1e293b;
+            --text-secondary: #334155;
+            --card-bg-light: #ffffff;
+            --card-bg-dark: #1e293b;
+        }
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #f8fafc;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+        
+        body.dark-mode {
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode .gradient-text {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-    /* خلفية متحركة (ambient) محسنة */
-    .bg-ambient {
-      background: linear-gradient(125deg, rgba(220,38,38,0.08) 0%, rgba(37,99,235,0.08) 35%, rgba(22,163,74,0.08) 70%, rgba(255,255,255,0.03) 100%);
-      background-size: 400% 400%;
-      animation: slowDrift 32s ease infinite;
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-      pointer-events: none;
-    }
-    @keyframes slowDrift { 0%{ background-position: 0% 0%; } 50%{ background-position: 100% 100%; } 100%{ background-position: 0% 0%; } }
+        body.dark-mode .section-dark {
+            background: #0f172a;
+        }
 
-    /* كرسور مخصص (cursor custom) مع نقطة حمراء */
-    .custom-cursor { width: 28px; height: 28px; border: 2px solid var(--crimson); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; mix-blend-mode: exclusion; transition: transform 0.1s, width 0.2s, height 0.2s; transform: translate(-50%, -50%); backdrop-filter: invert(0.1); }
-    .cursor-dot { width: 6px; height: 6px; background: var(--crimson); border-radius: 50%; position: fixed; pointer-events: none; z-index: 10000; transition: opacity 0.2s; transform: translate(-50%, -50%); box-shadow: 0 0 15px #dc2626; }
-    .cursor-hover { width: 52px; height: 52px; border-color: var(--green); background: rgba(22,163,74,0.05); }
+        body.dark-mode .card {
+            background: #1e293b;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
 
-    /* زجاجية راقية */
-    .glass-card {
-      backdrop-filter: blur(14px) saturate(180%);
-      -webkit-backdrop-filter: blur(14px) saturate(180%);
-      background: rgba(255, 255, 255, 0.25);
-      border: 1px solid rgba(220, 38, 38, 0.2);
-      box-shadow: 0 20px 40px -12px rgba(0,0,0,0.2);
-    }
-    .dark .glass-card {
-      background: rgba(10, 15, 25, 0.6);
-      border-color: rgba(220, 38, 38, 0.3);
-    }
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--gradient-accent);
+            border-radius: 3px;
+        }
 
-    /* جزيئات دقيقة (particles) */
-    .particle {
-      position: absolute;
-      width: 4px;
-      height: 4px;
-      background: var(--crimson);
-      border-radius: 50%;
-      opacity: 0.4;
-      filter: blur(1px);
-      pointer-events: none;
-    }
-    /* بطاقات المشاريع */
-    .project-card {
-      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-    .project-card:hover {
-      transform: translateY(-12px) scale(1.02);
-      box-shadow: 0 30px 40px -15px #dc262680;
-    }
+        body.dark-mode .section-title::after {
+            background: var(--gradient-accent);
+        }
+        
+        /* Main Header */
+        .main-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(34, 197, 94, 0.1);
+            padding: 0.8rem 0;
+            height: var(--header-height);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+        }
+        
+        body.dark-mode .main-header {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(34, 197, 94, 0.2);
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+        }
 
-    /* أزرار مع جزيئات */
-    .btn-particle {
-      position: relative;
-      overflow: hidden;
-    }
-    .btn-particle::after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle, #fff 10%, transparent 60%);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-    .btn-particle:active::after {
-      opacity: 0.6;
-      transform: scale(2);
-    }
+        /* Header Text Colors */
+        .main-header .text-white {
+            color: #1e293b;
+        }
+        body.dark-mode .main-header .text-white {
+            color: #e2e8f0;
+        }
+        .main-header .text-blue-100 {
+            color: #3b82f6;
+        }
+        body.dark-mode .main-header .text-blue-100 {
+            color: #86efac;
+        }
 
-    /* أيقونات السوشل ميديا الحية (feeds) */
-    .social-live-feed iframe { width: 100%; height: 380px; border-radius: 24px; border: none; }
+        /* Theme Toggle Button */
+        .theme-toggle {
+            background: rgba(34, 197, 94, 0.1);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #22c55e;
+            transition: all 0.3s ease;
+        }
+        
+        body.dark-mode .theme-toggle {
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+        }
+        
+        .theme-toggle:hover {
+            transform: rotate(30deg);
+        }
 
-    /* رأس ثابت محسن */
-    .header-glass {
-      backdrop-filter: blur(16px) saturate(200%);
-      background: rgba(255, 255, 255, 0.4);
-      border-bottom: 1px solid #dc262630;
-    }
-    .dark .header-glass { background: rgba(0,0,0,0.5); }
+        /* Search Box */
+        .search-box {
+            width: 100%;
+            padding: 10px 45px 10px 15px;
+            border-radius: 50px;
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            background: rgba(255, 255, 255, 0.9);
+            color: #1e293b;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        body.dark-mode .search-box {
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            background: rgba(30, 41, 59, 0.9);
+            color: #e2e8f0;
+        }
+        
+        .search-box::placeholder {
+            color: #64748b;
+        }
+        body.dark-mode .search-box::placeholder {
+            color: #94a3b8;
+        }
+        
+        .search-box:focus {
+            outline: none;
+            border-color: #22c55e;
+            box-shadow: 0 0 15px rgba(34, 197, 94, 0.5);
+        }
+        body.dark-mode .search-box:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+        }
+        
+        .search-button {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            color: #22c55e;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        body.dark-mode .search-button {
+            color: #3b82f6;
+        }
 
-    /* تأثير التمرير السلس */
-    html { scroll-behavior: smooth; }
+        /* Hero Section */
+        #home {
+            background: var(--gradient-hero), url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1172&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding-top: calc(var(--header-height) + 2rem);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        body.dark-mode #home {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.9) 100%), url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1172&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
 
-    /* الصور الشخصية (سيتم إضافتها عبر خلفية) */
-    .portrait-mahmoud {
-      background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+PHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIGZpbGw9IiNkYzI2MjYiLz48Y2lyY2xlIGN4PSI1MCIgY3k9IjQwIiByPSIxNSIgZmlsbD0iI2ZmZiIvPjxjaXJjbGUgY3g9IjM4IiBjeT0iMzUiIHI9IjMiIGZpbGw9IiMyMjIiLz48Y2lyY2xlIGN4PSI2MiIgY3k9IjM1IiByPSIzIiBmaWxsPSIjMjIyIi8+PHBhdGggZD0iTTM1IDU1IFE1MCA2NSA2NSA1NSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjMiIGZpbGw9Im5vbmUiLz48L3N2Zz4=');
-      background-size: cover;
-      background-position: center;
-    }
-    .portrait-saif {
-      background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+PHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIGZpbGw9IiMxNmEzNGEiLz48Y2lyY2xlIGN4PSI1MCIgY3k9IjQwIiByPSIxNSIgZmlsbD0iI2ZmZiIvPjxjaXJjbGUgY3g9IjM4IiBjeT0iMzUiIHI9IjMiIGZpbGw9IiMyMjIiLz48Y2lyY2xlIGN4PSI2MiIgY3k9IjM1IiByPSIzIiBmaWxsPSIjMjIyIi8+PHJlY3QgeD0iMzAiIHk9IjU1IiB3aWR0aD0iNDAiIGhlaWdodD0iMTUiIGZpbGw9IiNmZmYiLz48L3N2Zz4=');
-      background-size: cover;
-    }
+        /* Profile Image Wrapper */
+        .profile-image-wrapper {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(34, 197, 94, 0.3);
+            transition: all 0.5s ease;
+        }
+        body.dark-mode .profile-image-wrapper {
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);
+        }
+        .profile-image-wrapper:hover {
+            transform: scale(1.05);
+            box-shadow: 0 25px 50px rgba(34, 197, 94, 0.4);
+        }
+        body.dark-mode .profile-image-wrapper:hover {
+            box-shadow: 0 25px 50px rgba(59, 130, 246, 0.4);
+        }
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .profile-image-wrapper:hover .profile-image {
+            transform: scale(1.1);
+        }
+        .profile-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(34, 197, 94, 0.8));
+            padding: 30px 20px 20px;
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.5s ease;
+        }
+        body.dark-mode .profile-overlay {
+            background: linear-gradient(transparent, rgba(59, 130, 246, 0.8));
+        }
+        .profile-image-wrapper:hover .profile-overlay {
+            transform: translateY(0);
+        }
 
-    /* تذييل */
-    .footer-gradient {
-      background: linear-gradient(90deg, #dc2626, #2563eb, #16a34a);
-      padding: 3px;
-    }
-  </style>
+        /* Buttons */
+        .btn-primary {
+            background: var(--gradient-accent);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(34, 197, 94, 0.4);
+        }
+        body.dark-mode .btn-primary {
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+        body.dark-mode .btn-primary:hover {
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: #22c55e;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid #22c55e;
+            cursor: pointer;
+        }
+        body.dark-mode .btn-outline {
+            color: #3b82f6;
+            border: 2px solid #3b82f6;
+        }
+        .btn-outline:hover {
+            background: #22c55e;
+            color: white;
+            transform: translateY(-3px);
+        }
+        body.dark-mode .btn-outline:hover {
+            background: #3b82f6;
+            color: white;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--card-bg-light);
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(34, 197, 94, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        body.dark-mode .card {
+            background: var(--card-bg-dark);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.1);
+        }
+
+        /* Statistics */
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* FAQ Section */
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 10px rgba(34, 197, 94, 0.1);
+            transition: all 0.3s ease;
+        }
+        body.dark-mode .faq-item {
+            background: #1e293b;
+            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.1);
+        }
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #22c55e;
+        }
+        body.dark-mode .faq-question {
+            color: #3b82f6;
+        }
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: #334155;
+            display: none;
+        }
+        body.dark-mode .faq-answer {
+            color: #cbd5e1;
+        }
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        /* Contact Form Enhancements */
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            background: white;
+            color: #1e293b;
+        }
+        body.dark-mode .form-input {
+            background: #1e293b;
+            border-color: #334155;
+            color: #e2e8f0;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: #22c55e;
+            box-shadow: 0 0 10px rgba(34, 197, 94, 0.2);
+        }
+        body.dark-mode .form-input:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: white;
+            border-top: 1px solid #22c55e;
+        }
+        body.dark-mode footer {
+            background: #0f172a;
+            border-top: 1px solid #3b82f6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            :root {
+                --header-height: 70px;
+            }
+            .profile-image-wrapper {
+                width: 220px;
+                height: 220px;
+            }
+        }
+    </style>
 </head>
-<body class="antialiased">
+<body class="light-mode">
+    <!-- Header -->
+    <header class="main-header fixed w-full top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between header-container">
+                <div class="flex items-center">
+                    <div>
+                        <h1 class="text-white text-xl md:text-2xl font-bold">سيف & محمود</h1>
+                        <p class="text-blue-100 text-sm">فرونت إيند | فول ستاك وأمن سيبراني</p>
+                    </div>
+                </div>
 
-  <!-- كرسور مخصص ونقطة -->
-  <div class="custom-cursor hidden md:block" id="customCursor"></div>
-  <div class="cursor-dot hidden md:block" id="cursorDot"></div>
+                <div class="search-container w-full md:w-1/3 mx-4">
+                    <form id="search-form" class="relative">
+                        <input type="text" id="search-input" class="search-box" placeholder="ابحث في الموقع...">
+                        <button type="submit" class="search-button">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </div>
 
-  <!-- خلفية متحركة (ambient) -->
-  <div class="bg-ambient"></div>
+                <div class="hidden md:flex items-center space-x-4 space-x-reverse">
+                    <a href="https://www.facebook.com" class="text-customGreen-600 hover:text-customBlue-600 transition-colors">
+                        <i class="fab fa-facebook-f text-lg"></i>
+                    </a>
+                    <a href="https://www.linkedin.com" class="text-customGreen-600 hover:text-customBlue-600 transition-colors">
+                        <i class="fab fa-linkedin-in text-lg"></i>
+                    </a>
+                    <a href="https://www.github.com" class="text-customGreen-600 hover:text-customBlue-600 transition-colors">
+                        <i class="fab fa-github text-lg"></i>
+                    </a>
+                    <button id="themeToggle" class="theme-toggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
 
-  <!-- حبيبات خلفية (particles) -->
-  <div id="particleContainer" style="position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; pointer-events:none;"></div>
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home">
+            <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2" data-aos="fade-right">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4 gradient-text">مرحباً، نحن سيف & محمود</h1>
+                    <h2 class="text-2xl md:text-3xl font-medium mb-4 text-customGreen-600 dark:text-customBlue-400">مطورو ويب ومتخصصو أمن سيبراني</h2>
+                    <p class="text-lg mb-6 text-gray-600 dark:text-gray-300">سيف مطور فرونت إيند متخصص في واجهات المستخدم التفاعلية، ومحمود مطور فول ستاك وخبير أمن سيبراني لبناء تطبيقات آمنة وعالية الأداء.</p>
+                    <div class="flex space-x-4 space-x-reverse">
+                        <a href="#contact" class="btn-primary">تواصل معنا</a>
+                        <a href="#projects" class="btn-outline">عرض أعمالنا</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 mt-10 md:mt-0 flex justify-center" data-aos="fade-left">
+                    <div class="profile-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="سيف ومحمود" class="profile-image">
+                        <div class="profile-overlay">
+                            <div class="profile-name font-bold">سيف & محمود</div>
+                            <div class="profile-title">مطورو ويب</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <!-- رأس الصفحة (شريط علوي) -->
-  <header class="header-glass fixed top-0 left-0 right-0 z-50 px-6 py-3 flex justify-between items-center text-gray-900 dark:text-white transition-colors">
-    <div class="flex items-center gap-3">
-      <span class="text-4xl font-black tracking-tighter bg-clip-text text-transparent" style="background-image: linear-gradient(125deg, #dc2626, #2563eb, #16a34a);">مَاسِي</span>
-      <span class="text-sm border-r-2 border-crimson-600 pr-3 hidden sm:inline">المصنع الرقمي</span>
+        <!-- Statistics Section -->
+        <section class="py-16 bg-gradient-to-r from-customGreen-50 to-customBlue-50 dark:from-gray-800 dark:to-gray-900">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                    <div class="text-center" data-aos="fade-up">
+                        <div class="stat-number">150+</div>
+                        <p class="text-gray-600 dark:text-gray-300 mt-2">مشروع مكتمل</p>
+                    </div>
+                    <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                        <div class="stat-number">120+</div>
+                        <p class="text-gray-600 dark:text-gray-300 mt-2">عميل راضٍ</p>
+                    </div>
+                    <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                        <div class="stat-number">6</div>
+                        <p class="text-gray-600 dark:text-gray-300 mt-2">سنوات خبرة</p>
+                    </div>
+                    <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+                        <div class="stat-number">20+</div>
+                        <p class="text-gray-600 dark:text-gray-300 mt-2">دورة تدريبية</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-16 section-title" data-aos="fade-up">من نحن</h2>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <!-- Saif -->
+                    <div class="card p-8 text-center" data-aos="flip-left">
+                        <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80" alt="سيف" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-customGreen-500">
+                        <h3 class="text-2xl font-bold text-customGreen-600 dark:text-customBlue-400 mb-2">سيف</h3>
+                        <p class="text-gray-500 dark:text-gray-400 mb-4">مطور فرونت إيند محترف</p>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">متخصص في تحويل التصاميم إلى واجهات تفاعلية باستخدام React, Vue.js, و Tailwind CSS. أهتم بتجربة المستخدم وأداء التطبيقات.</p>
+                        <div class="flex justify-center space-x-4 space-x-reverse">
+                            <span class="px-3 py-1 bg-customGreen-100 dark:bg-gray-700 rounded-full text-customGreen-700 dark:text-customBlue-300">React</span>
+                            <span class="px-3 py-1 bg-customGreen-100 dark:bg-gray-700 rounded-full text-customGreen-700 dark:text-customBlue-300">Vue</span>
+                            <span class="px-3 py-1 bg-customGreen-100 dark:bg-gray-700 rounded-full text-customGreen-700 dark:text-customBlue-300">Tailwind</span>
+                        </div>
+                    </div>
+                    <!-- Mahmoud -->
+                    <div class="card p-8 text-center" data-aos="flip-right">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80" alt="محمود" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-customBlue-500">
+                        <h3 class="text-2xl font-bold text-customBlue-600 dark:text-customGreen-400 mb-2">محمود</h3>
+                        <p class="text-gray-500 dark:text-gray-400 mb-4">مطور فول ستاك وأخصائي أمن سيبراني</p>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">أبني تطبيقات ويب كاملة (Node.js, Python, PHP) مع تطبيق أعلى معايير الأمان لحماية البيانات من الاختراقات والهجمات الإلكترونية.</p>
+                        <div class="flex justify-center space-x-4 space-x-reverse">
+                            <span class="px-3 py-1 bg-customBlue-100 dark:bg-gray-700 rounded-full text-customBlue-700 dark:text-customGreen-300">Node.js</span>
+                            <span class="px-3 py-1 bg-customBlue-100 dark:bg-gray-700 rounded-full text-customBlue-700 dark:text-customGreen-300">Python</span>
+                            <span class="px-3 py-1 bg-customBlue-100 dark:bg-gray-700 rounded-full text-customBlue-700 dark:text-customGreen-300">أمن سيبراني</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 bg-gradient-to-br from-customGreen-50 to-customBlue-50 dark:from-gray-800 dark:to-gray-900">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-16 section-title" data-aos="fade-up">مهاراتنا</h2>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <!-- Saif's Skills -->
+                    <div data-aos="fade-left">
+                        <h3 class="text-2xl font-semibold text-customGreen-600 dark:text-customBlue-400 mb-6">مهارات سيف (فرونت إيند)</h3>
+                        <div class="space-y-6">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">HTML/CSS/JavaScript</span>
+                                    <span>95%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                    <div class="bg-customGreen-500 h-2.5 rounded-full" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">React & Next.js</span>
+                                    <span>90%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                    <div class="bg-customGreen-500 h-2.5 rounded-full" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">Vue.js & Nuxt</span>
+                                    <span>85%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                    <div class="bg-customGreen-500 h-2.5 rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Mahmoud's Skills -->
+                    <div data-aos="fade-right">
+                        <h3 class="text-2xl font-semibold text-customBlue-600 dark:text-customGreen-400 mb-6">مهارات محمود (فول ستاك وأمن سيبراني)</h3>
+                        <div class="space-y-6">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">Node.js/Express</span>
+                                    <span>92%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                    <div class="bg-customBlue-500 h-2.5 rounded-full" style="width: 92%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">Python/Django</span>
+                                    <span>88%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                    <div class="bg-customBlue-500 h-2.5 rounded-full" style="width: 88%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">أمن الشبكات والتشفير</span>
+                                    <span>90%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                    <div class="bg-customBlue-500 h-2.5 rounded-full" style="width: 90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-16 section-title" data-aos="fade-up">أبرز المشاريع</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Project 1 -->
+                    <div class="card" data-aos="zoom-in">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="منصة تحليلات" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">منصة تحليلات متقدمة</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">واجهة أمامية تفاعلية بلوحات تحكم متكاملة مع خلفية آمنة لتحليل البيانات.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-customGreen-600 dark:text-customBlue-400">#React #Node.js</span>
+                                <a href="#" class="text-customBlue-600 hover:underline">عرض المشروع</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 2 -->
+                    <div class="card" data-aos="zoom-in" data-aos-delay="100">
+                        <img src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="متجر إلكتروني آمن" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">متجر إلكتروني آمن</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">منصة تسوق كاملة مع حماية متقدمة ضد هجمات SQL injection و XSS.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-customGreen-600 dark:text-customBlue-400">#Vue #Django</span>
+                                <a href="#" class="text-customBlue-600 hover:underline">عرض المشروع</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 3 -->
+                    <div class="card" data-aos="zoom-in" data-aos-delay="200">
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="نظام إدارة مشاريع" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">نظام إدارة مشاريع</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">أداة تعاونية للفرق مع تشفير البيانات وصلاحيات وصول دقيقة.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-customGreen-600 dark:text-customBlue-400">#Next.js #Python</span>
+                                <a href="#" class="text-customBlue-600 hover:underline">عرض المشروع</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact & FAQ Section (محسّن) -->
+        <section id="contact" class="py-20 bg-gradient-to-br from-customGreen-50 to-customBlue-50 dark:from-gray-800 dark:to-gray-900">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-16 section-title" data-aos="fade-up">تواصل معنا</h2>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <!-- Contact Form -->
+                    <div class="card p-8" data-aos="fade-left">
+                        <h3 class="text-2xl font-semibold mb-6">أرسل لنا رسالة</h3>
+                        <form id="contactForm">
+                            <div class="mb-4">
+                                <label class="block mb-2 font-medium">الاسم الكامل *</label>
+                                <input type="text" class="form-input" required>
+                            </div>
+                            <div class="mb-4">
+                                <label class="block mb-2 font-medium">البريد الإلكتروني *</label>
+                                <input type="email" class="form-input" required>
+                            </div>
+                            <div class="mb-4">
+                                <label class="block mb-2 font-medium">رقم الهاتف</label>
+                                <input type="tel" class="form-input">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block mb-2 font-medium">نوع الخدمة المطلوبة</label>
+                                <select class="form-input">
+                                    <option>تطوير واجهات أمامية</option>
+                                    <option>تطوير فول ستاك</option>
+                                    <option>استشارات أمن سيبراني</option>
+                                    <option>مشروع متكامل</option>
+                                </select>
+                            </div>
+                            <div class="mb-4">
+                                <label class="block mb-2 font-medium">الرسالة *</label>
+                                <textarea rows="4" class="form-input" required></textarea>
+                            </div>
+                            <div class="mb-4 flex items-center">
+                                <input type="checkbox" id="subscribe" class="ml-2">
+                                <label for="subscribe">أرغب في الاشتراك في النشرة البريدية</label>
+                            </div>
+                            <button type="submit" class="btn-primary w-full">إرسال الرسالة</button>
+                            <div id="form-message" class="mt-4 text-center hidden"></div>
+                        </form>
+                    </div>
+
+                    <!-- FAQ Section -->
+                    <div data-aos="fade-right">
+                        <h3 class="text-2xl font-semibold mb-6">الأسئلة الشائعة</h3>
+                        <div class="faq-item active">
+                            <div class="faq-question">
+                                <span>ما هي الخدمات التي تقدمونها؟</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                نقدم خدمات تطوير الواجهات الأمامية (سيف)، وتطوير الفول ستاك مع الأمن السيبراني (محمود)، بالإضافة إلى استشارات أمنية وحلول تقنية متكاملة.
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>كم تكلفة المشروع؟</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                التكلفة تعتمد على حجم المشروع ومتطلباته. نقدم عروض أسعار تنافسية بعد مناقشة التفاصيل. تواصل معنا للحصول على عرض دقيق.
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>كم من الوقت يستغرق تطوير موقع متوسط؟</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                يتراوح الوقت بين 4 إلى 8 أسابيع حسب التعقيد والميزات المطلوبة. نلتزم بجدول زمني واضح ونبلغك بمراحل التقدم.
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>هل تقدمون دعمًا بعد إطلاق الموقع؟</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                نعم، نوفر حزم دعم مختلفة تشمل الصيانة الدورية، تحديثات الأمان، والتدريب على إدارة المحتوى.
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>كيف تضمنون أمان الموقع؟</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                يقوم محمود بدمج ممارسات الأمن السيبراني في كل مرحلة من مراحل التطوير، بدءًا من التصميم وحتى النشر والمراقبة المستمرة.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Contact Info -->
+        <section class="py-12 bg-white dark:bg-gray-900">
+            <div class="container mx-auto px-6">
+                <div class="grid md:grid-cols-3 gap-6 text-center">
+                    <div class="flex flex-col items-center" data-aos="fade-up">
+                        <div class="w-16 h-16 bg-customGreen-100 dark:bg-gray-800 rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-phone-alt text-2xl text-customGreen-600 dark:text-customBlue-400"></i>
+                        </div>
+                        <h4 className="font-semibold mb-2">اتصل بنا</h4>
+                        <p class="text-gray-600 dark:text-gray-300">+20 112 396 1290</p>
+                    </div>
+                    <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="100">
+                        <div class="w-16 h-16 bg-customGreen-100 dark:bg-gray-800 rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-envelope text-2xl text-customGreen-600 dark:text-customBlue-400"></i>
+                        </div>
+                        <h4 className="font-semibold mb-2">البريد الإلكتروني</h4>
+                        <p class="text-gray-600 dark:text-gray-300">contact@example.com</p>
+                    </div>
+                    <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="200">
+                        <div class="w-16 h-16 bg-customGreen-100 dark:bg-gray-800 rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-map-marker-alt text-2xl text-customGreen-600 dark:text-customBlue-400"></i>
+                        </div>
+                        <h4 className="font-semibold mb-2">الموقع</h4>
+                        <p class="text-gray-600 dark:text-gray-300">الشرقية، مصر</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center space-x-6 space-x-reverse mb-4">
+                <a href="https://www.facebook.com" class="text-customGreen-600 hover:text-customBlue-600"><i class="fab fa-facebook-f text-xl"></i></a>
+                <a href="https://www.linkedin.com" class="text-customGreen-600 hover:text-customBlue-600"><i class="fab fa-linkedin-in text-xl"></i></a>
+                <a href="https://www.github.com" class="text-customGreen-600 hover:text-customBlue-600"><i class="fab fa-github text-xl"></i></a>
+            </div>
+            <p class="text-gray-600 dark:text-gray-300">&copy; 2025 سيف & محمود. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top fixed bottom-8 left-8 w-12 h-12 bg-gradient-to-r from-customGreen-500 to-customBlue-500 rounded-full flex items-center justify-center text-white cursor-pointer opacity-0 invisible transition-all shadow-lg hover:shadow-xl">
+        <i class="fas fa-arrow-up"></i>
     </div>
-    <!-- القائمة الرئيسية -->
-    <nav class="hidden md:flex gap-8 text-sm font-bold">
-      <a href="#home" class="hover:text-crimson-600 transition">الرئيسية</a>
-      <a href="#about" class="hover:text-crimson-600 transition">الثنائية</a>
-      <a href="#projects" class="hover:text-crimson-600 transition">المصنع</a>
-      <a href="#social" class="hover:text-crimson-600 transition">تواصل</a>
-      <a href="#connect" class="hover:text-crimson-600 transition">اتصل بنا</a>
-    </nav>
-    <div class="flex gap-2 items-center">
-      <button id="darkToggle" class="w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/60 text-crimson-600 flex items-center justify-center hover:scale-110 transition"><i class="fas fa-moon dark:fa-sun"></i></button>
-      <button id="mobileMenuBtn" class="block md:hidden text-3xl text-crimson-600"><i class="fas fa-bars"></i></button>
-    </div>
-    <!-- القائمة المتنقلة -->
-    <div id="mobileNav" class="absolute top-full left-0 right-0 header-glass p-6 flex flex-col gap-4 text-center md:hidden hidden border-t border-crimson-300">
-      <a href="#home" class="text-xl">الرئيسية</a><a href="#about" class="text-xl">الثنائية</a><a href="#projects" class="text-xl">المصنع</a><a href="#social" class="text-xl">تواصل</a><a href="#connect" class="text-xl">اتصل بنا</a>
-    </div>
-  </header>
-  <div class="h-16"></div>
 
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({ duration: 800, once: true });
 
-    <!-- القسم الرئيسي (hero) بصور الشخصيات -->
-    <section id="home" class="min-h-[90vh] flex flex-col lg:flex-row items-center gap-12 py-12">
-      <div class="flex-1 text-center lg:text-right">
-        <h1 class="text-5xl lg:text-7xl font-black leading-tight"><span class="bg-clip-text text-transparent" style="background-image:linear-gradient(135deg, #dc2626, #2563eb)">مَاسِي</span> <br>المصنع الرقمي</h1>
-        <p class="text-2xl mt-6 font-light border-r-4 border-crimson-600 pr-6">ثنائية التميّز، وحدة الرؤية</p>
-        <!-- الصورتين الشخصية (محمود و سيف) -->
-        <div class="flex flex-wrap gap-8 justify-center lg:justify-start mt-12">
-          <div class="relative w-44 h-44 md:w-56 md:h-56 rounded-full bg-gradient-to-br from-crimson-600 to-blue-600 p-2 shadow-2xl hover:scale-105 transition">
-            <div class="w-full h-full rounded-full portrait-mahmoud bg-white"></div>
-            <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-white dark:bg-gray-900 px-4 py-1 rounded-full text-crimson-600 font-bold shadow-lg">محمود</div>
-          </div>
-          <div class="relative w-44 h-44 md:w-56 md:h-56 rounded-full bg-gradient-to-br from-green-600 to-white p-2 shadow-2xl hover:scale-105 transition">
-            <div class="w-full h-full rounded-full portrait-saif bg-white"></div>
-            <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-white dark:bg-gray-900 px-4 py-1 rounded-full text-green-600 font-bold shadow-lg">سيف</div>
-          </div>
-        </div>
-      </div>
-      <!-- بطاقة فيديو تمثيلية (شهادة فيديو) -->
-      <div class="flex-1 w-full">
-        <div class="glass-card rounded-3xl p-4 backdrop-blur-2xl">
-          <div class="relative pt-[56.25%] bg-black/20 rounded-2xl overflow-hidden border-2 border-crimson-400">
-            <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop poster="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgMiAyIj48cmVjdCB3aWR0aD0iMiIgaGVpZ2h0PSIyIiBmaWxsPSIjZGMzYzNjIi8+PC9zdmc+">
-              <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4"> <!-- فيديو تجريبي -->
-            </video>
-            <div class="absolute inset-0 flex items-center justify-center bg-black/30 text-white text-2xl"><i class="fas fa-play-circle text-6xl opacity-80"></i></div>
-          </div>
-          <p class="mt-3 font-bold text-center">شهادة فيديو: عميل يتحدث عن تجربته</p>
-        </div>
-      </div>
-    </section>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const backToTop = document.querySelector('.back-to-top');
 
-    <!-- إحصائيات سريعة -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 my-16">
-      <div class="glass-card rounded-2xl p-6 text-center"><span class="text-4xl font-black text-crimson-600">+7</span><span class="block">سنوات خبرة</span></div>
-      <div class="glass-card rounded-2xl p-6 text-center"><span class="text-4xl font-black text-crimson-600">+45</span><span class="block">مشروع مكتمل</span></div>
-      <div class="glass-card rounded-2xl p-6 text-center"><span class="text-4xl font-black text-crimson-600">100%</span><span class="block">التزام بالمواعيد</span></div>
-      <div class="glass-card rounded-2xl p-6 text-center"><span class="text-4xl font-black text-crimson-600">PWA</span><span class="block">جاهزية دائمة</span></div>
-    </div>
-
-    <!-- قسم "عنّا" split screen -->
-    <section id="about" class="py-20">
-      <h2 class="text-5xl font-black text-center mb-16 bg-clip-text text-transparent" style="background-image:linear-gradient(135deg, #dc2626, #2563eb, #16a34a);">الثنائية · متكاملة</h2>
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="glass-card p-8 rounded-3xl border-t-8 border-crimson-600 hover:shadow-2xl transition">
-          <div class="flex items-center gap-4"><div class="w-20 h-20 rounded-full bg-crimson-600 flex items-center justify-center text-white text-3xl"><i class="fas fa-code"></i></div><div><h3 class="text-3xl font-bold">محمود</h3><p class="text-crimson-600">خبير الواجهات</p></div></div>
-          <p class="mt-6 text-lg">React, Vue, Angular, UI/UX, Three.js, Tailwind. يحول التصميم إلى كود نابض بالحياة.</p>
-          <div class="flex flex-wrap gap-2 mt-4"><span class="bg-crimson-100 dark:bg-crimson-900 px-3 py-1 rounded-full">مكتبات UI</span><span class="bg-blue-100 dark:bg-blue-900 px-3 py-1 rounded-full">حركة</span></div>
-          <a href="#" class="inline-block mt-8 btn-particle bg-crimson-600 text-white px-8 py-3 rounded-full shadow-lg hover:bg-crimson-700 transition">تواصل مع محمود</a>
-        </div>
-        <div class="glass-card p-8 rounded-3xl border-t-8 border-green-600 hover:shadow-2xl transition">
-          <div class="flex items-center gap-4"><div class="w-20 h-20 rounded-full bg-green-600 flex items-center justify-center text-white text-3xl"><i class="fas fa-server"></i></div><div><h3 class="text-3xl font-bold">سيف</h3><p class="text-green-600">مهندس الباك إند</p></div></div>
-          <p class="mt-6 text-lg">Node.js, Python, قواعد البيانات, GraphQL, AWS. يبني هياكل صامدة كالجبال.</p>
-          <div class="flex flex-wrap gap-2 mt-4"><span class="bg-green-100 dark:bg-green-900 px-3 py-1 rounded-full">ميكروسرفس</span><span class="bg-emerald-100 px-3 py-1 rounded-full">أمان</span></div>
-          <a href="#" class="inline-block mt-8 btn-particle bg-green-600 text-white px-8 py-3 rounded-full shadow-lg hover:bg-green-700 transition">تواصل مع سيف</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- مشاريع مع فلتر + خريطة تفاعلية (Forge Map) -->
-    <section id="projects" class="py-20">
-      <h2 class="text-5xl font-black text-center mb-8 bg-clip-text text-transparent" style="background-image:linear-gradient(135deg, #dc2626, #2563eb, #16a34a);">المصنع الرقمي</h2>
-      <div class="flex flex-wrap justify-center gap-3 mb-12">
-        <button data-filter="all" class="filter-btn active bg-crimson-600 text-white px-6 py-2 rounded-full shadow">الكل</button>
-        <button data-filter="pwa" class="filter-btn bg-gray-300 dark:bg-gray-800 px-6 py-2 rounded-full">تطبيقات PWA</button>
-        <button data-filter="web" class="filter-btn bg-gray-300 dark:bg-gray-800 px-6 py-2 rounded-full">مواقع</button>
-        <button data-filter="case" class="filter-btn bg-gray-300 dark:bg-gray-800 px-6 py-2 rounded-full">دراسة حالة</button>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projectsGrid">
-        <!-- 6 مشاريع (محسنة) -->
-        <div class="project-card glass-card rounded-3xl p-5" data-category="pwa"><div class="h-40 bg-gradient-to-r from-crimson-600 to-blue-600 rounded-2xl flex items-center justify-center text-5xl text-white"><i class="fas fa-wallet"></i></div><h3 class="text-2xl font-bold mt-3">محفظة مالية PWA</h3><p class="text-sm">محمود: UI متقدم | سيف: Node + Plaid</p><button class="open-modal mt-4 w-full border border-crimson-600 py-2 rounded-xl hover:bg-crimson-600 hover:text-white transition" data-project="fintech">عرض التفاصيل</button></div>
-        <div class="project-card glass-card rounded-3xl p-5" data-category="web"><div class="h-40 bg-gradient-to-r from-green-600 to-emerald-500 rounded-2xl flex items-center justify-center text-5xl text-white"><i class="fas fa-store"></i></div><h3 class="text-2xl font-bold mt-3">سوق الحرفيين</h3><p class="text-sm">Vue + Django, تكامل كامل</p><button class="open-modal mt-4 w-full border border-crimson-600 py-2 rounded-xl hover:bg-crimson-600 hover:text-white transition" data-project="artisan">عرض التفاصيل</button></div>
-        <div class="project-card glass-card rounded-3xl p-5" data-category="case"><div class="h-40 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl flex items-center justify-center text-5xl text-white"><i class="fas fa-truck"></i></div><h3 class="text-2xl font-bold mt-3">لوجستيات في الوقت الحقيقي</h3><p class="text-sm">React + WebSocket, تحليلات</p><button class="open-modal mt-4 w-full border border-crimson-600 py-2 rounded-xl hover:bg-crimson-600 hover:text-white transition" data-project="logistics">عرض التفاصيل</button></div>
-        <div class="project-card glass-card rounded-3xl p-5" data-category="pwa"><div class="h-40 bg-gradient-to-r from-crimson-500 to-pink-500 rounded-2xl flex items-center justify-center text-5xl text-white"><i class="fas fa-music"></i></div><h3 class="text-2xl font-bold mt-3">بث موسيقي PWA</h3><p class="text-sm">أوفلاين، Service Workers</p><button class="open-modal mt-4 w-full border border-crimson-600 py-2 rounded-xl hover:bg-crimson-600 hover:text-white transition" data-project="music">عرض التفاصيل</button></div>
-        <div class="project-card glass-card rounded-3xl p-5" data-category="web"><div class="h-40 bg-gradient-to-r from-green-500 to-teal-500 rounded-2xl flex items-center justify-center text-5xl text-white"><i class="fas fa-graduation-cap"></i></div><h3 class="text-2xl font-bold mt-3">منصة تعليمية</h3><p class="text-sm">Next.js + DRF</p><button class="open-modal mt-4 w-full border border-crimson-600 py-2 rounded-xl hover:bg-crimson-600 hover:text-white transition" data-project="edu">عرض التفاصيل</button></div>
-        <div class="project-card glass-card rounded-3xl p-5" data-category="case"><div class="h-40 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center text-5xl text-white"><i class="fas fa-chart-pie"></i></div><h3 class="text-2xl font-bold mt-3">لوحة تحكم للذكاء الاصطناعي</h3><p class="text-sm">React + Flask + MongoDB</p><button class="open-modal mt-4 w-full border border-crimson-600 py-2 rounded-xl hover:bg-crimson-600 hover:text-white transition" data-project="ai">عرض التفاصيل</button></div>
-      </div>
-    </section>
-
-    <!-- نافذة منبثقة (modal) محسنة مع خريطة المشروع -->
-    <div id="projectModal" class="fixed inset-0 z-[200] flex items-center justify-center p-4 hidden">
-      <div class="modal-bg absolute inset-0 bg-black/60 backdrop-blur-sm" id="modalOverlay"></div>
-      <div class="relative bg-white dark:bg-gray-900 rounded-3xl max-w-xl w-full p-8 shadow-2xl border-4 border-crimson-600">
-        <button id="closeModal" class="absolute top-4 left-4 text-3xl text-gray-500 hover:text-crimson-600">&times;</button>
-        <div id="modalContent">
-          <h3 class="text-3xl font-bold text-crimson-600" id="modalTitle">المشروع</h3>
-          <!-- خريطة فورج (Forge Map) تفاعلية -->
-          <div class="mt-6 grid grid-cols-2 gap-6">
-            <div class="bg-crimson-50 dark:bg-crimson-950 p-4 rounded-2xl"><i class="fas fa-paint-brush text-crimson-600 text-2xl"></i><p class="font-bold">محمود</p><p id="modalFront" class="text-sm">واجهات متحركة</p></div>
-            <div class="bg-green-50 dark:bg-green-950 p-4 rounded-2xl"><i class="fas fa-database text-green-600 text-2xl"></i><p class="font-bold">سيف</p><p id="modalBack" class="text-sm">باك إند آمن</p></div>
-          </div>
-          <div class="mt-4 flex gap-2"><span class="bg-blue-100 px-3 py-1 rounded-full text-sm">#مدة التطوير: 6 أسابيع</span><span class="bg-amber-100 px-3 py-1 rounded-full text-sm">#تقنيات</span></div>
-          <div class="mt-4 flex gap-4 justify-center"><i class="fab fa-youtube text-3xl text-red-600"></i><i class="fab fa-tiktok text-3xl"></i><i class="fab fa-facebook text-3xl text-blue-600"></i></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- قسم السوشيال ميديا المباشر (facebook, tiktok, youtube) -->
-    <section id="social" class="py-20">
-      <h2 class="text-5xl font-black text-center mb-12 bg-clip-text text-transparent" style="background-image:linear-gradient(135deg, #dc2626, #2563eb, #16a34a);">أحدث المنشورات</h2>
-      <div class="grid md:grid-cols-3 gap-6 social-live-feed">
-        <!-- فيسبوك -->
-        <div class="glass-card p-4 rounded-3xl">
-          <h3 class="text-xl font-bold mb-2"><i class="fab fa-facebook text-blue-600"></i> فيسبوك</h3>
-          <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2F204712271700220%2Fposts%2Fpfbid02sE6gLqTjq8zQWRBhTQF3oHjskfKcGW9QyLs4GpG1P4XprP4XprP4&show_text=true&width=300" width="100%" height="300" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-        </div>
-        <!-- تيك توك (مثال تجريبي) -->
-        <div class="glass-card p-4 rounded-3xl">
-          <h3 class="text-xl font-bold mb-2"><i class="fab fa-tiktok"></i> تيك توك</h3>
-          <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@scalable.dev" data-unique-id="scalable.dev" data-embed-type="creator" style="max-width:100%; min-width:288px; max-height:350px;"> </blockquote> <script async src="https://www.tiktok.com/embed.js"></script>
-        </div>
-        <!-- يوتيوب فيديو -->
-        <div class="glass-card p-4 rounded-3xl">
-          <h3 class="text-xl font-bold mb-2"><i class="fab fa-youtube text-red-600"></i> يوتيوب</h3>
-          <iframe width="100%" height="200" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-      </div>
-    </section>
-
-    <!-- تواصل + FAQ محسن -->
-    <section id="connect" class="py-20">
-      <div class="grid md:grid-cols-2 gap-10">
-        <div class="glass-card rounded-3xl p-8">
-          <h3 class="text-3xl font-bold mb-6">أرسل استفسارك</h3>
-          <form id="contactForm" class="space-y-5">
-            <input type="text" id="conName" placeholder="الاسم" class="w-full p-4 rounded-2xl border border-gray-300 dark:bg-gray-800">
-            <input type="email" id="conEmail" placeholder="البريد الإلكتروني" class="w-full p-4 rounded-2xl border">
-            <textarea id="conMsg" placeholder="فكرتك أو استفسارك" rows="4" class="w-full p-4 rounded-2xl border"></textarea>
-            <button type="submit" class="btn-particle bg-crimson-600 text-white w-full py-4 rounded-2xl font-bold text-xl hover:bg-crimson-700 transition">إرسال <i class="fas fa-paper-plane mr-2"></i></button>
-            <p id="formFeedback" class="text-green-600 text-center hidden">تم الإرسال! (محاكاة)</p>
-          </form>
-        </div>
-        <div class="space-y-4">
-          <h3 class="text-3xl font-bold mb-4">الأسئلة الشائعة</h3>
-          <div class="glass-card rounded-2xl p-5"><button class="faq-question flex justify-between w-full text-xl font-bold">ما هي الـ PWA؟ <i class="fas fa-chevron-down"></i></button><p class="faq-answer hidden mt-3">تطبيق ويب تدريجي يعمل دون اتصال ويُثبّت كتطبيق.</p></div>
-          <div class="glass-card rounded-2xl p-5"><button class="faq-question flex justify-between w-full text-xl font-bold">كيف توزعون العمل بينكما؟ <i class="fas fa-chevron-down"></i></button><p class="faq-answer hidden mt-3">محمود يتفرغ للواجهات وسيف للباك إند، بتكامل تام.</p></div>
-          <div class="glass-card rounded-2xl p-5"><button class="faq-question flex justify-between w-full text-xl font-bold">كم تكلفة مشروع PWA؟ <i class="fas fa-chevron-down"></i></button><p class="faq-answer hidden mt-3">حسب المواصفات، نقدم عرضاً مفصلاً بعد الاستشارة.</p></div>
-          <div class="glass-card rounded-2xl p-5"><button class="faq-question flex justify-between w-full text-xl font-bold">هل تدعمون العمل عن بعد؟ <i class="fas fa-chevron-down"></i></button><p class="faq-answer hidden mt-3">نعم، نتعاون مع شركات من جميع أنحاء العالم.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- شارة PWA جاهزية -->
-    <div class="text-center mt-10"><span class="inline-block bg-gradient-to-r from-crimson-600 to-green-600 text-white px-8 py-3 rounded-full text-lg font-bold shadow-xl"><i class="fas fa-check-circle ml-2"></i>الموقع متوافق مع PWA – يمكن تثبيته كتطبيق</span></div>
-
-  </main>
-
-  <!-- تذييل محسن (footer) -->
-  <footer class="footer-gradient mt-20 rounded-t-3xl">
-    <div class="bg-white dark:bg-gray-950 rounded-t-3xl p-10 text-center">
-      <div class="text-4xl font-black mb-4">مَاسِي</div>
-      <p class="text-lg">ثنائية التميّز، وحدة الرؤية – حيث تلتقي الواجهات مع الباك إند</p>
-      <div class="flex gap-8 justify-center text-3xl mt-6">
-        <a href="#" class="hover:text-crimson-600"><i class="fab fa-facebook"></i></a>
-        <a href="#" class="hover:text-crimson-600"><i class="fab fa-tiktok"></i></a>
-        <a href="#" class="hover:text-crimson-600"><i class="fab fa-youtube"></i></a>
-        <a href="#" class="hover:text-crimson-600"><i class="fab fa-github"></i></a>
-      </div>
-      <p class="text-sm mt-6 opacity-60">© 2025 ماسي – جميع الحقوق محفوظة. صمم بفخر في مصر.</p>
-    </div>
-  </footer>
-
-  <!-- سكربت شامل (أكثر من 500 سطر تفاعل) -->
-  <script>
-    (function() {
-      // متغيرات دقيقة
-      let mouseX = 0, mouseY = 0;
-      const cursor = document.getElementById('customCursor');
-      const dot = document.getElementById('cursorDot');
-
-      // حركة الكرسور
-      document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX; mouseY = e.clientY;
-        if (cursor) { cursor.style.left = mouseX + 'px'; cursor.style.top = mouseY + 'px'; }
-        if (dot) { dot.style.left = mouseX + 'px'; dot.style.top = mouseY + 'px'; }
-      });
-
-      // تكبير الكرسور عند المرور فوق العناصر القابلة للنقر
-      document.querySelectorAll('a, button, .project-card, .filter-btn, .faq-question').forEach(el => {
-        el.addEventListener('mouseenter', () => { if (cursor) cursor.classList.add('cursor-hover'); });
-        el.addEventListener('mouseleave', () => { if (cursor) cursor.classList.remove('cursor-hover'); });
-      });
-
-      // توليد جزيئات خلفية (particles)
-      const particleContainer = document.getElementById('particleContainer');
-      for (let i = 0; i < 80; i++) {
-        let p = document.createElement('div');
-        p.className = 'particle';
-        p.style.left = Math.random() * 100 + '%';
-        p.style.top = Math.random() * 100 + '%';
-        p.style.animation = `floatSoft ${6+Math.random()*10}s infinite`;
-        p.style.background = i % 3 === 0 ? '#dc2626' : (i % 3 === 1 ? '#2563eb' : '#16a34a');
-        particleContainer.appendChild(p);
-      }
-
-      // الوضع المظلم
-      const toggle = document.getElementById('darkToggle');
-      const html = document.documentElement;
-      function setDark(enable) {
-        if (enable) { html.classList.add('dark'); toggle.innerHTML = '<i class="fas fa-sun"></i>'; localStorage.setItem('theme', 'dark'); }
-        else { html.classList.remove('dark'); toggle.innerHTML = '<i class="fas fa-moon"></i>'; localStorage.setItem('theme', 'light'); }
-      }
-      const stored = localStorage.getItem('theme');
-      if (stored === 'dark') setDark(true);
-      else if (stored === 'light') setDark(false);
-      else setDark(window.matchMedia('(prefers-color-scheme: dark)').matches);
-      toggle.addEventListener('click', () => setDark(!html.classList.contains('dark')));
-
-      // قائمة موبايل
-      const mobileBtn = document.getElementById('mobileMenuBtn');
-      const mobileNav = document.getElementById('mobileNav');
-      mobileBtn.addEventListener('click', () => mobileNav.classList.toggle('hidden'));
-
-      // فلتر المشاريع
-      const filterBtns = document.querySelectorAll('.filter-btn');
-      const projects = document.querySelectorAll('.project-card');
-      function filterProjects(cat) {
-        projects.forEach(p => { p.style.display = (cat === 'all' || p.dataset.category === cat) ? 'block' : 'none'; });
-        filterBtns.forEach(btn => { btn.classList.remove('bg-crimson-600', 'text-white'); btn.classList.add('bg-gray-300', 'dark:bg-gray-800'); if (btn.dataset.filter === cat) { btn.classList.add('bg-crimson-600', 'text-white'); btn.classList.remove('bg-gray-300', 'dark:bg-gray-800'); } });
-      }
-      filterBtns.forEach(btn => btn.addEventListener('click', (e) => filterProjects(e.target.dataset.filter)));
-
-      // نافذة مشروع (Modal)
-      const modal = document.getElementById('projectModal');
-      const overlay = document.getElementById('modalOverlay');
-      const closeModal = document.getElementById('closeModal');
-      const modalTitle = document.getElementById('modalTitle');
-      const modalFront = document.getElementById('modalFront');
-      const modalBack = document.getElementById('modalBack');
-      const openBtns = document.querySelectorAll('.open-modal');
-      openBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          const proj = e.target.dataset.project;
-          if (proj === 'fintech') { modalTitle.innerText = 'محفظة مالية PWA'; modalFront.innerText = 'واجهة تفاعلية بأداء 100'; modalBack.innerText = 'Node, Plaid, PostgreSQL'; }
-          else if (proj === 'artisan') { modalTitle.innerText = 'سوق الحرفيين'; modalFront.innerText = 'Vue, Tailwind, خرائط'; modalBack.innerText = 'Django, Stripe'; }
-          else if (proj === 'logistics') { modalTitle.innerText = 'لوجستيات实时'; modalFront.innerText = 'React, WebSocket, charts'; modalBack.innerText = 'FastAPI, MongoDB'; }
-          else if (proj === 'music') { modalTitle.innerText = 'بث موسيقي PWA'; modalFront.innerText = 'Workbox, IndexedDB'; modalBack.innerText = 'Node, Redis'; }
-          else if (proj === 'edu') { modalTitle.innerText = 'منصة تعليمية'; modalFront.innerText = 'Next.js, Tailwind'; modalBack.innerText = 'DRF, JWT'; }
-          else { modalTitle.innerText = 'لوحة ذكاء اصطناعي'; modalFront.innerText = 'D3, realtime'; modalBack.innerText = 'Flask, TensorFlow'; }
-          modal.classList.remove('hidden');
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const icon = themeToggle.querySelector('i');
+            if (body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
         });
-      });
-      function hideModal() { modal.classList.add('hidden'); }
-      overlay.addEventListener('click', hideModal);
-      closeModal.addEventListener('click', hideModal);
 
-      // FAQ
-      document.querySelectorAll('.faq-question').forEach(q => q.addEventListener('click', function() { let ans = this.nextElementSibling; ans.classList.toggle('hidden'); this.querySelector('i').classList.toggle('fa-chevron-down'); this.querySelector('i').classList.toggle('fa-chevron-up'); }));
+        // Load saved theme
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+            themeToggle.querySelector('i').classList.remove('fa-moon');
+            themeToggle.querySelector('i').classList.add('fa-sun');
+        }
 
-      // محاكاة إرسال النموذج
-      document.getElementById('contactForm').addEventListener('submit', (e) => { e.preventDefault(); document.getElementById('formFeedback').classList.remove('hidden'); setTimeout(() => document.getElementById('formFeedback').classList.add('hidden'), 3000); });
+        // Back to top
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('opacity-100', 'visible');
+                backToTop.classList.remove('opacity-0', 'invisible');
+            } else {
+                backToTop.classList.remove('opacity-100', 'visible');
+                backToTop.classList.add('opacity-0', 'invisible');
+            }
+        });
 
-      // تأثيرات إضافية: إضاءة عند الضغط
-    })();
-  </script>
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
 
-  <!-- تأكيد RTL وتحسينات صغيرة -->
-  <style>
-    .fa-chevron-down, .fa-chevron-up { transition: transform 0.3s; }
-    .filter-btn { transition: 0.2s; }
-    .dark .glass-card { background: rgba(15, 23, 42, 0.6); }
-    /* تحسين الاستجابة */
-    @media (max-width: 768px) { .custom-cursor { display: none; } .cursor-dot { display: none; } }
-  </style>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+
+        // Contact Form Submission (Simulated)
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const messageDiv = document.getElementById('form-message');
+            messageDiv.textContent = 'شكراً لتواصلك! سنرد عليك قريباً.';
+            messageDiv.classList.remove('hidden');
+            messageDiv.classList.add('text-customGreen-600', 'dark:text-customBlue-400', 'font-bold');
+            contactForm.reset();
+            setTimeout(() => messageDiv.classList.add('hidden'), 5000);
+        });
+
+        // Search functionality (basic)
+        const searchInput = document.getElementById('search-input');
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            // Simple console log - can be enhanced
+            console.log('Searching for:', query);
+        });
+    </script>
 </body>
 </html>
