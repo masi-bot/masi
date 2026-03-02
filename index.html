@@ -1,2344 +1,1550 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<!-- ====== أساسيّات الميتا ====== -->
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>سيف & محمود محمود | Full Stack & Cyber Security Developers</title>
-<meta name="description" content="الموقع الرسمي لفريق التطوير - سيف (Frontend) ومحمود محمود (Full Stack & Cyber Security). حلول تطوير ويب آمنة ومبتكرة." />
-<meta name="keywords" content="سيف, محمود محمود, مطور ويب, أمن سيبراني, Full Stack, Frontend, تطوير مواقع, برمجة آمنة, حماية مواقع, مصر, React, Node.js, JavaScript, Python, Cyber Security" />
-<link rel="canonical" href="https://devolepor.github.io/saif-mahmoud/" />
-<meta name="robots" content="index,follow" />
-
-<!-- بيانات مُنظّمة لتحسين محركات البحث -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "سيف & محمود محمود - فريق التطوير",
-  "url": "https://devolepor.github.io/saif-mahmoud/",
-  "image": "https://devolepor.github.io/saif-mahmoud/team-logo.jpg",
-  "description": "فريق تطوير متخصص في Full Stack Development و Cyber Security",
-  "founder": [
-    {
-      "@type": "Person",
-      "name": "سيف",
-      "jobTitle": "Frontend Developer",
-      "skills": ["React", "Vue.js", "Tailwind CSS", "UI/UX Design"]
-    },
-    {
-      "@type": "Person",
-      "name": "محمود محمود",
-      "jobTitle": "Full Stack & Cyber Security Developer",
-      "skills": ["Node.js", "Python", "Penetration Testing", "Security Auditing"]
-    }
-  ],
-  "address": {
-    "@type": "PostalAddress",
-    "addressRegion": "Egypt",
-    "addressCountry": "EG"
-  }
-}
-</script>
-
-<!-- Open Graph -->
-<meta property="og:type" content="website" />
-<meta property="og:title" content="سيف & محمود محمود | Full Stack & Cyber Security" />
-<meta property="og:description" content="فريق تطوير متخصص في بناء تطبيقات ويب آمنة وعصرية" />
-<meta property="og:url" content="https://devolepor.github.io/saif-mahmoud/" />
-<meta property="og:image" content="https://devolepor.github.io/saif-mahmoud/og-image.jpg" />
-<meta property="og:locale" content="ar_EG" />
-
-<!-- Tailwind CSS -->
-<script src="https://cdn.tailwindcss.com"></script>
-
-<!-- AOS Animation Library -->
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-<!-- Font Awesome Icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-
-<script>
-tailwind.config = {
-  darkMode: 'class',
-  theme: {
-    extend: {
-      colors: {
-        primary: {
-          light: '#f0fdfa',
-          DEFAULT: '#10b981',
-          dark: '#047857'
-        },
-        secondary: {
-          light: '#eff6ff',
-          DEFAULT: '#3b82f6',
-          dark: '#1d4ed8'
-        },
-        neutral: {
-          light: '#ffffff',
-          DEFAULT: '#f8fafc',
-          dark: '#1e293b',
-          darker: '#0f172a'
-        },
-        accent: {
-          emerald: '#10b981',
-          blue: '#3b82f6',
-          cyan: '#06b6d4'
+   <!-- ====== أساسيّات الميتا ====== -->
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <title> محمود & سيف - Full Stack & Cyber Security | Frontend Developer</title>
+   <meta name="description" content="فريق تطوير محترف: محمود - Full Stack وأمن سيبراني، سيف - Frontend Developer. خدمات تطوير وتصميم المواقع والتطبيقات." />
+   <meta name="keywords" content="مطور ويب, أمن سيبراني, Full Stack, Frontend, محمود محمد, سيف, تطوير مواقع, برمجة, حماية مواقع, مصر, تطوير تطبيقات" />
+   <link rel="canonical" href="https://devolepor.github.io/developortc/" />
+   <meta name="robots" content="index,follow" />
+   
+   <!-- Tailwind CSS -->
+   <script src="https://cdn.tailwindcss.com"></script>
+   <!-- AOS Animation Library -->
+   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+   <!-- Font Awesome Icons -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <!-- Google Fonts -->
+   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+   
+   <style>
+        :root {
+            --header-height: 80px;
+            --primary-white: #ffffff;
+            --light-gray: #f8fafc;
+            --soft-green: #10b981;
+            --soft-blue: #3b82f6;
+            --dark-bg: #0f172a;
+            --card-dark: #1e293b;
+            --gradient-primary: linear-gradient(135deg, var(--soft-blue), var(--soft-green));
+            --gradient-hover: linear-gradient(135deg, var(--soft-green), var(--soft-blue));
+            --shadow-sm: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 20px 40px rgba(59, 130, 246, 0.2);
         }
-      },
-      fontFamily: {
-        sans: ['Cairo', 'sans-serif']
-      },
-      animation: {
-        'float': 'float 6s ease-in-out infinite',
-        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'gradient': 'gradient 8s ease infinite'
-      },
-      keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-12px)' }
-        },
-        gradient: {
-          '0%, 100%': { 'background-position': '0% 50%' },
-          '50%': { 'background-position': '100% 50%' }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-      }
-    }
-  }
-}
-</script>
-
-<style>
-:root {
-  --header-height: 75px;
-  --gradient-primary: linear-gradient(135deg, #10b981 0%, #3b82f6 50%, #06b6d4 100%);
-  --gradient-secondary: linear-gradient(135deg, #3b82f6 0%, #10b981 100%);
-  --gradient-card: linear-gradient(145deg, rgba(16, 185, 129, 0.1), rgba(59, 130, 246, 0.1));
-  --shadow-soft: 0 4px 20px rgba(16, 185, 129, 0.15);
-  --shadow-glow: 0 0 40px rgba(59, 130, 246, 0.3);
-}
-
-* {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: 'Cairo', sans-serif;
-  background: var(--neutral-light);
-  color: #1e293b;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow-x: hidden;
-}
-
-body.dark-mode {
-  background: var(--neutral-darker);
-  color: #f1f5f9;
-}
-
-/* ===== Gradient Animations ===== */
-.gradient-text {
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  background-size: 200% 200%;
-  animation: gradient 8s ease infinite;
-}
-
-.gradient-bg {
-  background: var(--gradient-primary);
-  background-size: 200% 200%;
-  animation: gradient 8s ease infinite;
-}
-
-/* ===== Section Titles ===== */
-.section-title {
-  position: relative;
-  display: inline-block;
-  margin-bottom: 3rem;
-  font-weight: 800;
-}
-
-.section-title::after {
-  content: '';
-  position: absolute;
-  bottom: -12px;
-  right: 0;
-  width: 70px;
-  height: 4px;
-  background: var(--gradient-primary);
-  border-radius: 4px;
-  box-shadow: var(--shadow-glow);
-}
-
-.section-title.center::after {
-  right: 50%;
-  transform: translateX(50%);
-}
-
-/* ===== Cards & Glass Effect ===== */
-.card {
-  background: var(--neutral-light);
-  border-radius: 20px;
-  box-shadow: var(--shadow-soft);
-  border: 1px solid rgba(16, 185, 129, 0.2);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
-}
-
-.card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(16, 185, 129, 0.25);
-  border-color: rgba(16, 185, 129, 0.4);
-}
-
-body.dark-mode .card {
-  background: var(--neutral-dark);
-  border-color: rgba(59, 130, 246, 0.3);
-}
-
-body.dark-mode .card:hover {
-  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);
-  border-color: rgba(59, 130, 246, 0.5);
-}
-
-.glass-card {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: var(--shadow-soft);
-}
-
-body.dark-mode .glass-card {
-  background: rgba(30, 41, 59, 0.7);
-  border-color: rgba(255, 255, 255, 0.1);
-}
-
-/* ===== Buttons ===== */
-.btn-primary {
-  background: var(--gradient-primary);
-  color: white;
-  padding: 14px 32px;
-  border-radius: 50px;
-  font-weight: 700;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
-  border: none;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  position: relative;
-  overflow: hidden;
-}
-
-.btn-primary::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-  transition: left 0.5s;
-}
-
-.btn-primary:hover::before {
-  left: 100%;
-}
-
-.btn-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 35px rgba(16, 185, 129, 0.6);
-}
-
-.btn-secondary {
-  background: transparent;
-  color: #3b82f6;
-  padding: 14px 32px;
-  border-radius: 50px;
-  font-weight: 700;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  border: 2px solid #3b82f6;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.btn-secondary:hover {
-  background: rgba(59, 130, 246, 0.1);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
-}
-
-body.dark-mode .btn-secondary {
-  color: #60a5fa;
-  border-color: #60a5fa;
-}
-
-body.dark-mode .btn-secondary:hover {
-  background: rgba(96, 165, 250, 0.15);
-}
-
-/* ===== Header Styles ===== */
-.main-header {
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(20px);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
-  padding: 0.8rem 0;
-  height: var(--header-height);
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  transition: all 0.4s ease;
-  border-bottom: 1px solid rgba(16, 185, 129, 0.2);
-}
-
-body.dark-mode .main-header {
-  background: rgba(15, 23, 42, 0.95);
-  border-bottom: 1px solid rgba(59, 130, 246, 0.3);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-}
-
-/* ===== Search Box ===== */
-.search-container {
-  position: relative;
-  max-width: 450px;
-  width: 100%;
-}
-
-.search-box {
-  width: 100%;
-  padding: 12px 50px 12px 20px;
-  border-radius: 50px;
-  border: 2px solid rgba(16, 185, 129, 0.3);
-  background: rgba(255, 255, 255, 0.8);
-  color: #1e293b;
-  font-size: 0.95rem;
-  transition: all 0.3s ease;
-}
-
-.search-box::placeholder {
-  color: #64748b;
-}
-
-body.dark-mode .search-box {
-  background: rgba(30, 41, 59, 0.8);
-  border-color: rgba(59, 130, 246, 0.4);
-  color: #f1f5f9;
-}
-
-body.dark-mode .search-box::placeholder {
-  color: #94a3b8;
-}
-
-.search-box:focus {
-  outline: none;
-  border-color: #10b981;
-  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
-}
-
-.search-button {
-  position: absolute;
-  left: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: transparent;
-  border: none;
-  color: #10b981;
-  cursor: pointer;
-  font-size: 1.1rem;
-  transition: color 0.3s;
-}
-
-.search-button:hover {
-  color: #059669;
-}
-
-.search-results {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-  margin-top: 10px;
-  overflow: hidden;
-  display: none;
-  z-index: 1000;
-  max-height: 400px;
-  overflow-y: auto;
-  border: 1px solid rgba(16, 185, 129, 0.2);
-}
-
-body.dark-mode .search-results {
-  background: var(--neutral-dark);
-  border-color: rgba(59, 130, 246, 0.3);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-}
-
-.search-result-item {
-  padding: 14px 20px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  cursor: pointer;
-  transition: all 0.2s;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-body.dark-mode .search-result-item {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.search-result-item:hover {
-  background: rgba(16, 185, 129, 0.1);
-  padding-right: 25px;
-}
-
-body.dark-mode .search-result-item:hover {
-  background: rgba(59, 130, 246, 0.15);
-}
-
-.search-result-item:last-child {
-  border-bottom: none;
-}
-
-.search-result-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
-  background: var(--gradient-primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  flex-shrink: 0;
-}
-
-/* ===== Hero Section ===== */
-#home {
-  min-height: 100vh;
-  padding-top: calc(var(--header-height) + 2rem);
-  padding-bottom: 4rem;
-  background: 
-    radial-gradient(ellipse at top right, rgba(16, 185, 129, 0.15) 0%, transparent 50%),
-    radial-gradient(ellipse at bottom left, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
-    var(--neutral-light);
-  position: relative;
-  overflow: hidden;
-}
-
-body.dark-mode #home {
-  background: 
-    radial-gradient(ellipse at top right, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
-    radial-gradient(ellipse at bottom left, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
-    var(--neutral-darker);
-}
-
-.hero-bg-shapes {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.hero-shape {
-  position: absolute;
-  border-radius: 50%;
-  opacity: 0.5;
-  animation: float 8s ease-in-out infinite;
-}
-
-.hero-shape:nth-child(1) {
-  width: 300px;
-  height: 300px;
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.3), transparent);
-  top: 10%;
-  left: 5%;
-  animation-delay: 0s;
-}
-
-.hero-shape:nth-child(2) {
-  width: 200px;
-  height: 200px;
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), transparent);
-  bottom: 15%;
-  right: 10%;
-  animation-delay: -2s;
-}
-
-.hero-shape:nth-child(3) {
-  width: 150px;
-  height: 150px;
-  background: linear-gradient(135deg, rgba(6, 182, 212, 0.3), transparent);
-  top: 60%;
-  left: 15%;
-  animation-delay: -4s;
-}
-
-/* ===== Team Cards ===== */
-.team-card {
-  position: relative;
-  background: var(--neutral-light);
-  border-radius: 24px;
-  padding: 2rem;
-  text-align: center;
-  border: 2px solid transparent;
-  background-clip: padding-box;
-  transition: all 0.4s ease;
-}
-
-.team-card::before {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  border-radius: 26px;
-  padding: 2px;
-  background: var(--gradient-primary);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0;
-  transition: opacity 0.4s;
-}
-
-.team-card:hover::before {
-  opacity: 1;
-}
-
-.team-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 25px 50px rgba(16, 185, 129, 0.25);
-}
-
-body.dark-mode .team-card {
-  background: var(--neutral-dark);
-}
-
-.team-avatar {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  margin: 0 auto 1.5rem;
-  border: 4px solid white;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  object-fit: cover;
-  position: relative;
-  z-index: 1;
-  transition: transform 0.4s;
-}
-
-.team-card:hover .team-avatar {
-  transform: scale(1.05);
-}
-
-body.dark-mode .team-avatar {
-  border-color: var(--neutral-darker);
-}
-
-.team-badge {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  background: var(--gradient-primary);
-  color: white;
-  padding: 6px 16px;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
-}
-
-/* ===== Skills Progress ===== */
-.skill-item {
-  margin-bottom: 1.5rem;
-}
-
-.skill-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-}
-
-.skill-bar {
-  height: 10px;
-  background: rgba(148, 163, 184, 0.2);
-  border-radius: 10px;
-  overflow: hidden;
-  position: relative;
-}
-
-.skill-progress {
-  height: 100%;
-  background: var(--gradient-primary);
-  border-radius: 10px;
-  transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-}
-
-.skill-progress::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-  animation: shimmer 2s infinite;
-}
-
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-/* ===== Project Cards ===== */
-.project-card {
-  background: var(--neutral-light);
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: var(--shadow-soft);
-  transition: all 0.4s ease;
-  border: 1px solid rgba(16, 185, 129, 0.15);
-}
-
-.project-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 25px 50px rgba(16, 185, 129, 0.2);
-  border-color: rgba(16, 185, 129, 0.4);
-}
-
-body.dark-mode .project-card {
-  background: var(--neutral-dark);
-  border-color: rgba(59, 130, 246, 0.2);
-}
-
-body.dark-mode .project-card:hover {
-  border-color: rgba(59, 130, 246, 0.5);
-}
-
-.project-image {
-  height: 200px;
-  overflow: hidden;
-  position: relative;
-}
-
-.project-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.project-card:hover .project-image img {
-  transform: scale(1.1);
-}
-
-.project-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(15, 23, 42, 0.9), transparent);
-  opacity: 0;
-  transition: opacity 0.3s;
-  display: flex;
-  align-items: flex-end;
-  padding: 1.5rem;
-}
-
-.project-card:hover .project-overlay {
-  opacity: 1;
-}
-
-.project-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 1rem 0;
-}
-
-.project-tag {
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  background: rgba(16, 185, 129, 0.15);
-  color: #10b981;
-}
-
-body.dark-mode .project-tag {
-  background: rgba(59, 130, 246, 0.2);
-  color: #60a5fa;
-}
-
-/* ===== Enhanced Contact Form ===== */
-.contact-form {
-  background: var(--neutral-light);
-  border-radius: 24px;
-  padding: 2rem;
-  box-shadow: var(--shadow-soft);
-  border: 1px solid rgba(16, 185, 129, 0.2);
-}
-
-body.dark-mode .contact-form {
-  background: var(--neutral-dark);
-  border-color: rgba(59, 130, 246, 0.3);
-}
-
-.form-group {
-  margin-bottom: 1.5rem;
-}
-
-.form-label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-  color: inherit;
-  font-size: 0.95rem;
-}
-
-.form-input,
-.form-select,
-.form-textarea {
-  width: 100%;
-  padding: 14px 18px;
-  border: 2px solid rgba(148, 163, 184, 0.3);
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.8);
-  color: #1e293b;
-  font-size: 1rem;
-  transition: all 0.3s;
-  font-family: inherit;
-}
-
-.form-input:focus,
-.form-select:focus,
-.form-textarea:focus {
-  outline: none;
-  border-color: #10b981;
-  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
-  background: white;
-}
-
-body.dark-mode .form-input,
-body.dark-mode .form-select,
-body.dark-mode .form-textarea {
-  background: rgba(30, 41, 59, 0.8);
-  border-color: rgba(96, 165, 250, 0.3);
-  color: #f1f5f9;
-}
-
-body.dark-mode .form-input:focus,
-body.dark-mode .form-select:focus,
-body.dark-mode .form-textarea:focus {
-  background: var(--neutral-dark);
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.25);
-}
-
-.form-textarea {
-  min-height: 120px;
-  resize: vertical;
-}
-
-/* ===== FAQ Accordion ===== */
-.faq-item {
-  border-radius: 16px;
-  overflow: hidden;
-  margin-bottom: 1rem;
-  background: var(--neutral-light);
-  border: 1px solid rgba(16, 185, 129, 0.2);
-  transition: all 0.3s;
-}
-
-body.dark-mode .faq-item {
-  background: var(--neutral-dark);
-  border-color: rgba(59, 130, 246, 0.3);
-}
-
-.faq-question {
-  padding: 1.25rem 1.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background 0.3s;
-}
-
-.faq-question:hover {
-  background: rgba(16, 185, 129, 0.08);
-}
-
-body.dark-mode .faq-question:hover {
-  background: rgba(59, 130, 246, 0.1);
-}
-
-.faq-question i {
-  transition: transform 0.3s;
-  color: #10b981;
-}
-
-.faq-item.active .faq-question i {
-  transform: rotate(180deg);
-}
-
-.faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease, padding 0.4s ease;
-  padding: 0 1.5rem;
-  color: #64748b;
-  line-height: 1.7;
-}
-
-body.dark-mode .faq-answer {
-  color: #94a3b8;
-}
-
-.faq-item.active .faq-answer {
-  max-height: 300px;
-  padding: 0 1.5rem 1.5rem;
-}
-
-/* ===== Statistics ===== */
-.stat-card {
-  text-align: center;
-  padding: 1.5rem;
-  background: var(--gradient-card);
-  border-radius: 20px;
-  border: 1px solid rgba(16, 185, 129, 0.2);
-}
-
-.stat-number {
-  font-size: 2.5rem;
-  font-weight: 800;
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  line-height: 1;
-}
-
-.stat-label {
-  color: #64748b;
-  font-size: 0.95rem;
-  margin-top: 0.5rem;
-}
-
-body.dark-mode .stat-label {
-  color: #94a3b8;
-}
-
-/* ===== Social Icons ===== */
-.social-link {
-  width: 48px;
-  height: 48px;
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(16, 185, 129, 0.1);
-  color: #10b981;
-  font-size: 1.25rem;
-  transition: all 0.3s;
-  text-decoration: none;
-}
-
-.social-link:hover {
-  background: #10b981;
-  color: white;
-  transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
-}
-
-.social-link.facebook:hover { background: #1877f2; color: white; box-shadow: 0 10px 25px rgba(24, 119, 242, 0.4); }
-.social-link.twitter:hover { background: #1da1f2; color: white; box-shadow: 0 10px 25px rgba(29, 161, 242, 0.4); }
-.social-link.linkedin:hover { background: #0a66c2; color: white; box-shadow: 0 10px 25px rgba(10, 102, 194, 0.4); }
-.social-link.github:hover { background: #333; color: white; box-shadow: 0 10px 25px rgba(51, 51, 51, 0.4); }
-
-body.dark-mode .social-link {
-  background: rgba(59, 130, 246, 0.15);
-  color: #60a5fa;
-}
-
-body.dark-mode .social-link:hover {
-  color: white;
-}
-
-/* ===== Theme Toggle ===== */
-.theme-toggle {
-  width: 44px;
-  height: 44px;
-  border-radius: 14px;
-  background: rgba(16, 185, 129, 0.15);
-  border: none;
-  color: #10b981;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s;
-  font-size: 1.1rem;
-}
-
-.theme-toggle:hover {
-  background: #10b981;
-  color: white;
-  transform: rotate(30deg);
-}
-
-body.dark-mode .theme-toggle {
-  background: rgba(59, 130, 246, 0.2);
-  color: #60a5fa;
-}
-
-body.dark-mode .theme-toggle:hover {
-  background: #3b82f6;
-  color: white;
-}
-
-/* ===== Mobile Menu ===== */
-.mobile-menu-button {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  padding: 8px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-}
-
-.mobile-menu-button span {
-  width: 24px;
-  height: 3px;
-  background: #1e293b;
-  border-radius: 3px;
-  transition: all 0.3s;
-}
-
-body.dark-mode .mobile-menu-button span {
-  background: #f1f5f9;
-}
-
-.mobile-menu {
-  position: fixed;
-  top: var(--header-height);
-  right: -100%;
-  width: 85%;
-  max-width: 320px;
-  height: calc(100vh - var(--header-height));
-  background: white;
-  padding: 2rem;
-  transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 999;
-  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
-  overflow-y: auto;
-}
-
-body.dark-mode .mobile-menu {
-  background: var(--neutral-dark);
-}
-
-.mobile-menu.open {
-  right: 0;
-}
-
-.mobile-menu a {
-  display: block;
-  padding: 1rem 0;
-  color: inherit;
-  font-weight: 600;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  transition: color 0.3s;
-}
-
-body.dark-mode .mobile-menu a {
-  border-bottom-color: rgba(255, 255, 255, 0.1);
-}
-
-.mobile-menu a:hover {
-  color: #10b981;
-  padding-right: 8px;
-}
-
-/* ===== Floating Buttons ===== */
-.floating-btn {
-  position: fixed;
-  bottom: 25px;
-  left: 25px;
-  width: 56px;
-  height: 56px;
-  border-radius: 18px;
-  background: var(--gradient-primary);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 100;
-  box-shadow: 0 8px 30px rgba(16, 185, 129, 0.5);
-  transition: all 0.3s;
-  animation: float 4s ease-in-out infinite;
-}
-
-.floating-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 12px 40px rgba(16, 185, 129, 0.7);
-}
-
-.back-to-top {
-  position: fixed;
-  bottom: 95px;
-  left: 25px;
-  width: 50px;
-  height: 50px;
-  border-radius: 16px;
-  background: #3b82f6;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 99;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.4s;
-  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
-}
-
-.back-to-top.show {
-  opacity: 1;
-  visibility: visible;
-}
-
-.back-to-top:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 35px rgba(59, 130, 246, 0.6);
-}
-
-/* ===== Toast Notification ===== */
-.toast {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  padding: 16px 24px;
-  border-radius: 16px;
-  background: #10b981;
-  color: white;
-  box-shadow: 0 10px 40px rgba(16, 185, 129, 0.5);
-  z-index: 2000;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-weight: 500;
-}
-
-.toast.show {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(-10px);
-}
-
-.toast.error {
-  background: #ef4444;
-  box-shadow: 0 10px 40px rgba(239, 68, 68, 0.5);
-}
-
-/* ===== Responsive ===== */
-@media (max-width: 768px) {
-  :root {
-    --header-height: 65px;
-  }
-  
-  .mobile-menu-button {
-    display: flex;
-  }
-  
-  .header-links {
-    display: none !important;
-  }
-  
-  .search-container {
-    order: 3;
-    margin-top: 1rem;
-    max-width: 100%;
-  }
-  
-  .header-container {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  
-  .header-brand {
-    justify-content: space-between;
-  }
-  
-  #home {
-    text-align: center;
-    padding-top: calc(var(--header-height) + 1rem);
-  }
-  
-  .hero-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .btn-primary, .btn-secondary {
-    width: 100%;
-    justify-content: center;
-  }
-  
-  .section-title::after {
-    right: 50%;
-    transform: translateX(50%);
-  }
-  
-  .stat-number {
-    font-size: 2rem;
-  }
-  
-  .team-avatar {
-    width: 120px;
-    height: 120px;
-  }
-  
-  .contact-form {
-    padding: 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .project-card-actions {
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .skill-cards-grid {
-    grid-template-columns: 1fr !important;
-  }
-}
-
-/* ===== Loading Animation ===== */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-in {
-  animation: fadeInUp 0.6s ease forwards;
-}
-
-.animate-fade-in:nth-child(1) { animation-delay: 0.1s; }
-.animate-fade-in:nth-child(2) { animation-delay: 0.2s; }
-.animate-fade-in:nth-child(3) { animation-delay: 0.3s; }
-.animate-fade-in:nth-child(4) { animation-delay: 0.4s; }
-
-/* ===== Cyber Security Badge Animation ===== */
-.cyber-badge {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 20px;
-  background: rgba(16, 185, 129, 0.15);
-  border-radius: 30px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  color: #10b981;
-}
-
-.cyber-badge::before {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  border-radius: 32px;
-  background: var(--gradient-primary);
-  z-index: -1;
-  animation: pulse 2s infinite;
-  opacity: 0;
-}
-
-.cyber-badge:hover::before {
-  opacity: 1;
-}
-
-.cyber-badge i {
-  animation: shield-pulse 2s infinite;
-}
-
-@keyframes shield-pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.2); }
-}
-
-@keyframes pulse {
-  0%, 100% { transform: scale(1); opacity: 0; }
-  50% { transform: scale(1.05); opacity: 0.5; }
-}
-</style>
-</head>
-
-<body class="light-mode">
-
-<!-- ===== Header ===== -->
-<header class="main-header">
-  <div class="container mx-auto px-4">
-    <div class="flex flex-col md:flex-row justify-between items-center gap-4 header-container">
-      
-      <!-- Brand -->
-      <div class="flex items-center justify-between w-full md:w-auto header-brand">
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl gradient-bg flex items-center justify-center">
-            <i class="fas fa-code text-white text-lg"></i>
-          </div>
-          <div>
-            <h1 class="text-lg font-bold text-gray-800 dark:text-white">سيف & محمود</h1>
-            <p class="text-xs text-gray-500 dark:text-gray-400">Full Stack & Cyber Security</p>
-          </div>
-        </div>
-        <button class="mobile-menu-button md:hidden" id="mobileMenuBtn">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
-
-      <!-- Search -->
-      <div class="search-container">
-        <form id="searchForm" class="relative">
-          <input type="text" id="searchInput" class="search-box" placeholder="ابحث عن خدمة، مهارة، أو مشروع...">
-          <button type="submit" class="search-button">
-            <i class="fas fa-search"></i>
-          </button>
-        </form>
-        <div id="searchResults" class="search-results"></div>
-      </div>
-
-      <!-- Desktop Navigation -->
-      <div class="hidden md:flex items-center gap-6 header-links">
-        <a href="#home" class="text-gray-700 dark:text-gray-200 hover:text-emerald-500 font-medium transition">الرئيسية</a>
-        <a href="#team" class="text-gray-700 dark:text-gray-200 hover:text-emerald-500 font-medium transition">الفريق</a>
-        <a href="#skills" class="text-gray-700 dark:text-gray-200 hover:text-emerald-500 font-medium transition">المهارات</a>
-        <a href="#projects" class="text-gray-700 dark:text-gray-200 hover:text-emerald-500 font-medium transition">المشاريع</a>
-        <a href="#contact" class="text-gray-700 dark:text-gray-200 hover:text-emerald-500 font-medium transition">تواصل معنا</a>
         
-        <button id="themeToggle" class="theme-toggle" title="تبديل المظهر">
-          <i class="fas fa-moon"></i>
-        </button>
-      </div>
-    </div>
-  </div>
-</header>
-
-<!-- ===== Mobile Menu ===== -->
-<div class="mobile-menu" id="mobileMenu">
-  <div class="flex flex-col h-full">
-    <div class="flex justify-between items-center mb-6">
-      <h3 class="text-lg font-bold gradient-text">القائمة</h3>
-      <button id="closeMobileMenu" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-200">
-        <i class="fas fa-times text-xl"></i>
-      </button>
-    </div>
-    
-    <nav class="flex-1">
-      <a href="#home" class="mobile-link"><i class="fas fa-home ml-2"></i> الرئيسية</a>
-      <a href="#team" class="mobile-link"><i class="fas fa-users ml-2"></i> الفريق</a>
-      <a href="#skills" class="mobile-link"><i class="fas fa-laptop-code ml-2"></i> المهارات</a>
-      <a href="#projects" class="mobile-link"><i class="fas fa-folder-open ml-2"></i> المشاريع</a>
-      <a href="#contact" class="mobile-link"><i class="fas fa-envelope ml-2"></i> تواصل معنا</a>
-    </nav>
-    
-    <div class="pt-4 border-t border-gray-200 dark:border-gray-700">
-      <button id="mobileThemeToggle" class="flex items-center gap-3 text-gray-700 dark:text-gray-200 w-full py-3">
-        <i class="fas fa-moon"></i>
-        <span>تبديل المظهر</span>
-      </button>
-      
-      <div class="flex gap-3 mt-4 justify-center">
-        <a href="#" class="social-link facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="social-link twitter"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="social-link linkedin"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#" class="social-link github"><i class="fab fa-github"></i></a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ===== Main Content ===== -->
-<main id="mainPage">
-
-  <!-- Hero Section -->
-  <section id="home" class="relative">
-    <div class="hero-bg-shapes">
-      <div class="hero-shape"></div>
-      <div class="hero-shape"></div>
-      <div class="hero-shape"></div>
-    </div>
-    
-    <div class="container mx-auto px-4 relative z-10">
-      <div class="flex flex-col lg:flex-row items-center gap-12">
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--light-gray);
+            color: #1e293b;
+            transition: all 0.3s ease;
+            scroll-behavior: smooth;
+        }
         
-        <!-- Hero Content -->
-        <div class="lg:w-1/2 text-center lg:text-right" data-aos="fade-left">
-          <div class="cyber-badge mb-6">
-            <i class="fas fa-shield-alt"></i>
-            <span>أمان • جودة • ابتكار</span>
-          </div>
-          
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            نبني <span class="gradient-text">حلولاً رقمية</span><br>آمنة ومبتكرة
-          </h1>
-          
-          <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-            فريق متخصص يجمع بين خبرة <strong>سيف</strong> في تطوير الواجهات الأمامية 
-            و<strong>محمود محمود</strong> في التطوير الشامل والأمن السيبراني 
-            لتقديم تجارب ويب استثنائية ومحمية.
-          </p>
-          
-          <div class="flex flex-wrap gap-4 justify-center lg:justify-start hero-buttons">
-            <a href="#projects" class="btn-primary">
-              <i class="fas fa-briefcase"></i>
-              استكشف أعمالنا
-            </a>
-            <a href="#contact" class="btn-secondary">
-              <i class="fas fa-paper-plane"></i>
-              ابدأ مشروعك
-            </a>
-          </div>
-          
-          <div class="flex gap-4 mt-10 justify-center lg:justify-start">
-            <a href="#" class="social-link facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social-link twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="social-link linkedin"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" class="social-link github"><i class="fab fa-github"></i></a>
-          </div>
-        </div>
+        body.dark-mode {
+            background-color: var(--dark-bg);
+            color: #f1f5f9;
+        }
         
-        <!-- Hero Visual -->
-        <div class="lg:w-1/2" data-aos="fade-right">
-          <div class="relative">
-            <!-- Floating Cards Animation -->
-            <div class="absolute -top-4 -right-4 w-20 h-20 bg-emerald-100 dark:bg-emerald-900/30 rounded-2xl flex items-center justify-center animate-float">
-              <i class="fas fa-code text-emerald-500 text-xl"></i>
-            </div>
-            <div class="absolute -bottom-4 -left-4 w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center animate-float" style="animation-delay: -2s">
-              <i class="fas fa-shield-alt text-blue-500"></i>
-            </div>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #e2e8f0;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--soft-blue), var(--soft-green));
+            border-radius: 5px;
+        }
+        
+        .dark-mode ::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+        
+        /* Header Styles */
+        .main-header {
+            background: var(--primary-white);
+            box-shadow: var(--shadow-sm);
+            height: var(--header-height);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .dark-mode .main-header {
+            background: var(--dark-bg);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Glassmorphism Effects */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 20px;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .dark-mode .glass-card {
+            background: rgba(30, 41, 59, 0.95);
+            border-color: rgba(16, 185, 129, 0.2);
+        }
+        
+        /* Gradient Text */
+        .gradient-text {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Buttons */
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-hover);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .btn-primary:hover::before {
+            opacity: 1;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--soft-blue);
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--soft-blue);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .dark-mode .btn-outline {
+            color: var(--soft-green);
+            border-color: var(--soft-green);
+        }
+        
+        .btn-outline:hover {
+            background: var(--soft-blue);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .dark-mode .btn-outline:hover {
+            background: var(--soft-green);
+            color: var(--dark-bg);
+        }
+        
+        /* Profile Cards */
+        .profile-card {
+            background: white;
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dark-mode .profile-card {
+            background: var(--card-dark);
+        }
+        
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transform: rotate(45deg);
+            transition: opacity 0.4s ease;
+            z-index: 0;
+        }
+        
+        .profile-card:hover::before {
+            opacity: 0.1;
+        }
+        
+        .profile-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .profile-image-wrapper {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            padding: 5px;
+            background: var(--gradient-primary);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            transition: transform 0.5s ease;
+        }
+        
+        .profile-card:hover .profile-image {
+            transform: scale(1.1);
+        }
+        
+        /* Skill Cards */
+        .skill-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dark-mode .skill-card {
+            background: var(--card-dark);
+        }
+        
+        .skill-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .skill-card:hover::after {
+            transform: scaleX(1);
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--soft-blue);
+        }
+        
+        .dark-mode .skill-card:hover {
+            border-color: var(--soft-green);
+        }
+        
+        .skill-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-card:hover .skill-icon {
+            transform: rotateY(180deg);
+        }
+        
+        /* Project Cards */
+        .project-card {
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        
+        .dark-mode .project-card {
+            background: var(--card-dark);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .project-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+        
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-primary);
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.4s ease;
+        }
+        
+        .project-card:hover .project-overlay {
+            opacity: 0.9;
+        }
+        
+        /* Enhanced Contact Form */
+        .contact-form-container {
+            background: white;
+            border-radius: 40px;
+            padding: 40px;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dark-mode .contact-form-container {
+            background: var(--card-dark);
+        }
+        
+        .contact-form-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-primary);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 15px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+        
+        .dark-mode .form-group input,
+        .dark-mode .form-group select,
+        .dark-mode .form-group textarea {
+            border-color: #334155;
+            color: white;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--soft-blue);
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+        }
+        
+        .dark-mode .form-group input:focus,
+        .dark-mode .form-group select:focus,
+        .dark-mode .form-group textarea:focus {
+            border-color: var(--soft-green);
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
+        }
+        
+        .floating-label {
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            background: white;
+            padding: 0 10px;
+            color: #64748b;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .dark-mode .floating-label {
+            background: var(--card-dark);
+            color: #94a3b8;
+        }
+        
+        .form-group input:focus ~ .floating-label,
+        .form-group input:not(:placeholder-shown) ~ .floating-label,
+        .form-group textarea:focus ~ .floating-label,
+        .form-group textarea:not(:placeholder-shown) ~ .floating-label {
+            top: 0;
+            font-size: 12px;
+            color: var(--soft-blue);
+        }
+        
+        /* FAQ Section */
+        .faq-item {
+            background: white;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+        
+        .dark-mode .faq-item {
+            background: var(--card-dark);
+        }
+        
+        .faq-item:hover {
+            transform: translateX(-10px);
+        }
+        
+        .faq-question {
+            padding: 20px 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--soft-blue);
+        }
+        
+        .dark-mode .faq-question {
+            color: var(--soft-green);
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            padding: 0 30px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: #64748b;
+        }
+        
+        .dark-mode .faq-answer {
+            color: #94a3b8;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding: 0 30px 20px;
+        }
+        
+        /* Stats Cards */
+        .stat-card {
+            background: white;
+            border-radius: 30px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dark-mode .stat-card {
+            background: var(--card-dark);
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transform: rotate(45deg);
+            transition: opacity 0.4s ease;
+        }
+        
+        .stat-card:hover::before {
+            opacity: 0.1;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: var(--header-height);
+            right: -100%;
+            width: 300px;
+            height: calc(100vh - var(--header-height));
+            background: white;
+            box-shadow: -5px 0 30px rgba(0, 0, 0, 0.1);
+            transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 999;
+            padding: 30px;
+        }
+        
+        .dark-mode .mobile-menu {
+            background: var(--dark-bg);
+        }
+        
+        .mobile-menu.open {
+            right: 0;
+        }
+        
+        /* Theme Toggle */
+        .theme-toggle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            border: none;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .theme-toggle:hover {
+            transform: rotate(180deg);
+        }
+        
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 99;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* Loading Spinner */
+        .spinner {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 0.8s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--gradient-primary);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            box-shadow: var(--shadow-hover);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .toast.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            :root {
+                --header-height: 70px;
+            }
             
-            <!-- Main Image Container -->
-            <div class="relative bg-gradient-to-br from-emerald-500/10 to-blue-500/10 rounded-3xl p-8 border border-emerald-200/50 dark:border-emerald-700/30">
-              <div class="grid grid-cols-2 gap-4">
-                <!-- Saif Card -->
-                <div class="team-card">
-                  <span class="team-badge">Frontend</span>
-                  <img src="https://ui-avatars.com/api/?name=Saif&background=10b981&color=fff&size=200" alt="سيف" class="team-avatar">
-                  <h3 class="text-xl font-bold mb-1">سيف</h3>
-                  <p class="text-emerald-600 dark:text-emerald-400 font-medium">Frontend Developer</p>
-                  <div class="flex gap-2 mt-3 justify-center">
-                    <span class="text-xs px-2 py-1 bg-emerald-100 dark:bg-emerald-900/30 rounded-full">React</span>
-                    <span class="text-xs px-2 py-1 bg-emerald-100 dark:bg-emerald-900/30 rounded-full">Tailwind</span>
-                  </div>
+            h1 {
+                font-size: 2rem !important;
+            }
+            
+            h2 {
+                font-size: 1.5rem !important;
+            }
+            
+            .btn-primary, .btn-outline {
+                padding: 12px 24px;
+            }
+            
+            .profile-image-wrapper {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+            
+            .contact-form-container {
+                padding: 30px 20px;
+            }
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .float-animation {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.5); }
+            50% { box-shadow: 0 0 30px 10px rgba(59, 130, 246, 0.3); }
+        }
+        
+        .pulse-glow {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container mx-auto px-6 h-full">
+            <div class="flex items-center justify-between h-full">
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-green-500 flex items-center justify-center text-white font-bold text-xl">
+                        M&S
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold gradient-text">محمود & سيف</h1>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Full Stack & Frontend Team</p>
+                    </div>
                 </div>
                 
-                <!-- Mahmoud Card -->
-                <div class="team-card">
-                  <span class="team-badge" style="background: linear-gradient(135deg, #3b82f6, #10b981)">Full Stack + Security</span>
-                  <img src="https://ui-avatars.com/api/?name=Mahmoud&background=3b82f6&color=fff&size=200" alt="محمود محمود" class="team-avatar">
-                  <h3 class="text-xl font-bold mb-1">محمود محمود</h3>
-                  <p class="text-blue-600 dark:text-blue-400 font-medium">Full Stack & Cyber Security</p>
-                  <div class="flex gap-2 mt-3 justify-center">
-                    <span class="text-xs px-2 py-1 bg-blue-100 dark:bg-blue-900/30 rounded-full">Node.js</span>
-                    <span class="text-xs px-2 py-1 bg-blue-100 dark:bg-blue-900/30 rounded-full">Security</span>
-                  </div>
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="#home" class="font-medium hover:text-blue-500 dark:hover:text-green-500 transition-colors">الرئيسية</a>
+                    <a href="#team" class="font-medium hover:text-blue-500 dark:hover:text-green-500 transition-colors">الفريق</a>
+                    <a href="#skills" class="font-medium hover:text-blue-500 dark:hover:text-green-500 transition-colors">المهارات</a>
+                    <a href="#projects" class="font-medium hover:text-blue-500 dark:hover:text-green-500 transition-colors">المشاريع</a>
+                    <a href="#faq" class="font-medium hover:text-blue-500 dark:hover:text-green-500 transition-colors">الأسئلة الشائعة</a>
+                    <a href="#contact" class="font-medium hover:text-blue-500 dark:hover:text-green-500 transition-colors">اتصل بنا</a>
+                </nav>
+                
+                <!-- Theme Toggle & Mobile Menu Button -->
+                <div class="flex items-center gap-4">
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="md:hidden text-2xl" id="mobileMenuBtn">
+                        <i class="fas fa-bars"></i>
+                    </button>
                 </div>
-              </div>
-              
-              <!-- Connection Line -->
-              <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-1 bg-gradient-to-r from-emerald-400 to-blue-400 rounded-full hidden md:block"></div>
             </div>
-          </div>
         </div>
-        
-      </div>
-    </div>
-  </section>
-
-  <!-- Statistics Section -->
-  <section class="py-12 bg-white dark:bg-neutral-dark border-y border-gray-100 dark:border-gray-800">
-    <div class="container mx-auto px-4">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-        <div class="stat-card" data-aos="fade-up">
-          <div class="stat-number" data-count="150">0</div>
-          <p class="stat-label">مشروع مكتمل</p>
-        </div>
-        <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="stat-number" data-count="98">0</div>
-          <p class="stat-label">% رضا العملاء</p>
-        </div>
-        <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="stat-number" data-count="6">0</div>
-          <p class="stat-label">سنوات خبرة</p>
-        </div>
-        <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
-          <div class="stat-number" data-count="24/7">0</div>
-          <p class="stat-label">دعم فني</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Team Section -->
-  <section id="team" class="py-20">
-    <div class="container mx-auto px-4">
-      <h2 class="section-title center gradient-text" data-aos="fade-up">فريقنا المتخصص</h2>
-      
-      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-        
-        <!-- Saif Card -->
-        <div class="team-card" data-aos="fade-right">
-          <span class="team-badge">Frontend Specialist</span>
-          <img src="https://ui-avatars.com/api/?name=Saif&background=10b981&color=fff&size=300" alt="سيف - Frontend Developer" class="team-avatar">
-          <h3 class="text-2xl font-bold mb-2">سيف</h3>
-          <p class="text-emerald-600 dark:text-emerald-400 font-medium mb-4">Frontend Developer</p>
-          <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-            متخصص في بناء واجهات مستخدم تفاعلية وجذابة باستخدام أحدث التقنيات. 
-            أركز على تجربة المستخدم والأداء الأمثل مع تصميمات عصرية ومتجاوبة.
-          </p>
-          
-          <div class="grid grid-cols-2 gap-3 mb-6">
-            <div class="text-center p-3 bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
-              <i class="fab fa-react text-2xl text-emerald-500 mb-2"></i>
-              <p class="text-sm font-medium">React / Vue</p>
-            </div>
-            <div class="text-center p-3 bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
-              <i class="fas fa-palette text-2xl text-emerald-500 mb-2"></i>
-              <p class="text-sm font-medium">UI/UX Design</p>
-            </div>
-            <div class="text-center p-3 bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
-              <i class="fas fa-mobile-alt text-2xl text-emerald-500 mb-2"></i>
-              <p class="text-sm font-medium">Responsive</p>
-            </div>
-            <div class="text-center p-3 bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
-              <i class="fas fa-bolt text-2xl text-emerald-500 mb-2"></i>
-              <p class="text-sm font-medium">Performance</p>
-            </div>
-          </div>
-          
-          <a href="#contact" class="btn-secondary w-full justify-center">
-            <i class="fas fa-user-plus"></i>
-            تواصل مع سيف
-          </a>
-        </div>
-        
-        <!-- Mahmoud Card -->
-        <div class="team-card" data-aos="fade-left">
-          <span class="team-badge" style="background: linear-gradient(135deg, #3b82f6, #10b981)">Full Stack + Security</span>
-          <img src="https://ui-avatars.com/api/?name=Mahmoud&background=3b82f6&color=fff&size=300" alt="محمود محمود - Full Stack & Cyber Security" class="team-avatar">
-          <h3 class="text-2xl font-bold mb-2">محمود محمود</h3>
-          <p class="text-blue-600 dark:text-blue-400 font-medium mb-4">Full Stack & Cyber Security Developer</p>
-          <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-            خبير في التطوير الشامل مع تخصص في الأمن السيبراني. 
-            أبني أنظمة آمنة من الأساس وأضمن حماية بياناتك من التهديدات الرقمية.
-          </p>
-          
-          <div class="grid grid-cols-2 gap-3 mb-6">
-            <div class="text-center p-3 bg-blue-50 dark:bg-blue-900/20 rounded-xl">
-              <i class="fab fa-node-js text-2xl text-blue-500 mb-2"></i>
-              <p class="text-sm font-medium">Node.js / Python</p>
-            </div>
-            <div class="text-center p-3 bg-blue-50 dark:bg-blue-900/20 rounded-xl">
-              <i class="fas fa-shield-alt text-2xl text-blue-500 mb-2"></i>
-              <p class="text-sm font-medium">Penetration Testing</p>
-            </div>
-            <div class="text-center p-3 bg-blue-50 dark:bg-blue-900/20 rounded-xl">
-              <i class="fas fa-database text-2xl text-blue-500 mb-2"></i>
-              <p class="text-sm font-medium">Database Security</p>
-            </div>
-            <div class="text-center p-3 bg-blue-50 dark:bg-blue-900/20 rounded-xl">
-              <i class="fas fa-lock text-2xl text-blue-500 mb-2"></i>
-              <p class="text-sm font-medium">Encryption</p>
-            </div>
-          </div>
-          
-          <a href="#contact" class="btn-secondary w-full justify-center">
-            <i class="fas fa-user-plus"></i>
-            تواصل مع محمود
-          </a>
-        </div>
-        
-      </div>
-    </div>
-  </section>
-
-  <!-- Skills Section -->
-  <section id="skills" class="py-20 bg-gradient-to-b from-white to-emerald-50/50 dark:from-neutral-dark dark:to-neutral-darker">
-    <div class="container mx-auto px-4">
-      <h2 class="section-title center gradient-text" data-aos="fade-up">مهاراتنا التقنية</h2>
-      
-      <div class="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-        
-        <!-- Frontend Skills (Saif) -->
-        <div data-aos="fade-right">
-          <div class="flex items-center gap-3 mb-8">
-            <div class="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center">
-              <i class="fas fa-laptop-code text-emerald-500 text-xl"></i>
-            </div>
-            <div>
-              <h3 class="text-xl font-bold">مهارات الواجهة الأمامية</h3>
-              <p class="text-gray-500 dark:text-gray-400 text-sm">بقيادة سيف</p>
-            </div>
-          </div>
-          
-          <div class="space-y-6">
-            <div class="skill-item">
-              <div class="skill-header">
-                <span>HTML5 / CSS3 / Tailwind</span>
-                <span>98%</span>
-              </div>
-              <div class="skill-bar">
-                <div class="skill-progress" style="width: 98%"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-header">
-                <span>JavaScript / TypeScript</span>
-                <span>95%</span>
-              </div>
-              <div class="skill-bar">
-                <div class="skill-progress" style="width: 95%"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-header">
-                <span>React / Next.js</span>
-                <span>92%</span>
-              </div>
-              <div class="skill-bar">
-                <div class="skill-progress" style="width: 92%"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-header">
-                <span>UI/UX Design & Animation</span>
-                <span>88%</span>
-              </div>
-              <div class="skill-bar">
-                <div class="skill-progress" style="width: 88%"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Full Stack & Security Skills (Mahmoud) -->
-        <div data-aos="fade-left">
-          <div class="flex items-center gap-3 mb-8">
-            <div class="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
-              <i class="fas fa-server text-blue-500 text-xl"></i>
-            </div>
-            <div>
-              <h3 class="text-xl font-bold">التطوير الشامل والأمن السيبراني</h3>
-              <p class="text-gray-500 dark:text-gray-400 text-sm">بقيادة محمود محمود</p>
-            </div>
-          </div>
-          
-          <div class="space-y-6">
-            <div class="skill-item">
-              <div class="skill-header">
-                <span>Node.js / Express / Python</span>
-                <span>94%</span>
-              </div>
-              <div class="skill-bar">
-                <div class="skill-progress" style="width: 94%"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-header">
-                <span>Database Design & Security</span>
-                <span>90%</span>
-              </div>
-              <div class="skill-bar">
-                <div class="skill-progress" style="width: 90%"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-header">
-                <span>Penetration Testing & Auditing</span>
-                <span>87%</span>
-              </div>
-              <div class="skill-bar">
-                <div class="skill-progress" style="width: 87%"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-header">
-                <span>API Development & Integration</span>
-                <span>91%</span>
-              </div>
-              <div class="skill-bar">
-                <div class="skill-progress" style="width: 91%"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-      </div>
-      
-      <!-- Tools Grid -->
-      <div class="mt-16" data-aos="fade-up">
-        <h3 class="text-center text-lg font-semibold mb-8">أدوات وتقنيات نستخدمها</h3>
-        <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4">
-          <div class="tool-item text-center p-4 rounded-xl bg-white dark:bg-neutral-dark border border-gray-100 dark:border-gray-700 hover:border-emerald-300 dark:hover:border-emerald-600 transition">
-            <i class="fab fa-react text-2xl text-emerald-500 mb-2"></i>
-            <p class="text-xs font-medium">React</p>
-          </div>
-          <div class="tool-item text-center p-4 rounded-xl bg-white dark:bg-neutral-dark border border-gray-100 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 transition">
-            <i class="fab fa-node-js text-2xl text-blue-500 mb-2"></i>
-            <p class="text-xs font-medium">Node.js</p>
-          </div>
-          <div class="tool-item text-center p-4 rounded-xl bg-white dark:bg-neutral-dark border border-gray-100 dark:border-gray-700 hover:border-emerald-300 dark:hover:border-emerald-600 transition">
-            <i class="fab fa-python text-2xl text-blue-500 mb-2"></i>
-            <p class="text-xs font-medium">Python</p>
-          </div>
-          <div class="tool-item text-center p-4 rounded-xl bg-white dark:bg-neutral-dark border border-gray-100 dark:border-gray-700 hover:border-emerald-300 dark:hover:border-emerald-600 transition">
-            <i class="fab fa-git-alt text-2xl text-orange-500 mb-2"></i>
-            <p class="text-xs font-medium">Git</p>
-          </div>
-          <div class="tool-item text-center p-4 rounded-xl bg-white dark:bg-neutral-dark border border-gray-100 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 transition">
-            <i class="fas fa-database text-2xl text-blue-500 mb-2"></i>
-            <p class="text-xs font-medium">MongoDB</p>
-          </div>
-          <div class="tool-item text-center p-4 rounded-xl bg-white dark:bg-neutral-dark border border-gray-100 dark:border-gray-700 hover:border-emerald-300 dark:hover:border-emerald-600 transition">
-            <i class="fab fa-docker text-2xl text-blue-500 mb-2"></i>
-            <p class="text-xs font-medium">Docker</p>
-          </div>
-          <div class="tool-item text-center p-4 rounded-xl bg-white dark:bg-neutral-dark border border-gray-100 dark:border-gray-700 hover:border-emerald-300 dark:hover:border-emerald-600 transition">
-            <i class="fas fa-shield-alt text-2xl text-emerald-500 mb-2"></i>
-            <p class="text-xs font-medium">Burp Suite</p>
-          </div>
-          <div class="tool-item text-center p-4 rounded-xl bg-white dark:bg-neutral-dark border border-gray-100 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 transition">
-            <i class="fab fa-linux text-2xl text-gray-600 dark:text-gray-300 mb-2"></i>
-            <p class="text-xs font-medium">Kali Linux</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects Section -->
-  <section id="projects" class="py-20">
-    <div class="container mx-auto px-4">
-      <h2 class="section-title center gradient-text" data-aos="fade-up">أحدث مشاريعنا</h2>
-      
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        
-        <!-- Project 1 -->
-        <div class="project-card" data-aos="fade-up">
-          <div class="project-image">
-            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600" alt="منصة تعليمية آمنة">
-            <div class="project-overlay">
-              <button class="btn-primary text-sm">عرض التفاصيل</button>
-            </div>
-          </div>
-          <div class="p-6">
-            <span class="text-xs font-semibold text-emerald-600 dark:text-emerald-400">منصة تعليمية</span>
-            <h3 class="text-lg font-bold mt-2 mb-3">منصة تعليمية آمنة</h3>
-            <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
-              نظام إدارة تعلم شامل مع حماية متقدمة للبيانات ومصادقة ثنائية.
-            </p>
-            <div class="project-tags">
-              <span class="project-tag">React</span>
-              <span class="project-tag">Node.js</span>
-              <span class="project-tag">Security</span>
-            </div>
-            <div class="flex gap-3 mt-4">
-              <a href="#" class="flex-1 btn-secondary text-sm justify-center">
-                <i class="fas fa-globe"></i> Demo
-              </a>
-              <a href="#" class="w-10 h-10 rounded-xl bg-gray-100 dark:bg-gray-700 flex items-center justify-center hover:bg-emerald-500 hover:text-white transition">
-                <i class="fab fa-github"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Project 2 -->
-        <div class="project-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="project-image">
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600" alt="لوحة تحليلات مالية">
-            <div class="project-overlay">
-              <button class="btn-primary text-sm">عرض التفاصيل</button>
-            </div>
-          </div>
-          <div class="p-6">
-            <span class="text-xs font-semibold text-blue-600 dark:text-blue-400">Fintech</span>
-            <h3 class="text-lg font-bold mt-2 mb-3">لوحة تحليلات مالية</h3>
-            <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
-              Dashboard تفاعلي لتحليل البيانات المالية مع تشفير متقدم للبيانات الحساسة.
-            </p>
-            <div class="project-tags">
-              <span class="project-tag">Vue.js</span>
-              <span class="project-tag">Python</span>
-              <span class="project-tag">Encryption</span>
-            </div>
-            <div class="flex gap-3 mt-4">
-              <a href="#" class="flex-1 btn-secondary text-sm justify-center">
-                <i class="fas fa-globe"></i> Demo
-              </a>
-              <a href="#" class="w-10 h-10 rounded-xl bg-gray-100 dark:bg-gray-700 flex items-center justify-center hover:bg-emerald-500 hover:text-white transition">
-                <i class="fab fa-github"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Project 3 -->
-        <div class="project-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="project-image">
-            <img src="https://images.unsplash.com/photo-1551654948-eb65d875b5e9?w=600" alt="متجر إلكتروني آمن">
-            <div class="project-overlay">
-              <button class="btn-primary text-sm">عرض التفاصيل</button>
-            </div>
-          </div>
-          <div class="p-6">
-            <span class="text-xs font-semibold text-emerald-600 dark:text-emerald-400">E-Commerce</span>
-            <h3 class="text-lg font-bold mt-2 mb-3">متجر إلكتروني آمن</h3>
-            <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
-              منصة تجارة إلكترونية مع حماية متكاملة للمدفوعات وبيانات العملاء.
-            </p>
-            <div class="project-tags">
-              <span class="project-tag">Next.js</span>
-              <span class="project-tag">Stripe</span>
-              <span class="project-tag">PCI-DSS</span>
-            </div>
-            <div class="flex gap-3 mt-4">
-              <a href="#" class="flex-1 btn-secondary text-sm justify-center">
-                <i class="fas fa-globe"></i> Demo
-              </a>
-              <a href="#" class="w-10 h-10 rounded-xl bg-gray-100 dark:bg-gray-700 flex items-center justify-center hover:bg-emerald-500 hover:text-white transition">
-                <i class="fab fa-github"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        
-      </div>
-      
-      <div class="text-center mt-12">
-        <a href="#" class="btn-secondary">
-          <i class="fas fa-folder-open"></i>
-          عرض جميع المشاريع
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials Section -->
-  <section class="py-20 bg-gradient-to-b from-emerald-50/50 to-white dark:from-neutral-darker dark:to-neutral-dark">
-    <div class="container mx-auto px-4">
-      <h2 class="section-title center gradient-text" data-aos="fade-up">آراء عملائنا</h2>
-      
-      <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-        
-        <!-- Testimonial 1 -->
-        <div class="card p-6" data-aos="fade-up">
-          <div class="flex gap-1 text-yellow-400 mb-4">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-            "تعاون رائع مع سيف ومحمود! الموقع الذي بنوه لنا ليس فقط جميلًا بل آمنًا تمامًا. أنصح بهم بشدة."
-          </p>
-          <div class="flex items-center gap-3">
-            <img src="https://ui-avatars.com/api/?name=Ahmed&background=10b981&color=fff" alt="أحمد" class="w-12 h-12 rounded-full">
-            <div>
-              <p class="font-semibold">أحمد السعيد</p>
-              <p class="text-sm text-gray-500">مدير شركة TechStart</p>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Testimonial 2 -->
-        <div class="card p-6" data-aos="fade-up" data-aos-delay="100">
-          <div class="flex gap-1 text-yellow-400 mb-4">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-            "الأمان كان أولويتنا، ومحمود تجاوز توقعاتنا. الاختبارات الأمنية التي أجراها كانت شاملة ومفصلة."
-          </p>
-          <div class="flex items-center gap-3">
-            <img src="https://ui-avatars.com/api/?name=Fatima&background=3b82f6&color=fff" alt="فاطمة" class="w-12 h-12 rounded-full">
-            <div>
-              <p class="font-semibold">فاطمة محمد</p>
-              <p class="text-sm text-gray-500">CTO - FinanceHub</p>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Testimonial 3 -->
-        <div class="card p-6" data-aos="fade-up" data-aos-delay="200">
-          <div class="flex gap-1 text-yellow-400 mb-4">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-          </div>
-          <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-            "تجربة المستخدم التي صممها سيف كانت استثنائية. الموقع سريع، جميل، ويعمل على جميع الأجهزة بسلاسة."
-          </p>
-          <div class="flex items-center gap-3">
-            <img src="https://ui-avatars.com/api/?name=Omar&background=06b6d4&color=fff" alt="عمر" class="w-12 h-12 rounded-full">
-            <div>
-              <p class="font-semibold">عمر خالد</p>
-              <p class="text-sm text-gray-500">مؤسس DesignLab</p>
-            </div>
-          </div>
-        </div>
-        
-      </div>
-    </div>
-  </section>
-
-  <!-- Enhanced Contact Section -->
-  <section id="contact" class="py-20">
-    <div class="container mx-auto px-4">
-      <h2 class="section-title center gradient-text" data-aos="fade-up">تواصل معنا</h2>
-      
-      <div class="grid lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
-        
-        <!-- Contact Form -->
-        <div class="contact-form" data-aos="fade-right">
-          <h3 class="text-xl font-bold mb-6">أرسل لنا رسالة</h3>
-          
-          <form id="contactForm">
-            <div class="grid md:grid-cols-2 gap-4">
-              <div class="form-group">
-                <label class="form-label">الاسم الكامل *</label>
-                <input type="text" class="form-input" name="name" required placeholder="أدخل اسمك">
-              </div>
-              <div class="form-group">
-                <label class="form-label">البريد الإلكتروني *</label>
-                <input type="email" class="form-input" name="email" required placeholder="example@email.com">
-              </div>
-            </div>
-            
-            <div class="form-group">
-              <label class="form-label">نوع الخدمة المطلوبة *</label>
-              <select class="form-select" name="service" required>
-                <option value="">اختر الخدمة...</option>
-                <option value="frontend">تطوير واجهة أمامية (مع سيف)</option>
-                <option value="fullstack">تطوير شامل Full Stack</option>
-                <option value="security">استشارات أمن سيبراني (مع محمود)</option>
-                <option value="audit">مراجعة واختبار أمني</option>
-                <option value="other">خدمة أخرى</option>
-              </select>
-            </div>
-            
-            <div class="form-group">
-              <label class="form-label">هل لديك مشروع حالي يحتاج لحماية أمنية؟</label>
-              <select class="form-select" name="security_need">
-                <option value="">اختر...</option>
-                <option value="yes">نعم، أحتاج مراجعة أمنية</option>
-                <option value="planning">أخطط لمشروع وأريد أمان من البداية</option>
-                <option value="no">لا، مشروع جديد</option>
-              </select>
-            </div>
-            
-            <div class="form-group">
-              <label class="form-label">الميزانية المتوقعة</label>
-              <select class="form-select" name="budget">
-                <option value="">اختر النطاق...</option>
-                <option value="starter">5,000 - 15,000 جنيه</option>
-                <option value="professional">15,000 - 50,000 جنيه</option>
-                <option value="enterprise">50,000+ جنيه</option>
-                <option value="discuss">أود مناقشة التفاصيل أولاً</option>
-              </select>
-            </div>
-            
-            <div class="form-group">
-              <label class="form-label">الرسالة *</label>
-              <textarea class="form-textarea" name="message" required placeholder="اشرح لنا مشروعك أو استفسارك..."></textarea>
-            </div>
-            
-            <div class="form-group">
-              <label class="flex items-center gap-2 cursor-pointer">
-                <input type="checkbox" name="consent" class="w-4 h-4 rounded border-gray-300 text-emerald-500" required>
-                <span class="text-sm text-gray-600 dark:text-gray-400">أوافق على معالجة بياناتي للتواصل معي</span>
-              </label>
-            </div>
-            
-            <button type="submit" class="btn-primary w-full justify-center">
-              <i class="fas fa-paper-plane"></i>
-              <span id="submitText">إرسال الرسالة</span>
-              <span id="submitSpinner" class="hidden"><i class="fas fa-spinner fa-spin"></i></span>
-            </button>
-            
-            <div id="formMessage" class="hidden mt-4 p-4 rounded-xl text-center"></div>
-          </form>
-        </div>
-        
-        <!-- Contact Info + FAQ -->
-        <div data-aos="fade-left">
-          
-          <!-- Quick Contact -->
-          <div class="card p-6 mb-8">
-            <h3 class="text-lg font-bold mb-4">معلومات التواصل</h3>
-            <div class="space-y-4">
-              <div class="flex items-start gap-4">
-                <div class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center flex-shrink-0">
-                  <i class="fas fa-map-marker-alt text-emerald-500"></i>
-                </div>
-                <div>
-                  <p class="font-medium">الموقع</p>
-                  <p class="text-gray-600 dark:text-gray-400 text-sm">القاهرة، مصر (نعمل عن بُعد عالميًا)</p>
-                </div>
-              </div>
-              <div class="flex items-start gap-4">
-                <div class="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center flex-shrink-0">
-                  <i class="fas fa-envelope text-blue-500"></i>
-                </div>
-                <div>
-                  <p class="font-medium">البريد الإلكتروني</p>
-                  <p class="text-gray-600 dark:text-gray-400 text-sm">hello@saif-mahmoud.dev</p>
-                </div>
-              </div>
-              <div class="flex items-start gap-4">
-                <div class="w-10 h-10 rounded-xl bg-cyan-100 dark:bg-cyan-900/30 flex items-center justify-center flex-shrink-0">
-                  <i class="fas fa-phone text-cyan-500"></i>
-                </div>
-                <div>
-                  <p class="font-medium">واتساب للأعمال</p>
-                  <p class="text-gray-600 dark:text-gray-400 text-sm">+20 1XX XXX XXXX</p>
-                </div>
-              </div>
-            </div>
-            
-            <div class="flex gap-3 mt-6 pt-6 border-t border-gray-100 dark:border-gray-700">
-              <a href="#" class="social-link facebook"><i class="fab fa-facebook-f"></i></a>
-              <a href="#" class="social-link twitter"><i class="fab fa-twitter"></i></a>
-              <a href="#" class="social-link linkedin"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#" class="social-link github"><i class="fab fa-github"></i></a>
-            </div>
-          </div>
-          
-          <!-- FAQ Accordion -->
-          <div class="card p-6">
-            <h3 class="text-lg font-bold mb-4">❓ أسئلة شائعة</h3>
-            
-            <div class="space-y-2">
-              <div class="faq-item">
-                <div class="faq-question">
-                  <span>كم تستغرق مدة تنفيذ المشروع؟</span>
-                  <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                  تعتمد المدة على حجم وتعقيد المشروع. عادةً تتراوح المشاريع الصغيرة بين 2-4 أسابيع، والمتوسطة 1-3 أشهر. نحدد جدولاً زمنياً دقيقاً بعد دراسة المتطلبات.
-                </div>
-              </div>
-              
-              <div class="faq-item">
-                <div class="faq-question">
-                  <span>هل تقدمون دعمًا بعد التسليم؟</span>
-                  <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                  نعم! نقدم 30 يوم دعم فني مجاني بعد التسليم لإصلاح أي أخطاء. كما نوفر عقود صيانة شهرية/سنوية للتحديثات المستمرة والمراقبة الأمنية.
-                </div>
-              </div>
-              
-              <div class="faq-item">
-                <div class="faq-question">
-                  <span>كيف تضمنون أمان المشروع؟</span>
-                  <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                  نطبق معايير OWASP، نستخدم تشفيراً للبيانات الحساسة، ننفذ اختبارات اختراق، ونراجع الكود أمنياً قبل التسليم. الأمان جزء من عملية التطوير وليس إضافة لاحقة.
-                </div>
-              </div>
-              
-              <div class="faq-item">
-                <div class="faq-question">
-                  <span>هل يمكنني متابعة تقدم المشروع؟</span>
-                  <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                  بالطبع! نوفر لوحة متابعة أو نستخدم أدوات مثل Trello/Notion لمشاركة التحديثات الأسبوعية. كما نحدد نقاط مراجعة دورية لمناقشة التقدم.
-                </div>
-              </div>
-              
-              <div class="faq-item">
-                <div class="faq-question">
-                  <span>ما طريقة الدفع؟</span>
-                  <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                  نقبل التحويل البنكي، المحافظ الإلكترونية، وخدمات الدفع عبر الإنترنت. عادةً نبدأ بـ 30% مقدماً، 40% عند منتصف المشروع، و30% عند التسليم النهائي.
-                </div>
-              </div>
-            </div>
-          </div>
-          
-        </div>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<!-- ===== Footer ===== -->
-<footer class="bg-neutral-darker text-white py-12">
-  <div class="container mx-auto px-4">
-    <div class="grid md:grid-cols-4 gap-8">
-      
-      <div class="md:col-span-2">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-xl gradient-bg flex items-center justify-center">
-            <i class="fas fa-code text-white"></i>
-          </div>
-          <h3 class="text-xl font-bold">سيف & محمود محمود</h3>
-        </div>
-        <p class="text-gray-400 mb-6 leading-relaxed">
-          فريق تطوير متخصص يجمع بين الإبداع في الواجهات والأمان في الخلفية. 
-          نساعد الشركات والأفراد على تحويل أفكارهم إلى حلول رقمية آمنة وفعّالة.
-        </p>
-        <div class="flex gap-3">
-          <a href="#" class="social-link facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="social-link twitter"><i class="fab fa-twitter"></i></a>
-          <a href="#" class="social-link linkedin"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#" class="social-link github"><i class="fab fa-github"></i></a>
-        </div>
-      </div>
-      
-      <div>
-        <h4 class="font-bold mb-4">روابط سريعة</h4>
-        <ul class="space-y-2 text-gray-400">
-          <li><a href="#home" class="hover:text-emerald-400 transition">الرئيسية</a></li>
-          <li><a href="#team" class="hover:text-emerald-400 transition">الفريق</a></li>
-          <li><a href="#skills" class="hover:text-emerald-400 transition">المهارات</a></li>
-          <li><a href="#projects" class="hover:text-emerald-400 transition">المشاريع</a></li>
-          <li><a href="#contact" class="hover:text-emerald-400 transition">تواصل معنا</a></li>
-        </ul>
-      </div>
-      
-      <div>
-        <h4 class="font-bold mb-4">خدماتنا</h4>
-        <ul class="space-y-2 text-gray-400">
-          <li><i class="fas fa-check text-emerald-400 ml-2"></i> تطوير واجهات أمامية</li>
-          <li><i class="fas fa-check text-emerald-400 ml-2"></i> تطوير Full Stack</li>
-          <li><i class="fas fa-check text-emerald-400 ml-2"></i> أمن سيبراني</li>
-          <li><i class="fas fa-check text-emerald-400 ml-2"></i> اختبار الاختراق</li>
-          <li><i class="fas fa-check text-emerald-400 ml-2"></i> استشارات تقنية</li>
-        </ul>
-      </div>
-      
+    </header>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <nav class="flex flex-col gap-6">
+            <a href="#home" class="text-lg font-medium hover:text-blue-500 transition-colors">الرئيسية</a>
+            <a href="#team" class="text-lg font-medium hover:text-blue-500 transition-colors">الفريق</a>
+            <a href="#skills" class="text-lg font-medium hover:text-blue-500 transition-colors">المهارات</a>
+            <a href="#projects" class="text-lg font-medium hover:text-blue-500 transition-colors">المشاريع</a>
+            <a href="#faq" class="text-lg font-medium hover:text-blue-500 transition-colors">الأسئلة الشائعة</a>
+            <a href="#contact" class="text-lg font-medium hover:text-blue-500 transition-colors">اتصل بنا</a>
+        </nav>
     </div>
     
-    <div class="border-t border-gray-800 mt-10 pt-8 text-center text-gray-500 text-sm">
-      <p>&copy; 2025 سيف & محمود محمود. جميع الحقوق محفوظة.</p>
-      <p class="mt-2">صُنع بـ <i class="fas fa-heart text-red-500"></i> في مصر 🇪🇬</p>
-    </div>
-  </div>
-</footer>
-
-<!-- ===== Floating Buttons ===== -->
-<button class="floating-btn" id="chatBtn" title="ابدأ محادثة">
-  <i class="fas fa-comment-dots text-xl"></i>
-</button>
-
-<button class="back-to-top" id="backToTop" title="العودة للأعلى">
-  <i class="fas fa-arrow-up"></i>
-</button>
-
-<!-- ===== Toast Notification ===== -->
-<div class="toast" id="toast">
-  <i class="fas fa-check-circle"></i>
-  <span id="toastMessage">تم الإرسال بنجاح!</span>
-</div>
-
-<!-- ===== Scripts ===== -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-// ===== Initialize AOS =====
-AOS.init({
-  duration: 800,
-  easing: 'ease-out-cubic',
-  once: true,
-  offset: 100
-});
-
-// ===== Theme Toggle =====
-const themeToggle = document.getElementById('themeToggle');
-const mobileThemeToggle = document.getElementById('mobileThemeToggle');
-const themeIcon = themeToggle?.querySelector('i');
-
-function toggleTheme() {
-  document.body.classList.toggle('dark-mode');
-  document.body.classList.toggle('light-mode');
-  
-  if (themeIcon) {
-    if (document.body.classList.contains('dark-mode')) {
-      themeIcon.classList.remove('fa-moon');
-      themeIcon.classList.add('fa-sun');
-    } else {
-      themeIcon.classList.remove('fa-sun');
-      themeIcon.classList.add('fa-moon');
-    }
-  }
-  
-  localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
-}
-
-// Load saved theme
-if (localStorage.getItem('theme') === 'dark') {
-  document.body.classList.add('dark-mode');
-  document.body.classList.remove('light-mode');
-  if (themeIcon) {
-    themeIcon.classList.remove('fa-moon');
-    themeIcon.classList.add('fa-sun');
-  }
-}
-
-themeToggle?.addEventListener('click', toggleTheme);
-mobileThemeToggle?.addEventListener('click', toggleTheme);
-
-// ===== Mobile Menu =====
-const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-const closeMobileMenu = document.getElementById('closeMobileMenu');
-const mobileMenu = document.getElementById('mobileMenu');
-const mobileLinks = document.querySelectorAll('.mobile-link');
-
-mobileMenuBtn?.addEventListener('click', () => {
-  mobileMenu?.classList.add('open');
-});
-
-closeMobileMenu?.addEventListener('click', () => {
-  mobileMenu?.classList.remove('open');
-});
-
-mobileLinks.forEach(link => {
-  link.addEventListener('click', () => {
-    mobileMenu?.classList.remove('open');
-  });
-});
-
-// ===== Enhanced Search =====
-const searchForm = document.getElementById('searchForm');
-const searchInput = document.getElementById('searchInput');
-const searchResults = document.getElementById('searchResults');
-
-const searchData = [
-  { title: "تطوير واجهة أمامية", desc: "مع سيف - React, Vue, Tailwind", link: "#skills", icon: "fa-laptop-code" },
-  { title: "تطوير Full Stack", desc: "Node.js, Python, APIs", link: "#skills", icon: "fa-server" },
-  { title: "أمن سيبراني", desc: "اختبار اختراق، مراجعة أمنية", link: "#skills", icon: "fa-shield-alt" },
-  { title: "المشاريع", desc: "أعمالنا السابقة", link: "#projects", icon: "fa-folder-open" },
-  { title: "تواصل معنا", desc: "ابدأ مشروعك الآن", link: "#contact", icon: "fa-paper-plane" },
-  { title: "الأسئلة الشائعة", desc: "إجابات على استفساراتك", link: "#contact", icon: "fa-question-circle" }
-];
-
-searchInput?.addEventListener('input', (e) => {
-  const query = e.target.value.toLowerCase().trim();
-  
-  if (query.length < 2) {
-    searchResults.style.display = 'none';
-    return;
-  }
-  
-  const results = searchData.filter(item => 
-    item.title.toLowerCase().includes(query) || 
-    item.desc.toLowerCase().includes(query)
-  );
-  
-  if (results.length === 0) {
-    searchResults.innerHTML = '<div class="search-result-item">لا توجد نتائج</div>';
-  } else {
-    searchResults.innerHTML = results.map(item => `
-      <div class="search-result-item" onclick="window.location.href='${item.link}'">
-        <div class="search-result-icon"><i class="fas ${item.icon}"></i></div>
-        <div>
-          <div class="font-semibold">${item.title}</div>
-          <div class="text-sm text-gray-500">${item.desc}</div>
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen flex items-center pt-20" style="background: linear-gradient(135deg, rgba(59,130,246,0.05), rgba(16,185,129,0.05));">
+            <div class="container mx-auto px-6">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div data-aos="fade-left">
+                        <h1 class="text-5xl md:text-6xl font-bold leading-tight">
+                            <span class="gradient-text">محمود & سيف</span>
+                            <br>فريق تطوير متكامل
+                        </h1>
+                        <p class="text-xl mt-6 text-gray-600 dark:text-gray-400">
+                            محمود - Full Stack Developer & Cyber Security Specialist
+                            <br>سيف - Frontend Developer
+                        </p>
+                        <p class="text-lg mt-4 text-gray-600 dark:text-gray-400">
+                            نقدم حلولاً تقنية متكاملة تجمع بين الأمان والتصميم الإبداعي
+                        </p>
+                        <div class="flex gap-4 mt-8">
+                            <a href="#contact" class="btn-primary">
+                                <i class="fas fa-paper-plane"></i>
+                                تواصل معنا
+                            </a>
+                            <a href="#projects" class="btn-outline">
+                                <i class="fas fa-eye"></i>
+                                أعمالنا
+                            </a>
+                        </div>
+                    </div>
+                    <div class="relative" data-aos="fade-right">
+                        <div class="relative w-96 h-96 mx-auto">
+                            <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-green-500 rounded-full blur-3xl opacity-20 animate-pulse"></div>
+                            <div class="relative grid grid-cols-2 gap-4">
+                                <div class="profile-card float-animation">
+                                    <div class="profile-image-wrapper">
+                                        <img src="https://via.placeholder.com/200" alt="محمود" class="profile-image">
+                                    </div>
+                                    <h3 class="text-xl font-bold text-center mt-4">محمود</h3>
+                                    <p class="text-center text-gray-500">Full Stack & Cyber Security</p>
+                                </div>
+                                <div class="profile-card float-animation" style="animation-delay: 2s;">
+                                    <div class="profile-image-wrapper">
+                                        <img src="https://via.placeholder.com/200" alt="سيف" class="profile-image">
+                                    </div>
+                                    <h3 class="text-xl font-bold text-center mt-4">سيف</h3>
+                                    <p class="text-center text-gray-500">Frontend Developer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Stats Section -->
+        <section class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="stat-card" data-aos="fade-up">
+                        <div class="stat-number" data-count="150">150</div>
+                        <p class="text-gray-600 dark:text-gray-400">مشروع مكتمل</p>
+                    </div>
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="stat-number" data-count="120">120</div>
+                        <p class="text-gray-600 dark:text-gray-400">عميل راضي</p>
+                    </div>
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="stat-number" data-count="8">8</div>
+                        <p class="text-gray-600 dark:text-gray-400">سنوات خبرة</p>
+                    </div>
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="stat-number" data-count="25">25</div>
+                        <p class="text-gray-600 dark:text-gray-400">شهادة مهنية</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Team Section -->
+        <section id="team" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-4" data-aos="fade-up">فريق العمل</h2>
+                <p class="text-xl text-center text-gray-600 dark:text-gray-400 mb-12" data-aos="fade-up" data-aos-delay="100">
+                    خبرة متكاملة في تطوير وحماية المواقع
+                </p>
+                
+                <div class="team-grid">
+                    <!-- Mahmoud Profile -->
+                    <div class="profile-card" data-aos="fade-left">
+                        <div class="profile-image-wrapper">
+                            <img src="https://via.placeholder.com/200" alt="محمود محمد" class="profile-image">
+                        </div>
+                        <h3 class="text-2xl font-bold text-center mt-4">محمود محمد</h3>
+                        <p class="text-center text-blue-500 dark:text-green-500 font-medium">Full Stack Developer & Cyber Security</p>
+                        
+                        <div class="mt-6 space-y-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
+                                    <i class="fas fa-code text-blue-500"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">التخصصات</p>
+                                    <p class="text-sm text-gray-500">Backend, DevOps, Security</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center">
+                                    <i class="fas fa-shield-alt text-green-500"></i>
+                                </div>
+                                <div>
+                                    <p className="font-medium">الشهادات</p>
+                                    <p className="text-sm text-gray-500">CEH, OSCP, AWS</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div className="flex justify-center gap-3 mt-6">
+                            <a href="#" className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center hover:bg-blue-500 hover:text-white transition-colors">
+                                <i className="fab fa-github"></i>
+                            </a>
+                            <a href="#" className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center hover:bg-blue-500 hover:text-white transition-colors">
+                                <i className="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Saif Profile -->
+                    <div className="profile-card" data-aos="fade-right">
+                        <div className="profile-image-wrapper">
+                            <img src="https://via.placeholder.com/200" alt="سيف" className="profile-image">
+                        </div>
+                        <h3 className="text-2xl font-bold text-center mt-4">سيف</h3>
+                        <p className="text-center text-blue-500 dark:text-green-500 font-medium">Frontend Developer</p>
+                        
+                        <div className="mt-6 space-y-4">
+                            <div className="flex items-center gap-3">
+                                <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
+                                    <i className="fas fa-paint-brush text-blue-500"></i>
+                                </div>
+                                <div>
+                                    <p className="font-medium">التخصصات</p>
+                                    <p className="text-sm text-gray-500">UI/UX, React, Vue, Animation</p>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <div className="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center">
+                                    <i className="fas fa-mobile-alt text-green-500"></i>
+                                </div>
+                                <div>
+                                    <p className="font-medium">التقنيات</p>
+                                    <p className="text-sm text-gray-500">Tailwind, GSAP, Three.js</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div className="flex justify-center gap-3 mt-6">
+                            <a href="#" className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center hover:bg-blue-500 hover:text-white transition-colors">
+                                <i className="fab fa-github"></i>
+                            </a>
+                            <a href="#" className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center hover:bg-blue-500 hover:text-white transition-colors">
+                                <i className="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Skills Section -->
+        <section id="skills" className="py-20 bg-gray-50 dark:bg-gray-900">
+            <div className="container mx-auto px-6">
+                <h2 className="text-4xl font-bold text-center mb-4" data-aos="fade-up">مهاراتنا</h2>
+                <p className="text-xl text-center text-gray-600 dark:text-gray-400 mb-12" data-aos="fade-up" data-aos-delay="100">
+                    مجموعة متكاملة من المهارات التقنية
+                </p>
+                
+                <div className="grid md:grid-cols-3 gap-6">
+                    <!-- Skill Card 1 -->
+                    <div className="skill-card" data-aos="flip-right">
+                        <div className="skill-icon">
+                            <i className="fas fa-code"></i>
+                        </div>
+                        <h3 className="text-xl font-bold mb-3">تطوير الواجهات</h3>
+                        <p className="text-gray-500 dark:text-gray-400">
+                            React, Vue, Angular, Next.js, Tailwind, GSAP
+                        </p>
+                        <div className="mt-4 text-blue-500 dark:text-green-500">
+                            <i className="fas fa-star"></i>
+                            <i className="fas fa-star"></i>
+                            <i className="fas fa-star"></i>
+                            <i className="fas fa-star"></i>
+                            <i className="fas fa-star"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Skill Card 2 -->
+                    <div className="skill-card" data-aos="flip-right" data-aos-delay="100">
+                        <div className="skill-icon">
+                            <i className="fas fa-server"></i>
+                        </div>
+                        <h3 className="text-xl font-bold mb-3">الواجهات الخلفية</h3>
+                        <p className="text-gray-500 dark:text-gray-400">
+                            Node.js, Python, PHP, Laravel, Databases
+                        </p>
+                        <div className="mt-4 text-blue-500 dark:text-green-500">
+                            <i className="fas fa-star"></i>
+                            <i className="fas fa-star"></i>
+                            <i className="fas fa-star"></i>
+                            <i className="fas fa-star"></i>
+                            <i className="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Skill Card 3 -->
+                    <div className="skill-card" data-aos="flip-right" data-aos-delay="200">
+                        <div className="skill-icon">
+                            <i className="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 className="text-xl font-bold mb-3">الأمن السيبراني</h3>
+                        <p className="text-gray-500 dark:text-gray-400">
+                            Ethical Hacking, Penetration Testing, Security Audits
+                        </p>
+                        <div className="mt-4 text-blue-500 dark:text-green-500">
+                            <i className="fas fa-star"></i>
+                            <i className="fas fa-star"></i>
+                            <i className="fas fa-star"></i>
+                            <i className="fas fa-star"></i>
+                            <i className="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Projects Section -->
+        <section id="projects" className="py-20">
+            <div className="container mx-auto px-6">
+                <h2 className="text-4xl font-bold text-center mb-4" data-aos="fade-up">أحدث المشاريع</h2>
+                <p className="text-xl text-center text-gray-600 dark:text-gray-400 mb-12" data-aos="fade-up" data-aos-delay="100">
+                    نماذج من أعمالنا المميزة
+                </p>
+                
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Project 1 -->
+                    <div className="project-card" data-aos="fade-up">
+                        <div className="project-image">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3" alt="Project 1">
+                            <div className="project-overlay">
+                                <div className="text-center text-white">
+                                    <h4 className="text-xl font-bold mb-2">نظام إدارة الشركات</h4>
+                                    <p className="mb-4">Full Stack Project with Security</p>
+                                    <button className="bg-white text-blue-500 px-4 py-2 rounded-full hover:bg-blue-500 hover:text-white transition-colors">
+                                        عرض التفاصيل
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="p-6">
+                            <h3 className="text-xl font-bold mb-2">نظام إدارة الشركات</h3>
+                            <p className="text-gray-500 dark:text-gray-400 mb-4">
+                                نظام متكامل لإدارة الشركات مع أعلى معايير الأمان
+                            </p>
+                            <div className="flex flex-wrap gap-2">
+                                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-500 rounded-full text-sm">React</span>
+                                <span className="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-500 rounded-full text-sm">Node.js</span>
+                                <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-500 rounded-full text-sm">MongoDB</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 2 -->
+                    <div className="project-card" data-aos="fade-up" data-aos-delay="100">
+                        <div className="project-image">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3" alt="Project 2">
+                            <div className="project-overlay">
+                                <div className="text-center text-white">
+                                    <h4 className="text-xl font-bold mb-2">منصة تعليمية</h4>
+                                    <p className="mb-4">Frontend with Advanced Animations</p>
+                                    <button className="bg-white text-blue-500 px-4 py-2 rounded-full hover:bg-blue-500 hover:text-white transition-colors">
+                                        عرض التفاصيل
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="p-6">
+                            <h3 className="text-xl font-bold mb-2">منصة تعليمية</h3>
+                            <p className="text-gray-500 dark:text-gray-400 mb-4">
+                                منصة تفاعلية مع تجربة مستخدم متميزة ورسوم متحركة
+                            </p>
+                            <div className="flex flex-wrap gap-2">
+                                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-500 rounded-full text-sm">Vue.js</span>
+                                <span className="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-500 rounded-full text-sm">GSAP</span>
+                                <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-500 rounded-full text-sm">Tailwind</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 3 -->
+                    <div className="project-card" data-aos="fade-up" data-aos-delay="200">
+                        <div className="project-image">
+                            <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3" alt="Project 3">
+                            <div className="project-overlay">
+                                <div className="text-center text-white">
+                                    <h4 className="text-xl font-bold mb-2">نظام أمني متكامل</h4>
+                                    <p className="mb-4">Cyber Security Solution</p>
+                                    <button className="bg-white text-blue-500 px-4 py-2 rounded-full hover:bg-blue-500 hover:text-white transition-colors">
+                                        عرض التفاصيل
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="p-6">
+                            <h3 className="text-xl font-bold mb-2">نظام أمني متكامل</h3>
+                            <p className="text-gray-500 dark:text-gray-400 mb-4">
+                                حلول أمنية متقدمة لحماية المواقع والتطبيقات
+                            </p>
+                            <div className="flex flex-wrap gap-2">
+                                <span className="px-3 py-1 bg-red-100 dark:bg-red-900 text-red-500 rounded-full text-sm">Penetration Testing</span>
+                                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-500 rounded-full text-sm">Encryption</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- FAQ Section -->
+        <section id="faq" className="py-20 bg-gray-50 dark:bg-gray-900">
+            <div className="container mx-auto px-6">
+                <h2 className="text-4xl font-bold text-center mb-4" data-aos="fade-up">الأسئلة الشائعة</h2>
+                <p className="text-xl text-center text-gray-600 dark:text-gray-400 mb-12" data-aos="fade-up" data-aos-delay="100">
+                    إجابات عن أكثر الأسئلة التي تهم عملائنا
+                </p>
+                
+                <div className="max-w-3xl mx-auto">
+                    <!-- FAQ Item 1 -->
+                    <div className="faq-item" data-aos="fade-up">
+                        <div className="faq-question" onclick="toggleFAQ(this)">
+                            <span>ما هي الخدمات التي تقدمونها؟</span>
+                            <i className="fas fa-chevron-down"></i>
+                        </div>
+                        <div className="faq-answer">
+                            نقدم خدمات متكاملة في تطوير المواقع والتطبيقات، مع تخصص في الأمن السيبراني وتصميم واجهات المستخدم. نوفر حلولاً مخصصة تناسب احتياجات كل عميل.
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 2 -->
+                    <div className="faq-item" data-aos="fade-up" data-aos-delay="100">
+                        <div className="faq-question" onclick="toggleFAQ(this)">
+                            <span>كم تستغرق مدة تنفيذ المشروع؟</span>
+                            <i className="fas fa-chevron-down"></i>
+                        </div>
+                        <div className="faq-answer">
+                            تختلف المدة حسب حجم المشروع وتعقيداته. المشاريع البسيطة تستغرق 2-4 أسابيع، والمتوسطة 1-3 أشهر، والكبيرة 3-6 أشهر. نحرص دائماً على التسليم في الوقت المحدد.
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 3 -->
+                    <div className="faq-item" data-aos="fade-up" data-aos-delay="200">
+                        <div className="faq-question" onclick="toggleFAQ(this)">
+                            <span>هل تقدمون خدمات ما بعد التسليم؟</span>
+                            <i className="fas fa-chevron-down"></i>
+                        </div>
+                        <div className="faq-answer">
+                            نعم، نقدم خدمات الدعم الفني والصيانة لمدة 6 أشهر مجاناً، مع إمكانية تمديد فترة الدعم باتفاق منفصل. كما نقدم استشارات مستمرة لعملائنا.
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 4 -->
+                    <div className="faq-item" data-aos="fade-up" data-aos-delay="300">
+                        <div className="faq-question" onclick="toggleFAQ(this)">
+                            <span>كيف تضمنون أمان المواقع التي تطورونها؟</span>
+                            <i className="fas fa-chevron-down"></i>
+                        </div>
+                        <div className="faq-answer">
+                            نطبق أحدث معايير الأمان في جميع مراحل التطوير، ونجري اختبارات اختراق شاملة، ونستخدم تشفير متقدم للبيانات. كما نوفر تقارير أمنية دورية.
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 5 -->
+                    <div className="faq-item" data-aos="fade-up" data-aos-delay="400">
+                        <div className="faq-question" onclick="toggleFAQ(this)">
+                            <span>ما هي تكلفة المشاريع؟</span>
+                            <i className="fas fa-chevron-down"></i>
+                        </div>
+                        <div className="faq-answer">
+                            نقدم عروض أسعار تنافسية حسب متطلبات المشروع. يمكننا تقديم عرض سعر مفصل بعد مناقشة احتياجاتك. نضمن أفضل قيمة مقابل جودة العمل.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Enhanced Contact Section -->
+        <section id="contact" className="py-20">
+            <div className="container mx-auto px-6">
+                <h2 className="text-4xl font-bold text-center mb-4" data-aos="fade-up">تواصل معنا</h2>
+                <p className="text-xl text-center text-gray-600 dark:text-gray-400 mb-12" data-aos="fade-up" data-aos-delay="100">
+                    نرحب باستفساراتكم ونقدم استشارات مجانية
+                </p>
+                
+                <div className="grid md:grid-cols-2 gap-8">
+                    <!-- Contact Form -->
+                    <div className="contact-form-container" data-aos="fade-left">
+                        <h3 className="text-2xl font-bold mb-6 gradient-text">أرسل استفسارك</h3>
+                        
+                        <form id="contactForm">
+                            <div className="form-group">
+                                <input type="text" id="name" placeholder=" " required>
+                                <label for="name" className="floating-label">الاسم الكامل</label>
+                            </div>
+                            
+                            <div className="form-group">
+                                <input type="email" id="email" placeholder=" " required>
+                                <label for="email" className="floating-label">البريد الإلكتروني</label>
+                            </div>
+                            
+                            <div className="form-group">
+                                <input type="tel" id="phone" placeholder=" ">
+                                <label for="phone" className="floating-label">رقم الهاتف (اختياري)</label>
+                            </div>
+                            
+                            <div className="form-group">
+                                <select id="service" required>
+                                    <option value="" disabled selected hidden></option>
+                                    <option value="web">تطوير مواقع</option>
+                                    <option value="security">استشارات أمنية</option>
+                                    <option value="design">تصميم واجهات</option>
+                                    <option value="other">خدمة أخرى</option>
+                                </select>
+                                <label for="service" className="floating-label">نوع الخدمة المطلوبة</label>
+                            </div>
+                            
+                            <div className="form-group">
+                                <textarea id="message" rows="5" placeholder=" " required></textarea>
+                                <label for="message" className="floating-label">تفاصيل المشروع أو الاستفسار</label>
+                            </div>
+                            
+                            <div className="form-group">
+                                <label className="flex items-center gap-3 cursor-pointer">
+                                    <input type="checkbox" className="w-5 h-5 text-blue-500" required>
+                                    <span className="text-gray-600 dark:text-gray-400">أوافق على شروط الخدمة وسياسة الخصوصية</span>
+                                </label>
+                            </div>
+                            
+                            <button type="submit" className="btn-primary w-full" id="submitBtn">
+                                <span id="submitText">إرسال الرسالة</span>
+                                <div id="submitSpinner" className="spinner hidden"></div>
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <!-- Contact Info -->
+                    <div className="space-y-6" data-aos="fade-right">
+                        <div className="glass-card p-8">
+                            <h3 className="text-2xl font-bold mb-6 gradient-text">معلومات التواصل</h3>
+                            
+                            <div className="space-y-4">
+                                <div className="flex items-center gap-4">
+                                    <div className="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
+                                        <i className="fas fa-phone-alt text-blue-500 text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <p className="text-sm text-gray-500">محمود</p>
+                                        <p className="font-bold">+20 112 396 1290</p>
+                                    </div>
+                                </div>
+                                
+                                <div className="flex items-center gap-4">
+                                    <div className="w-12 h-12 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center">
+                                        <i className="fas fa-phone-alt text-green-500 text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <p className="text-sm text-gray-500">سيف</p>
+                                        <p className="font-bold">+20 109 035 1657</p>
+                                    </div>
+                                </div>
+                                
+                                <div className="flex items-center gap-4">
+                                    <div className="w-12 h-12 rounded-full bg-purple-100 dark:bg-purple-900 flex items-center justify-center">
+                                        <i className="fas fa-envelope text-purple-500 text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <p className="text-sm text-gray-500">البريد الإلكتروني</p>
+                                        <p className="font-bold">team@developortc.com</p>
+                                    </div>
+                                </div>
+                                
+                                <div className="flex items-center gap-4">
+                                    <div className="w-12 h-12 rounded-full bg-red-100 dark:bg-red-900 flex items-center justify-center">
+                                        <i className="fas fa-map-marker-alt text-red-500 text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <p className="text-sm text-gray-500">الموقع</p>
+                                        <p className="font-bold">الشرقية، مصر</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div className="mt-8">
+                                <h4 className="font-bold mb-4">تابعنا على</h4>
+                                <div className="flex gap-3">
+                                    <a href="#" className="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center hover:bg-blue-500 hover:text-white transition-colors">
+                                        <i className="fab fa-facebook-f text-xl"></i>
+                                    </a>
+                                    <a href="#" className="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center hover:bg-blue-500 hover:text-white transition-colors">
+                                        <i className="fab fa-twitter text-xl"></i>
+                                    </a>
+                                    <a href="#" className="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center hover:bg-blue-500 hover:text-white transition-colors">
+                                        <i className="fab fa-linkedin-in text-xl"></i>
+                                    </a>
+                                    <a href="#" className="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center hover:bg-blue-500 hover:text-white transition-colors">
+                                        <i className="fab fa-github text-xl"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Quick Response Guarantee -->
+                        <div className="glass-card p-8 text-center pulse-glow">
+                            <div className="w-20 h-20 mx-auto bg-gradient-to-r from-blue-500 to-green-500 rounded-full flex items-center justify-center text-white text-3xl mb-4">
+                                <i className="fas fa-clock"></i>
+                            </div>
+                            <h4 className="text-xl font-bold mb-2">نضمن الرد السريع</h4>
+                            <p className="text-gray-600 dark:text-gray-400">
+                                نرد على جميع الاستفسارات خلال 24 ساعة كحد أقصى
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer className="bg-gray-900 text-white py-12">
+        <div className="container mx-auto px-6">
+            <div className="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div className="flex items-center gap-3 mb-4">
+                        <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-green-500 flex items-center justify-center text-white font-bold text-xl">
+                            M&S
+                        </div>
+                        <div>
+                            <h3 className="text-xl font-bold">محمود & سيف</h3>
+                            <p className="text-sm text-gray-400">Full Stack & Frontend Team</p>
+                        </div>
+                    </div>
+                    <p className="text-gray-400">
+                        نقدم حلولاً تقنية متكاملة تجمع بين الأمان والتصميم الإبداعي
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 className="text-lg font-bold mb-4">روابط سريعة</h4>
+                    <ul className="space-y-2">
+                        <li><a href="#home" className="text-gray-400 hover:text-white transition-colors">الرئيسية</a></li>
+                        <li><a href="#team" className="text-gray-400 hover:text-white transition-colors">الفريق</a></li>
+                        <li><a href="#skills" className="text-gray-400 hover:text-white transition-colors">المهارات</a></li>
+                        <li><a href="#projects" className="text-gray-400 hover:text-white transition-colors">المشاريع</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 className="text-lg font-bold mb-4">خدماتنا</h4>
+                    <ul className="space-y-2">
+                        <li className="text-gray-400">تطوير المواقع</li>
+                        <li className="text-gray-400">الأمن السيبراني</li>
+                        <li className="text-gray-400">تصميم واجهات</li>
+                        <li className="text-gray-400">استشارات تقنية</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 className="text-lg font-bold mb-4">النشرة البريدية</h4>
+                    <p className="text-gray-400 mb-4">اشترك لتصلك أحدث العروض والمقالات</p>
+                    <form className="flex">
+                        <input type="email" placeholder="بريدك الإلكتروني" className="flex-1 px-4 py-2 rounded-r-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:border-blue-500">
+                        <button className="bg-gradient-to-r from-blue-500 to-green-500 px-4 py-2 rounded-l-lg hover:from-green-500 hover:to-blue-500 transition-all">
+                            <i className="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div className="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p className="text-gray-400">&copy; 2025 محمود & سيف. جميع الحقوق محفوظة</p>
+                <p className="text-sm text-gray-500 mt-2">
+                    تم التصميم والتطوير بأحدث التقنيات
+                </p>
+            </div>
         </div>
-      </div>
-    `).join('');
-  }
-  
-  searchResults.style.display = 'block';
-});
-
-// Close search on outside click
-document.addEventListener('click', (e) => {
-  if (!searchForm?.contains(e.target)) {
-    searchResults.style.display = 'none';
-  }
-});
-
-// ===== Contact Form =====
-const contactForm = document.getElementById('contactForm');
-const submitText = document.getElementById('submitText');
-const submitSpinner = document.getElementById('submitSpinner');
-const formMessage = document.getElementById('formMessage');
-const toast = document.getElementById('toast');
-const toastMessage = document.getElementById('toastMessage');
-
-contactForm?.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  
-  // Show loading
-  submitText.classList.add('hidden');
-  submitSpinner.classList.remove('hidden');
-  
-  // Simulate API call
-  await new Promise(resolve => setTimeout(resolve, 1500));
-  
-  // Reset button
-  submitText.classList.remove('hidden');
-  submitSpinner.classList.add('hidden');
-  
-  // Show success
-  formMessage.className = 'p-4 rounded-xl text-center bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300';
-  formMessage.textContent = '✓ تم استلام رسالتك! سنتواصل معك خلال 24 ساعة.';
-  formMessage.classList.remove('hidden');
-  
-  // Show toast
-  toastMessage.textContent = 'تم إرسال رسالتك بنجاح! 🎉';
-  toast.className = 'toast show';
-  
-  // Reset form
-  contactForm.reset();
-  
-  // Hide messages after 5 seconds
-  setTimeout(() => {
-    formMessage.classList.add('hidden');
-    toast.classList.remove('show');
-  }, 5000);
-});
-
-// ===== FAQ Accordion =====
-document.querySelectorAll('.faq-question').forEach(question => {
-  question.addEventListener('click', () => {
-    const item = question.parentElement;
-    const isActive = item.classList.contains('active');
+    </footer>
     
-    // Close all
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+    <!-- Back to Top Button -->
+    <div className="back-to-top" id="backToTop">
+        <i className="fas fa-arrow-up"></i>
+    </div>
     
-    // Toggle current
-    if (!isActive) {
-      item.classList.add('active');
-    }
-  });
-});
-
-// ===== Statistics Counter =====
-const statNumbers = document.querySelectorAll('.stat-number');
-const animateValue = (el, start, end, duration) => {
-  let startTimestamp = null;
-  const step = (timestamp) => {
-    if (!startTimestamp) startTimestamp = timestamp;
-    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-    const value = Math.floor(progress * (end - start) + start);
-    el.textContent = typeof end === 'number' ? value + (end > 100 ? '+' : '') : end;
-    if (progress < 1) window.requestAnimationFrame(step);
-  };
-  window.requestAnimationFrame(step);
-};
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const el = entry.target;
-      const count = el.getAttribute('data-count');
-      const num = parseFloat(count);
-      if (!isNaN(num)) {
-        animateValue(el, 0, num, 2000);
-      } else {
-        el.textContent = count;
-      }
-      observer.unobserve(el);
-    }
-  });
-}, { threshold: 0.5 });
-
-statNumbers.forEach(stat => observer.observe(stat));
-
-// ===== Back to Top =====
-const backToTop = document.getElementById('backToTop');
-window.addEventListener('scroll', () => {
-  if (window.pageYOffset > 400) {
-    backToTop?.classList.add('show');
-  } else {
-    backToTop?.classList.remove('show');
-  }
-});
-
-backToTop?.addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-// ===== Floating Chat Button =====
-document.getElementById('chatBtn')?.addEventListener('click', () => {
-  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-});
-
-// ===== Skill Progress Animation =====
-const skillBars = document.querySelectorAll('.skill-progress');
-const skillObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const width = entry.target.style.width;
-      entry.target.style.width = '0';
-      setTimeout(() => {
-        entry.target.style.width = width;
-      }, 100);
-      skillObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.5 });
-
-skillBars.forEach(bar => skillObserver.observe(bar));
-
-// ===== Smooth Scroll for Anchor Links =====
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  });
-});
-</script>
-
+    <!-- Toast Notification -->
+    <div className="toast" id="toast">
+        <div className="flex items-center gap-3">
+            <i className="fas fa-check-circle"></i>
+            <span id="toastMessage">تم إرسال الرسالة بنجاح!</span>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+        
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+        
+        // Check saved theme
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+        
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+        
+        // Close mobile menu when clicking on a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            });
+        });
+        
+        // Back to Top
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+        
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // FAQ Toggle
+        window.toggleFAQ = function(element) {
+            const faqItem = element.parentElement;
+            faqItem.classList.toggle('active');
+        };
+        
+        // Contact Form Handling
+        const contactForm = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const submitText = document.getElementById('submitText');
+        const submitSpinner = document.getElementById('submitSpinner');
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toastMessage');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Show loading
+            submitText.textContent = 'جاري الإرسال...';
+            submitSpinner.classList.remove('hidden');
+            submitBtn.disabled = true;
+            
+            // Simulate form submission
+            setTimeout(() => {
+                // Hide loading
+                submitText.textContent = 'إرسال الرسالة';
+                submitSpinner.classList.add('hidden');
+                submitBtn.disabled = false;
+                
+                // Show toast
+                toastMessage.textContent = 'تم إرسال الرسالة بنجاح! سنتواصل معك قريباً';
+                toast.classList.add('show');
+                
+                // Hide toast after 5 seconds
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 5000);
+                
+                // Reset form
+                contactForm.reset();
+            }, 2000);
+        });
+        
+        // Statistics Counter Animation
+        const statNumbers = document.querySelectorAll('.stat-number');
+        
+        const animateValue = (element, start, end, duration) => {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const value = Math.floor(progress * (end - start) + start);
+                element.textContent = value;
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const count = parseInt(entry.target.getAttribute('data-count'));
+                    animateValue(entry.target, 0, count, 2000);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        statNumbers.forEach(stat => observer.observe(stat));
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Floating animation for profile cards
+        const profileCards = document.querySelectorAll('.profile-card');
+        profileCards.forEach((card, index) => {
+            card.style.animation = `float ${4 + index}s ease-in-out infinite`;
+        });
+    </script>
 </body>
 </html>
